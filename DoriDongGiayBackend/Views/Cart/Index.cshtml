@@ -1,0 +1,130 @@
+@model List<CartItem>
+@{
+    ViewData["Title"] = "Giỏ hàng - FashionShop";
+    decimal totalAmount = Model.Sum(item => item.Total);
+}
+
+<div class="container mt-5">
+    <div class="cart-header mb-4">
+        <h2 class="section-title">Giỏ hàng của bạn</h2>
+        <p class="text-muted">@Model.Count sản phẩm trong giỏ hàng</p>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="cart-items-container">
+                    <div class="cart-header-row">
+                        <div class="row align-items-center py-3 border-bottom">
+                            <div class="col-md-6"><h6 class="mb-0">Sản phẩm</h6></div>
+                            <div class="col-md-2 text-center"><h6 class="mb-0">Giá</h6></div>
+                            <div class="col-md-2 text-center"><h6 class="mb-0">Số lượng</h6></div>
+                            <div class="col-md-2 text-center"><h6 class="mb-0">Tổng</h6></div>
+                        </div>
+                    </div>
+                    
+                    @foreach (var item in Model)
+                    {
+                        <div class="cart-item">
+                            <div class="row align-items-center py-4">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="cart-item-image">
+                                            <img src="@item.ImageUrl" alt="@item.ProductName" class="img-fluid rounded">
+                                        </div>
+                                        <div class="cart-item-details ms-3">
+                                            <h6 class="mb-1">@item.ProductName</h6>
+                                            <p class="text-muted mb-0 small">Mã SP: #@item.ProductId</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <span class="cart-item-price">@item.Price.ToString("N0") ₫</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <form asp-action="UpdateCart" method="post" class="quantity-form">
+                                        <input type="hidden" name="productId" value="@item.ProductId" />
+                                        <div class="quantity-control">
+                                            <button type="button" class="quantity-btn minus" onclick="decrementQuantity(this)">-</button>
+                                            <input type="number" name="quantity" value="@item.Quantity" min="1" class="quantity-input">
+                                            <button type="button" class="quantity-btn plus" onclick="incrementQuantity(this)">+</button>
+                                        </div>
+                                        <button type="submit" class="btn btn-sm btn-update mt-2">
+                                            <i class="fas fa-sync-alt"></i> Cập nhật
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="cart-item-total">@item.Total.ToString("N0") ₫</span>
+                                        <form asp-action="RemoveFromCart" method="post">
+                                            <input type="hidden" name="productId" value="@item.ProductId" />
+                                            <button type="submit" class="btn-remove">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="cart-summary">
+                    <h5 class="summary-title">Tổng thanh toán</h5>
+                    <div class="summary-item">
+                        <span>Tạm tính:</span>
+                        <span>@totalAmount.ToString("N0") ₫</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Phí vận chuyển:</span>
+                        <span class="text-success">Miễn phí</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Tổng cộng:</span>
+                        <span>@totalAmount.ToString("N0") ₫</span>
+                    </div>
+                    <a asp-controller="Checkout" asp-action="Index" class="btn btn-checkout">
+                        <i class="fas fa-credit-card me-2"></i>Tiến hành thanh toán
+                    </a>
+                    <a asp-controller="Products" asp-action="Index" class="btn btn-continue-shopping">
+                        <i class="fas fa-arrow-left me-2"></i>Tiếp tục mua sắm
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="empty-cart text-center py-5">
+            <div class="empty-cart-icon">
+                <i class="fas fa-shopping-cart fa-4x"></i>
+            </div>
+            <h4 class="mt-4">Giỏ hàng của bạn đang trống</h4>
+            <p class="text-muted mb-4">Hãy thêm một số sản phẩm vào giỏ hàng để bắt đầu mua sắm.</p>
+            <a asp-controller="Products" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="fas fa-shopping-bag me-2"></i> Khám phá sản phẩm
+            </a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function incrementQuantity(button) {
+            const input = button.previousElementSibling;
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrementQuantity(button) {
+            const input = button.nextElementSibling;
+            const value = parseInt(input.value);
+            if (value > 1) {
+                input.value = value - 1;
+            }
+        }
+    </script>
+}

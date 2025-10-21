@@ -1,0 +1,326 @@
+/* Admin Layout */
+.sidebar {
+    min-height: 100vh;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: fixed;
+}
+
+.sidebar .nav-link {
+    color: #b7b9cc !important;
+    padding: 0.75rem 1rem;
+    margin: 0.2rem 0;
+    border-radius: 0.35rem;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    color: #fff !important;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.sidebar .nav-link.active {
+    color: #fff !important;
+    background-color: var(--primary-color);
+}
+
+.sidebar .navbar-brand {
+    padding: 1.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #fff !important;
+}
+
+/* Main Content */
+main {
+    margin-left: 16.666667%;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        min-height: auto;
+    }
+    
+    main {
+        margin-left: 0;
+    }
+}
+
+/* Statistics Cards */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+}
+
+.border-left-success {
+    border-left: 0.25rem solid #1cc88a !important;
+}
+
+.border-left-info {
+    border-left: 0.25rem solid #36b9cc !important;
+}
+
+.border-left-warning {
+    border-left: 0.25rem solid #f6c23e !important;
+}
+
+.text-xs {
+    font-size: 0.7rem;
+}
+
+.text-gray-800 {
+    color: #5a5c69 !important;
+}
+
+.text-gray-300 {
+    color: #dddfeb !important;
+}
+
+/* Table Styles */
+.table th {
+    border-top: none;
+    font-weight: 700;
+    color: #4e73df;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.table td {
+    vertical-align: middle;
+    font-size: 0.9rem;
+}
+
+/* Form Styles in Admin */
+.admin-form .form-control {
+    border: 1px solid #d1d3e2;
+    border-radius: 0.35rem;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.admin-form .form-label {
+    font-weight: 600;
+    color: #5a5c69;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-form .card {
+    border: 1px solid #e3e6f0;
+}
+
+/* Button Styles in Admin */
+.btn-admin {
+    border-radius: 0.35rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Badge Styles */
+.badge {
+    font-size: 0.75em;
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+}
+
+.badge-pending {
+    background-color: #f6c23e;
+    color: #fff;
+}
+
+.badge-processing {
+    background-color: #36b9cc;
+    color: #fff;
+}
+
+.badge-shipped {
+    background-color: #4e73df;
+    color: #fff;
+}
+
+.badge-delivered {
+    background-color: #1cc88a;
+    color: #fff;
+}
+
+.badge-cancelled {
+    background-color: #e74a3b;
+    color: #fff;
+}
+
+/* Chart and Graph Containers */
+.chart-container {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Action Buttons */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.2rem;
+    margin: 0 0.1rem;
+}
+
+/* Search and Filter */
+.admin-search {
+    max-width: 300px;
+}
+
+.admin-filter {
+    background-color: #f8f9fc;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Pagination */
+.pagination {
+    margin-bottom: 0;
+}
+
+.page-link {
+    color: #4e73df;
+    border: 1px solid #e3e6f0;
+}
+
+.page-link:hover {
+    color: #2e59d9;
+    background-color: #eaecf4;
+    border-color: #e3e6f0;
+}
+
+.page-item.active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+/* Alert Messages */
+.alert-admin {
+    border: none;
+    border-radius: 0.35rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.alert-admin-success {
+    background-color: #d1edff;
+    color: #0c5460;
+    border-left: 4px solid #117a8b;
+}
+
+.alert-admin-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-admin-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+}
+
+/* Modal Styles */
+.modal-admin .modal-content {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.modal-admin .modal-header {
+    border-bottom: 1px solid #e3e6f0;
+    background-color: #f8f9fc;
+}
+
+.modal-admin .modal-footer {
+    border-top: 1px solid #e3e6f0;
+    background-color: #f8f9fc;
+}
+
+/* Sidebar Toggle */
+#sidebarToggle {
+    color: #6e707e;
+}
+
+#sidebarToggle:hover {
+    color: #4e73df;
+}
+
+/* Data Tables */
+.data-table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #e3e6f0;
+}
+
+.data-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #e3e6f0;
+}
+
+/* Status Indicators */
+.status-indicator {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-active {
+    background-color: #1cc88a;
+}
+
+.status-inactive {
+    background-color: #e74a3b;
+}
+
+.status-pending {
+    background-color: #f6c23e;
+}
+
+/* Image Preview */
+.image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #e3e6f0;
+    border-radius: 0.35rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border 0.75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}

@@ -1,0 +1,155 @@
+@model List<Product>
+@{
+    ViewData["Title"] = "Trang chủ - FashionShop";
+}
+
+<!-- Hero Section -->
+<section class="hero-section py-5" style="background: linear-gradient(135deg, #3f51b5 0%, #5c6bc0 100%); color: white; margin-top: -20px; padding-top: 80px !important; padding-bottom: 80px !important;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Dori Đông Giày</h1>
+                <p class="lead" style="font-size: 1.3rem; margin-bottom: 30px; font-weight: 400;">Khám phá bộ sưu tập giày thời thượng với chất lượng tốt nhất và phong cách độc đáo</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-light btn-lg" style="padding: 12px 30px; font-weight: 600; border-radius: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s;">Khám phá ngay</a>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+                <img src="/images/hero-fashion.jpg" alt="Fashion" class="img-fluid rounded hero-image" style="border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.2); transform: rotate(2deg);">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section py-5" style="background-color: #f8f9fa; padding: 60px 0;">
+    <div class="container">
+        <h2 class="section-title text-center mb-5" style="font-size: 2.5rem; font-weight: 700; position: relative; padding-bottom: 15px;">
+            Danh mục <span style="color: var(--primary-color); position: relative;">Nổi bật
+                <span style="position: absolute; bottom: -5px; left: 0; width: 100%; height: 3px; background-color: var(--primary-color);"></span>
+            </span>
+        </h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                    <div style="position: relative; overflow: hidden; height: 250px;">
+                        <img src="/images/category-men.jpg" alt="Men" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: all 0.3s ease;"></div>
+                    </div>
+                    <div style="padding: 25px; text-align: center;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-color);">Giày Nam</h3>
+                        <a asp-controller="Products" asp-action="Index" asp-route-category="men" class="btn btn-outline-primary" style="width: 100%; border-radius: 30px; padding: 10px 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                    <div style="position: relative; overflow: hidden; height: 250px;">
+                        <img src="/images/category-women.jpg" alt="Women" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: all 0.3s ease;"></div>
+                    </div>
+                    <div style="padding: 25px; text-align: center;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-color);">Giày Nữ</h3>
+                        <a asp-controller="Products" asp-action="Index" asp-route-category="women" class="btn btn-outline-primary" style="width: 100%; border-radius: 30px; padding: 10px 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+                    <div style="position: relative; overflow: hidden; height: 250px;">
+                        <img src="/images/category-kids.jpg" alt="Kids" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: all 0.3s ease;"></div>
+                    </div>
+                    <div style="padding: 25px; text-align: center;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 15px; color: var(--primary-color);">Giày Trẻ Em</h3>
+                        <a asp-controller="Products" asp-action="Index" asp-route-category="kids" class="btn btn-outline-primary" style="width: 100%; border-radius: 30px; padding: 10px 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Xem ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="featured-products py-5">
+    <div class="container">
+        <h2 class="section-title text-center mb-5">Sản phẩm <span class="highlight">Nổi bật</span></h2>
+        <div class="row">
+            @foreach (var product in Model)
+            {
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card">
+                        <div class="product-badge">
+                            @if (product.OldPrice.HasValue)
+                            {
+                                var discount = Math.Round((1 - (product.Price / product.OldPrice.Value)) * 100);
+                                <span class="badge bg-danger">-@discount%</span>
+                            }
+                            @if (product.StockQuantity < 10)
+                            {
+                                <span class="badge bg-warning text-dark">Sắp hết hàng</span>
+                            }
+                        </div>
+                        <a asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id" class="product-link">
+                            <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name">
+                        </a>
+                        <div class="card-body">
+                            <div class="product-category">@product.Category.Name</div>
+                            <h5 class="card-title">
+                                <a asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id">@product.Name</a>
+                            </h5>
+                            <div class="price-section">
+                                <span class="current-price">@product.Price.ToString("N0") ₫</span>
+                                @if (product.OldPrice.HasValue)
+                                {
+                                    <span class="old-price">@product.OldPrice.Value.ToString("N0") ₫</span>
+                                }
+                            </div>
+                            <div class="product-actions">
+                                <a asp-controller="Products" asp-action="Detail" asp-route-id="@product.Id" 
+                                   class="btn btn-outline-primary">Xem chi tiết</a>
+                                <form asp-controller="Cart" asp-action="AddToCart" method="post">
+                                    <input type="hidden" name="productId" value="@product.Id" />
+                                    <input type="hidden" name="quantity" value="1" />
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-cart-plus"></i> Thêm vào giỏ
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="text-center mt-4">
+            <a asp-controller="Products" asp-action="Index" class="btn btn-outline-primary">Xem tất cả sản phẩm</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section bg-light py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <i class="fas fa-shipping-fast fa-3x text-primary mb-3"></i>
+                    <h4>Miễn phí vận chuyển</h4>
+                    <p>Cho đơn hàng từ 500.000₫</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <i class="fas fa-undo-alt fa-3x text-primary mb-3"></i>
+                    <h4>Đổi trả dễ dàng</h4>
+                    <p>Trong vòng 7 ngày</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt fa-3x text-primary mb-3"></i>
+                    <h4>Chất lượng đảm bảo</h4>
+                    <p>100% sản phẩm chính hãng</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
