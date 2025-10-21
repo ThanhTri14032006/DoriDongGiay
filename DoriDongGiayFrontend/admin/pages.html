@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Trang Tĩnh | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Pages Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Quản Lý Trang Tĩnh</h1>
+                    <a href="page-add.html" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Trang Mới
+                    </a>
+                </div>
+
+                <!-- Pages Stats -->
+                <div class="row mb-4">
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Tổng Số Trang</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-file-alt fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Đã Xuất Bản</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">7</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Bản Nháp</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-edit fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pages Table -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Trang</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw me-2 text-gray-400"></i>Xuất Excel</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-trash fa-sm fa-fw me-2 text-gray-400"></i>Xóa đã chọn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Đường Dẫn</th>
+                                        <th>Người Tạo</th>
+                                        <th>Ngày Tạo</th>
+                                        <th>Ngày Cập Nhật</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P001</td>
+                                        <td>Trang Chủ</td>
+                                        <td>/</td>
+                                        <td>Admin</td>
+                                        <td>01/01/2023</td>
+                                        <td>15/06/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../index.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal" disabled><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P002</td>
+                                        <td>Giới Thiệu</td>
+                                        <td>/about</td>
+                                        <td>Admin</td>
+                                        <td>01/01/2023</td>
+                                        <td>10/05/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../about.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P003</td>
+                                        <td>Liên Hệ</td>
+                                        <td>/contact</td>
+                                        <td>Admin</td>
+                                        <td>01/01/2023</td>
+                                        <td>05/04/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../contact.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P004</td>
+                                        <td>Chính Sách Bảo Mật</td>
+                                        <td>/privacy-policy</td>
+                                        <td>Admin</td>
+                                        <td>01/01/2023</td>
+                                        <td>20/03/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../privacy-policy.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P005</td>
+                                        <td>Điều Khoản Sử Dụng</td>
+                                        <td>/terms-of-service</td>
+                                        <td>Admin</td>
+                                        <td>01/01/2023</td>
+                                        <td>20/03/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../terms-of-service.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P006</td>
+                                        <td>Chính Sách Vận Chuyển</td>
+                                        <td>/shipping-policy</td>
+                                        <td>Editor</td>
+                                        <td>15/02/2023</td>
+                                        <td>25/03/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../shipping-policy.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P007</td>
+                                        <td>Chính Sách Đổi Trả</td>
+                                        <td>/return-policy</td>
+                                        <td>Editor</td>
+                                        <td>15/02/2023</td>
+                                        <td>25/03/2023</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../return-policy.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#P008</td>
+                                        <td>Câu Hỏi Thường Gặp</td>
+                                        <td>/faq</td>
+                                        <td>Editor</td>
+                                        <td>10/06/2023</td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-secondary">Bản nháp</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="page-preview.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="page-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePageModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Page Modal -->
+    <div class="modal fade" id="deletePageModal" tabindex="-1" aria-labelledby="deletePageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletePageModalLabel">Xác Nhận Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa trang <strong>Giới Thiệu</strong>?</p>
+                    <p class="text-danger">Lưu ý: Hành động này không thể hoàn tác. Tất cả dữ liệu liên quan đến trang này sẽ bị xóa vĩnh viễn.</p>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete">
+                        <label class="form-check-label" for="confirmDelete">
+                            Tôi hiểu rằng hành động này không thể hoàn tác
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" disabled>Xóa Trang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Select all checkbox
+            $('#selectAll').on('change', function() {
+                $('tbody .form-check-input').prop('checked', $(this).prop('checked'));
+            });
+            
+            // Enable delete button when checkbox is checked
+            $('#confirmDelete').on('change', function() {
+                $('.modal-footer .btn-danger').prop('disabled', !$(this).prop('checked'));
+            });
+        });
+    </script>
+</body>
+</html>

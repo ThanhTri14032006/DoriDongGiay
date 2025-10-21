@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiay/DoriDongGiay.csproj": {}
+    "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/DoriDongGiay.csproj": {}
   },
   "projects": {
-    "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiay/DoriDongGiay.csproj": {
+    "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/DoriDongGiay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiay/DoriDongGiay.csproj",
+        "projectUniqueName": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/DoriDongGiay.csproj",
         "projectName": "DoriDongGiay",
-        "projectPath": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiay/DoriDongGiay.csproj",
+        "projectPath": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/DoriDongGiay.csproj",
         "packagesPath": "/Users/thanhtri/.nuget/packages/",
-        "outputPath": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiay/obj/",
+        "outputPath": "/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/thanhtri/.nuget/NuGet/NuGet.Config"
@@ -64,7 +64,7 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",

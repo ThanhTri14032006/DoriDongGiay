@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sản Phẩm | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Products Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Quản Lý Sản Phẩm</h1>
+                    <a href="product-add.html" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Sản Phẩm Mới
+                    </a>
+                </div>
+
+                <!-- Product Filters -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Bộ Lọc Sản Phẩm</h6>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-3">
+                                <label for="searchProduct" class="form-label">Tìm kiếm</label>
+                                <input type="text" class="form-control" id="searchProduct" placeholder="Tên sản phẩm, mã...">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="categoryFilter" class="form-label">Danh mục</label>
+                                <select class="form-select" id="categoryFilter">
+                                    <option value="">Tất cả danh mục</option>
+                                    <option value="1">Giày Thể Thao</option>
+                                    <option value="2">Giày Casual</option>
+                                    <option value="3">Giày Đá Bóng</option>
+                                    <option value="4">Giày Sandal</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="statusFilter" class="form-label">Trạng thái</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Tất cả</option>
+                                    <option value="1">Còn hàng</option>
+                                    <option value="0">Hết hàng</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="sortBy" class="form-label">Sắp xếp theo</label>
+                                <select class="form-select" id="sortBy">
+                                    <option value="newest">Mới nhất</option>
+                                    <option value="oldest">Cũ nhất</option>
+                                    <option value="name_asc">Tên A-Z</option>
+                                    <option value="name_desc">Tên Z-A</option>
+                                    <option value="price_asc">Giá tăng dần</option>
+                                    <option value="price_desc">Giá giảm dần</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Sản Phẩm</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw me-2 text-gray-400"></i>Xuất Excel</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-import fa-sm fa-fw me-2 text-gray-400"></i>Nhập Excel</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-trash fa-sm fa-fw me-2 text-gray-400"></i>Xóa đã chọn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                            </div>
+                                        </th>
+                                        <th>Ảnh</th>
+                                        <th>Mã SP</th>
+                                        <th>Tên Sản Phẩm</th>
+                                        <th>Danh Mục</th>
+                                        <th>Giá</th>
+                                        <th>Tồn Kho</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productTableBody">
+                                    <!-- Dữ liệu sản phẩm sẽ được thêm vào đây bằng JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mt-4">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Sau</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Xác Nhận Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc chắn muốn xóa sản phẩm này không? Hành động này không thể hoàn tác.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Product Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewModalLabel">Chi Tiết Sản Phẩm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../img/products/product-1.jpg" class="img-fluid" alt="Product">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Giày Nike Air Max</h4>
+                            <p class="text-muted">Mã sản phẩm: SP001</p>
+                            <p><strong>Danh mục:</strong> Giày Thể Thao</p>
+                            <p><strong>Giá:</strong> 2,500,000 VNĐ</p>
+                            <p><strong>Tồn kho:</strong> 12</p>
+                            <p><strong>Trạng thái:</strong> <span class="badge bg-success">Còn hàng</span></p>
+                            <p><strong>Ngày tạo:</strong> 15/05/2023</p>
+                            <p><strong>Cập nhật lần cuối:</strong> 20/06/2023</p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h5>Mô tả sản phẩm</h5>
+                            <p>Nike Air Max là dòng giày thể thao cao cấp với công nghệ đệm khí Air độc quyền của Nike, mang lại sự thoải mái và hỗ trợ tối đa cho người sử dụng. Thiết kế hiện đại, thời trang phù hợp cho cả nam và nữ.</p>
+                            
+                            <h5 class="mt-3">Thông số kỹ thuật</h5>
+                            <ul>
+                                <li>Chất liệu: Vải mesh, da tổng hợp</li>
+                                <li>Đế: Công nghệ Air Max</li>
+                                <li>Màu sắc: Đen, Trắng, Xám</li>
+                                <li>Size: 39-44</li>
+                                <li>Xuất xứ: Chính hãng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <a href="product-edit.html?id=1" class="btn btn-primary">Chỉnh Sửa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/api.js"></script>
+      <script>
+           // Dữ liệu mẫu sản phẩm
+           const sampleProducts = [
+               { id: 1, name: "Giày Nike Air Max", category: "Giày Thể Thao", price: 2500000, stock: 12, imageUrl: "../img/products/product-1.jpg", sku: "SP001" },
+               { id: 2, name: "Giày Adidas Ultraboost", category: "Giày Thể Thao", price: 3200000, stock: 8, imageUrl: "../img/products/product-2.jpg", sku: "SP002" },
+               { id: 3, name: "Giày Converse Classic", category: "Giày Casual", price: 1500000, stock: 15, imageUrl: "../img/products/product-3.jpg", sku: "SP003" },
+               { id: 4, name: "Giày Vans Old Skool", category: "Giày Casual", price: 1800000, stock: 10, imageUrl: "../img/products/product-4.jpg", sku: "SP004" },
+               { id: 5, name: "Giày Nike Mercurial", category: "Giày Đá Bóng", price: 2800000, stock: 0, imageUrl: "../img/products/product-5.jpg", sku: "SP005" }
+           ];
+           
+           $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+            // Select all checkboxes
+            $('#selectAll').on('click', function() {
+                $('input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+            });
+        });
+        
+        // Hàm format giá tiền
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+        }
+
+        // Tải danh sách sản phẩm
+         async function loadProducts() {
+             try {
+                 const products = sampleProducts; // Sử dụng dữ liệu mẫu
+                 const tableBody = document.getElementById('productTableBody');
+                 tableBody.innerHTML = '';
+                
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="${product.id}">
+                            </div>
+                        </td>
+                        <td><img src="${product.imageUrl || '../img/products/default.jpg'}" width="50" height="50" alt="${product.name}"></td>
+                        <td>${product.sku || 'SP' + product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.category}</td>
+                        <td>${formatPrice(product.price)}</td>
+                        <td>${product.stock}</td>
+                        <td><span class="badge ${product.stock > 0 ? 'bg-success' : 'bg-danger'}">${product.stock > 0 ? 'Còn hàng' : 'Hết hàng'}</span></td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="product-edit.html?id=${product.id}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
+                                <button type="button" class="btn btn-sm btn-danger" onclick="deleteProduct(${product.id})"><i class="fas fa-trash"></i></button>
+                                <button type="button" class="btn btn-sm btn-info" onclick="viewProduct(${product.id})"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Lỗi khi tải sản phẩm:', error);
+                alert('Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.');
+            }
+        }
+
+        // Xóa sản phẩm
+         async function deleteProduct(id) {
+             if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+                 try {
+                     // Xóa sản phẩm từ mảng dữ liệu mẫu
+                     const index = sampleProducts.findIndex(p => p.id == id);
+                     if (index !== -1) {
+                         sampleProducts.splice(index, 1);
+                     }
+                     alert('Xóa sản phẩm thành công!');
+                     loadProducts(); // Tải lại danh sách
+                 } catch (error) {
+                     console.error('Lỗi khi xóa sản phẩm:', error);
+                     alert('Không thể xóa sản phẩm. Vui lòng thử lại sau.');
+                 }
+             }
+         }
+
+         // Xem chi tiết sản phẩm
+         async function viewProduct(id) {
+             try {
+                 // Tìm sản phẩm từ mảng dữ liệu mẫu
+                 const product = sampleProducts.find(p => p.id == id);
+                 if (product) {
+                     alert(`Chi tiết sản phẩm: ${product.name}\nGiá: ${formatPrice(product.price)}\nSố lượng: ${product.stock}`);
+                 } else {
+                     alert('Không tìm thấy sản phẩm!');
+                 }
+             } catch (error) {
+                 console.error('Lỗi khi tải chi tiết sản phẩm:', error);
+                 alert('Không thể tải chi tiết sản phẩm. Vui lòng thử lại sau.');
+             }
+         }
+
+        // Tải sản phẩm khi trang được tải
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+        });
+    </script>
+</body>
+</html>

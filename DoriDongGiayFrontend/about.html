@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Về DoriDongGiay</h1>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <img src="images/about-store.jpg" alt="Cửa hàng DoriDongGiay" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Câu chuyện của chúng tôi</h2>
+                    <p class="lead">DoriDongGiay được thành lập vào năm 2020 với mục tiêu mang đến những đôi giày chất lượng cao với giá cả phải chăng cho người Việt Nam.</p>
+                    <p>Chúng tôi tin rằng mỗi bước đi đều quan trọng, và một đôi giày tốt có thể thay đổi cả ngày của bạn. Đó là lý do tại sao chúng tôi chỉ cung cấp những sản phẩm chất lượng cao, được thiết kế để mang lại sự thoải mái và phong cách.</p>
+                    <p>Từ những ngày đầu tiên với một cửa hàng nhỏ, chúng tôi đã phát triển thành một thương hiệu được yêu thích với nhiều chi nhánh trên toàn quốc và một nền tảng thương mại điện tử phát triển mạnh mẽ.</p>
+                </div>
+            </div>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6 order-lg-2">
+                    <img src="images/about-mission.jpg" alt="Sứ mệnh của DoriDongGiay" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="mb-4">Sứ mệnh & Tầm nhìn</h2>
+                    <p class="lead">Sứ mệnh của chúng tôi là mang đến những đôi giày chất lượng cao, phong cách và thoải mái cho mọi người.</p>
+                    <p>Chúng tôi cam kết:</p>
+                    <ul>
+                        <li>Cung cấp sản phẩm chất lượng cao với giá cả hợp lý</li>
+                        <li>Mang đến trải nghiệm mua sắm tuyệt vời cho khách hàng</li>
+                        <li>Liên tục cập nhật các xu hướng thời trang mới nhất</li>
+                        <li>Hỗ trợ khách hàng một cách tận tâm và chuyên nghiệp</li>
+                    </ul>
+                    <p>Tầm nhìn của chúng tôi là trở thành thương hiệu giày dép hàng đầu tại Việt Nam, được biết đến với chất lượng sản phẩm và dịch vụ khách hàng xuất sắc.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-5">Đội ngũ của chúng tôi</h2>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 team-card">
+                        <img src="images/team-1.jpg" class="card-img-top" alt="Thành viên đội ngũ">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Nguyễn Văn A</h5>
+                            <p class="card-text text-muted">Giám đốc điều hành</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 team-card">
+                        <img src="images/team-2.jpg" class="card-img-top" alt="Thành viên đội ngũ">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Trần Thị B</h5>
+                            <p class="card-text text-muted">Giám đốc sản phẩm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 team-card">
+                        <img src="images/team-3.jpg" class="card-img-top" alt="Thành viên đội ngũ">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Lê Văn C</h5>
+                            <p class="card-text text-muted">Giám đốc marketing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="card h-100 team-card">
+                        <img src="images/team-4.jpg" class="card-img-top" alt="Thành viên đội ngũ">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Phạm Thị D</h5>
+                            <p class="card-text text-muted">Giám đốc dịch vụ khách hàng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+</body>
+</html>

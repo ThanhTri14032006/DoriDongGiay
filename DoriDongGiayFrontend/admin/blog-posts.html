@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Bài Viết Blog | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Blog Posts Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Quản Lý Bài Viết Blog</h1>
+                    <a href="blog-post-add.html" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                        <i class="fas fa-plus fa-sm text-white-50"></i> Thêm Bài Viết Mới
+                    </a>
+                </div>
+
+                <!-- Blog Stats -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Tổng Bài Viết</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">42</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Đã Xuất Bản</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">38</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Bản Nháp</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-edit fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Bình Luận Mới</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Filters -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Bộ Lọc Bài Viết</h6>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                                <label for="searchPost" class="form-label">Tìm kiếm</label>
+                                <input type="text" class="form-control" id="searchPost" placeholder="Tiêu đề, nội dung...">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="categoryFilter" class="form-label">Danh mục</label>
+                                <select class="form-select" id="categoryFilter">
+                                    <option value="">Tất cả</option>
+                                    <option value="fashion">Thời trang</option>
+                                    <option value="trends">Xu hướng</option>
+                                    <option value="tips">Mẹo chọn giày</option>
+                                    <option value="care">Chăm sóc giày</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="statusFilter" class="form-label">Trạng thái</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Tất cả</option>
+                                    <option value="published">Đã xuất bản</option>
+                                    <option value="draft">Bản nháp</option>
+                                    <option value="scheduled">Lên lịch</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="authorFilter" class="form-label">Tác giả</label>
+                                <select class="form-select" id="authorFilter">
+                                    <option value="">Tất cả</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="editor">Editor</option>
+                                    <option value="staff1">Nhân viên 1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Blog Posts Table -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Bài Viết</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw me-2 text-gray-400"></i>Xuất Excel</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-trash fa-sm fa-fw me-2 text-gray-400"></i>Xóa đã chọn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Ảnh</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Danh Mục</th>
+                                        <th>Tác Giả</th>
+                                        <th>Ngày Đăng</th>
+                                        <th>Lượt Xem</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#B001</td>
+                                        <td>
+                                            <img src="../img/blog/blog-1.jpg" width="60" height="40" alt="Blog Thumbnail" class="img-thumbnail">
+                                        </td>
+                                        <td>Top 10 Xu Hướng Giày Thể Thao 2023</td>
+                                        <td>Xu hướng</td>
+                                        <td>Admin</td>
+                                        <td>15/06/2023</td>
+                                        <td>1,245</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../blog-detail.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="blog-post-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#B002</td>
+                                        <td>
+                                            <img src="../img/blog/blog-2.jpg" width="60" height="40" alt="Blog Thumbnail" class="img-thumbnail">
+                                        </td>
+                                        <td>Cách Chọn Giày Phù Hợp Với Dáng Người</td>
+                                        <td>Mẹo chọn giày</td>
+                                        <td>Editor</td>
+                                        <td>20/06/2023</td>
+                                        <td>987</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../blog-detail.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="blog-post-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#B003</td>
+                                        <td>
+                                            <img src="../img/blog/blog-3.jpg" width="60" height="40" alt="Blog Thumbnail" class="img-thumbnail">
+                                        </td>
+                                        <td>5 Cách Bảo Quản Giày Trong Mùa Mưa</td>
+                                        <td>Chăm sóc giày</td>
+                                        <td>Nhân viên 1</td>
+                                        <td>25/06/2023</td>
+                                        <td>756</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../blog-detail.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="blog-post-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#B004</td>
+                                        <td>
+                                            <img src="../img/blog/blog-4.jpg" width="60" height="40" alt="Blog Thumbnail" class="img-thumbnail">
+                                        </td>
+                                        <td>Lịch Sử Phát Triển Của Giày Thể Thao</td>
+                                        <td>Thời trang</td>
+                                        <td>Admin</td>
+                                        <td>30/06/2023</td>
+                                        <td>543</td>
+                                        <td><span class="badge bg-success">Đã xuất bản</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../blog-detail.html" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="blog-post-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#B005</td>
+                                        <td>
+                                            <img src="../img/blog/blog-5.jpg" width="60" height="40" alt="Blog Thumbnail" class="img-thumbnail">
+                                        </td>
+                                        <td>Phối Đồ Với Các Loại Giày Khác Nhau</td>
+                                        <td>Thời trang</td>
+                                        <td>Editor</td>
+                                        <td>-</td>
+                                        <td>-</td>
+                                        <td><span class="badge bg-secondary">Bản nháp</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="blog-post-preview.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a href="blog-post-edit.html" class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deletePostModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mt-4">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Sau</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Post Modal -->
+    <div class="modal fade" id="deletePostModal" tabindex="-1" aria-labelledby="deletePostModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletePostModalLabel">Xác Nhận Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa bài viết <strong>Top 10 Xu Hướng Giày Thể Thao 2023</strong>?</p>
+                    <p class="text-danger">Lưu ý: Hành động này không thể hoàn tác. Tất cả dữ liệu liên quan đến bài viết này sẽ bị xóa vĩnh viễn.</p>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete">
+                        <label class="form-check-label" for="confirmDelete">
+                            Tôi hiểu rằng hành động này không thể hoàn tác
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" disabled>Xóa Bài Viết</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Select all checkbox
+            $('#selectAll').on('change', function() {
+                $('tbody .form-check-input').prop('checked', $(this).prop('checked'));
+            });
+            
+            // Enable delete button when checkbox is checked
+            $('#confirmDelete').on('change', function() {
+                $('.modal-footer .btn-danger').prop('disabled', !$(this).prop('checked'));
+            });
+        });
+    </script>
+</body>
+</html>

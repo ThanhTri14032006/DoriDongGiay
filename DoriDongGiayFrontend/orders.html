@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử đơn hàng - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name">Nguyễn Văn A</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item active" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order History Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lịch sử đơn hàng</li>
+                </ol>
+            </nav>
+            
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="flex-shrink-0">
+                                    <img src="images/avatar.jpg" alt="User Avatar" class="rounded-circle" width="60" height="60">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="mb-0">Nguyễn Văn A</h5>
+                                    <p class="text-muted mb-0">nguyenvana@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group list-group-flush">
+                                <a href="information.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-user-circle me-2"></i>Thông tin tài khoản
+                                </a>
+                                <a href="orders.html" class="list-group-item list-group-item-action active">
+                                    <i class="fas fa-shopping-bag me-2"></i>Lịch sử đơn hàng
+                                </a>
+                                <a href="wishlist.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-heart me-2"></i>Danh sách yêu thích
+                                </a>
+                                <a href="addresses.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Sổ địa chỉ
+                                </a>
+                                <a href="change-password.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-lock me-2"></i>Đổi mật khẩu
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action text-danger" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                            <h4 class="card-title mb-0">Lịch sử đơn hàng</h4>
+                            <div class="d-flex">
+                                <div class="input-group me-2">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm đơn hàng..." aria-label="Tìm kiếm đơn hàng">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <select class="form-select" style="width: auto;">
+                                    <option selected>Tất cả trạng thái</option>
+                                    <option value="pending">Chờ xác nhận</option>
+                                    <option value="processing">Đang xử lý</option>
+                                    <option value="shipping">Đang giao hàng</option>
+                                    <option value="completed">Đã hoàn thành</option>
+                                    <option value="cancelled">Đã hủy</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Trạng thái</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal1">#DG123456</a></td>
+                                            <td>15/06/2023</td>
+                                            <td>2.350.000₫</td>
+                                            <td><span class="badge bg-success">Đã hoàn thành</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#orderModal1">
+                                                    <i class="fas fa-eye"></i> Chi tiết
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-redo"></i> Mua lại
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal2">#DG123455</a></td>
+                                            <td>02/06/2023</td>
+                                            <td>1.850.000₫</td>
+                                            <td><span class="badge bg-info text-dark">Đang giao hàng</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#orderModal2">
+                                                    <i class="fas fa-eye"></i> Chi tiết
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" disabled>
+                                                    <i class="fas fa-redo"></i> Mua lại
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal3">#DG123454</a></td>
+                                            <td>25/05/2023</td>
+                                            <td>3.150.000₫</td>
+                                            <td><span class="badge bg-danger">Đã hủy</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#orderModal3">
+                                                    <i class="fas fa-eye"></i> Chi tiết
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-redo"></i> Mua lại
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal4">#DG123453</a></td>
+                                            <td>10/05/2023</td>
+                                            <td>1.250.000₫</td>
+                                            <td><span class="badge bg-success">Đã hoàn thành</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#orderModal4">
+                                                    <i class="fas fa-eye"></i> Chi tiết
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-redo"></i> Mua lại
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" data-bs-toggle="modal" data-bs-target="#orderModal5">#DG123452</a></td>
+                                            <td>28/04/2023</td>
+                                            <td>2.750.000₫</td>
+                                            <td><span class="badge bg-success">Đã hoàn thành</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#orderModal5">
+                                                    <i class="fas fa-eye"></i> Chi tiết
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary">
+                                                    <i class="fas fa-redo"></i> Mua lại
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Pagination -->
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center mt-4">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Detail Modal 1 -->
+    <div class="modal fade" id="orderModal1" tabindex="-1" aria-labelledby="orderModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel1">Chi tiết đơn hàng #DG123456</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Thông tin đơn hàng</h6>
+                            <p class="mb-1"><strong>Mã đơn hàng:</strong> #DG123456</p>
+                            <p class="mb-1"><strong>Ngày đặt:</strong> 15/06/2023</p>
+                            <p class="mb-1"><strong>Phương thức thanh toán:</strong> Thanh toán khi nhận hàng (COD)</p>
+                            <p class="mb-1"><strong>Trạng thái:</strong> <span class="badge bg-success">Đã hoàn thành</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Địa chỉ giao hàng</h6>
+                            <p class="mb-1"><strong>Người nhận:</strong> Nguyễn Văn A</p>
+                            <p class="mb-1"><strong>Địa chỉ:</strong> 123 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh</p>
+                            <p class="mb-1"><strong>Số điện thoại:</strong> 0912345678</p>
+                            <p class="mb-1"><strong>Email:</strong> nguyenvana@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold">Sản phẩm đã đặt</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/product-1.jpg" alt="Product" width="60" class="me-3">
+                                            <div>
+                                                <h6 class="mb-0">Nike Air Max 270</h6>
+                                                <small class="text-muted">Màu: Đen | Size: 42</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>1.850.000₫</td>
+                                    <td>1</td>
+                                    <td>1.850.000₫</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/product-2.jpg" alt="Product" width="60" class="me-3">
+                                            <div>
+                                                <h6 class="mb-0">Adidas Ultraboost 21</h6>
+                                                <small class="text-muted">Màu: Trắng | Size: 41</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>500.000₫</td>
+                                    <td>1</td>
+                                    <td>500.000₫</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tạm tính:</strong></td>
+                                    <td>2.350.000₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Phí vận chuyển:</strong></td>
+                                    <td>0₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
+                                    <td class="fw-bold">2.350.000₫</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6 class="fw-bold">Lịch sử đơn hàng</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">1</span>
+                                    Đơn hàng đã được tạo
+                                </div>
+                                <small class="text-muted">15/06/2023 08:30</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">2</span>
+                                    Đơn hàng đã được xác nhận
+                                </div>
+                                <small class="text-muted">15/06/2023 09:15</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">3</span>
+                                    Đơn hàng đang được chuẩn bị
+                                </div>
+                                <small class="text-muted">15/06/2023 10:30</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">4</span>
+                                    Đơn hàng đã được giao cho đơn vị vận chuyển
+                                </div>
+                                <small class="text-muted">15/06/2023 14:45</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-success rounded-pill me-2">5</span>
+                                    Đơn hàng đã được giao thành công
+                                </div>
+                                <small class="text-muted">16/06/2023 10:20</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Mua lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal 2 -->
+    <div class="modal fade" id="orderModal2" tabindex="-1" aria-labelledby="orderModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel2">Chi tiết đơn hàng #DG123455</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Thông tin đơn hàng</h6>
+                            <p class="mb-1"><strong>Mã đơn hàng:</strong> #DG123455</p>
+                            <p class="mb-1"><strong>Ngày đặt:</strong> 02/06/2023</p>
+                            <p class="mb-1"><strong>Phương thức thanh toán:</strong> Chuyển khoản ngân hàng</p>
+                            <p class="mb-1"><strong>Trạng thái:</strong> <span class="badge bg-info text-dark">Đang giao hàng</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Địa chỉ giao hàng</h6>
+                            <p class="mb-1"><strong>Người nhận:</strong> Nguyễn Văn A</p>
+                            <p class="mb-1"><strong>Địa chỉ:</strong> 123 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh</p>
+                            <p class="mb-1"><strong>Số điện thoại:</strong> 0912345678</p>
+                            <p class="mb-1"><strong>Email:</strong> nguyenvana@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold">Sản phẩm đã đặt</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/product-3.jpg" alt="Product" width="60" class="me-3">
+                                            <div>
+                                                <h6 class="mb-0">Puma RS-X</h6>
+                                                <small class="text-muted">Màu: Xanh | Size: 43</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>1.850.000₫</td>
+                                    <td>1</td>
+                                    <td>1.850.000₫</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tạm tính:</strong></td>
+                                    <td>1.850.000₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Phí vận chuyển:</strong></td>
+                                    <td>0₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
+                                    <td class="fw-bold">1.850.000₫</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6 class="fw-bold">Lịch sử đơn hàng</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">1</span>
+                                    Đơn hàng đã được tạo
+                                </div>
+                                <small class="text-muted">02/06/2023 14:30</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">2</span>
+                                    Đơn hàng đã được xác nhận
+                                </div>
+                                <small class="text-muted">02/06/2023 15:45</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">3</span>
+                                    Đơn hàng đang được chuẩn bị
+                                </div>
+                                <small class="text-muted">03/06/2023 09:30</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-info text-dark rounded-pill me-2">4</span>
+                                    Đơn hàng đã được giao cho đơn vị vận chuyển
+                                </div>
+                                <small class="text-muted">03/06/2023 16:20</small>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fas fa-truck me-2"></i> Đơn hàng của bạn đang được vận chuyển và dự kiến sẽ được giao vào ngày 05/06/2023.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Detail Modal 3 -->
+    <div class="modal fade" id="orderModal3" tabindex="-1" aria-labelledby="orderModalLabel3" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel3">Chi tiết đơn hàng #DG123454</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Thông tin đơn hàng</h6>
+                            <p class="mb-1"><strong>Mã đơn hàng:</strong> #DG123454</p>
+                            <p class="mb-1"><strong>Ngày đặt:</strong> 25/05/2023</p>
+                            <p class="mb-1"><strong>Phương thức thanh toán:</strong> Thẻ tín dụng</p>
+                            <p class="mb-1"><strong>Trạng thái:</strong> <span class="badge bg-danger">Đã hủy</span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold">Địa chỉ giao hàng</h6>
+                            <p class="mb-1"><strong>Người nhận:</strong> Nguyễn Văn A</p>
+                            <p class="mb-1"><strong>Địa chỉ:</strong> 123 Đường Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh</p>
+                            <p class="mb-1"><strong>Số điện thoại:</strong> 0912345678</p>
+                            <p class="mb-1"><strong>Email:</strong> nguyenvana@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <h6 class="fw-bold">Sản phẩm đã đặt</h6>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Sản phẩm</th>
+                                    <th>Đơn giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Thành tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/product-4.jpg" alt="Product" width="60" class="me-3">
+                                            <div>
+                                                <h6 class="mb-0">Adidas Yeezy Boost 350</h6>
+                                                <small class="text-muted">Màu: Xám | Size: 42</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>3.150.000₫</td>
+                                    <td>1</td>
+                                    <td>3.150.000₫</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tạm tính:</strong></td>
+                                    <td>3.150.000₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Phí vận chuyển:</strong></td>
+                                    <td>0₫</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
+                                    <td class="fw-bold">3.150.000₫</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h6 class="fw-bold">Lịch sử đơn hàng</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-primary rounded-pill me-2">1</span>
+                                    Đơn hàng đã được tạo
+                                </div>
+                                <small class="text-muted">25/05/2023 10:15</small>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <span class="badge bg-danger rounded-pill me-2">2</span>
+                                    Đơn hàng đã bị hủy
+                                </div>
+                                <small class="text-muted">25/05/2023 14:30</small>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-danger mt-4">
+                        <i class="fas fa-info-circle me-2"></i> Đơn hàng đã bị hủy với lý do: Hết hàng.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Mua lại</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        // Xử lý đăng xuất
+        function logout() {
+            // Trong thực tế, bạn sẽ xóa token xác thực và chuyển hướng người dùng đến trang đăng nhập
+            // Ở đây, chúng ta sẽ giả lập việc đăng xuất
+            if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                alert('Đã đăng xuất thành công!');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

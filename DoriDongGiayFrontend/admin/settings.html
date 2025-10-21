@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu Hình Hệ Thống | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Settings Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Cấu Hình Hệ Thống</h1>
+                    <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="saveAllSettings">
+                        <i class="fas fa-save fa-sm text-white-50"></i> Lưu Tất Cả
+                    </button>
+                </div>
+
+                <!-- Settings Tabs -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <ul class="nav nav-tabs card-header-tabs" id="settingsTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">Cài Đặt Chung</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="store-tab" data-bs-toggle="tab" data-bs-target="#store" type="button" role="tab" aria-controls="store" aria-selected="false">Cửa Hàng</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">Thanh Toán</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="shipping" aria-selected="false">Vận Chuyển</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="email-tab" data-bs-toggle="tab" data-bs-target="#email" type="button" role="tab" aria-controls="email" aria-selected="false">Email</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="tax-tab" data-bs-toggle="tab" data-bs-target="#tax" type="button" role="tab" aria-controls="tax" aria-selected="false">Thuế</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">Bảo Mật</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="settingsTabsContent">
+                            <!-- General Settings -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                <h5 class="card-title">Cài Đặt Chung</h5>
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="storeName" class="form-label">Tên Cửa Hàng</label>
+                                            <input type="text" class="form-control" id="storeName" value="Dori Đông Giày">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="storeURL" class="form-label">URL Cửa Hàng</label>
+                                            <input type="url" class="form-control" id="storeURL" value="https://doridonggiay.com">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="storeEmail" class="form-label">Email Liên Hệ</label>
+                                            <input type="email" class="form-control" id="storeEmail" value="contact@doridonggiay.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="storePhone" class="form-label">Số Điện Thoại</label>
+                                            <input type="tel" class="form-control" id="storePhone" value="0123456789">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <label for="storeAddress" class="form-label">Địa Chỉ</label>
+                                            <textarea class="form-control" id="storeAddress" rows="2">123 Đường ABC, Quận 1, TP. Hồ Chí Minh</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="storeLogo" class="form-label">Logo</label>
+                                            <input type="file" class="form-control" id="storeLogo">
+                                            <div class="mt-2">
+                                                <img src="../img/logo.png" alt="Current Logo" height="50">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="storeFavicon" class="form-label">Favicon</label>
+                                            <input type="file" class="form-control" id="storeFavicon">
+                                            <div class="mt-2">
+                                                <img src="../img/favicon.png" alt="Current Favicon" height="32">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="defaultLanguage" class="form-label">Ngôn Ngữ Mặc Định</label>
+                                            <select class="form-select" id="defaultLanguage">
+                                                <option value="vi" selected>Tiếng Việt</option>
+                                                <option value="en">Tiếng Anh</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="defaultCurrency" class="form-label">Tiền Tệ Mặc Định</label>
+                                            <select class="form-select" id="defaultCurrency">
+                                                <option value="VND" selected>VNĐ (₫)</option>
+                                                <option value="USD">USD ($)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="timezone" class="form-label">Múi Giờ</label>
+                                            <select class="form-select" id="timezone">
+                                                <option value="Asia/Ho_Chi_Minh" selected>Asia/Ho_Chi_Minh (GMT+7)</option>
+                                                <option value="Asia/Bangkok">Asia/Bangkok (GMT+7)</option>
+                                                <option value="Asia/Singapore">Asia/Singapore (GMT+8)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="dateFormat" class="form-label">Định Dạng Ngày</label>
+                                            <select class="form-select" id="dateFormat">
+                                                <option value="d/m/Y" selected>DD/MM/YYYY</option>
+                                                <option value="m/d/Y">MM/DD/YYYY</option>
+                                                <option value="Y-m-d">YYYY-MM-DD</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                                <label class="form-check-label" for="maintenanceMode">Chế Độ Bảo Trì</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Store Settings -->
+                            <div class="tab-pane fade" id="store" role="tabpanel" aria-labelledby="store-tab">
+                                <h5 class="card-title">Cài Đặt Cửa Hàng</h5>
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="productsPerPage" class="form-label">Số Sản Phẩm Mỗi Trang</label>
+                                            <input type="number" class="form-control" id="productsPerPage" value="12">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="defaultSorting" class="form-label">Sắp Xếp Mặc Định</label>
+                                            <select class="form-select" id="defaultSorting">
+                                                <option value="newest" selected>Mới nhất</option>
+                                                <option value="price_low">Giá: Thấp đến Cao</option>
+                                                <option value="price_high">Giá: Cao đến Thấp</option>
+                                                <option value="name_asc">Tên: A-Z</option>
+                                                <option value="name_desc">Tên: Z-A</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="inventoryManagement" class="form-label">Quản Lý Tồn Kho</label>
+                                            <select class="form-select" id="inventoryManagement">
+                                                <option value="enabled" selected>Bật</option>
+                                                <option value="disabled">Tắt</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lowStockThreshold" class="form-label">Ngưỡng Tồn Kho Thấp</label>
+                                            <input type="number" class="form-control" id="lowStockThreshold" value="5">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="outOfStockBehavior" class="form-label">Hành Vi Khi Hết Hàng</label>
+                                            <select class="form-select" id="outOfStockBehavior">
+                                                <option value="hide" selected>Ẩn sản phẩm</option>
+                                                <option value="show_disabled">Hiển thị nhưng không cho phép mua</option>
+                                                <option value="allow_backorder">Cho phép đặt hàng trước</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="reviewSystem" class="form-label">Hệ Thống Đánh Giá</label>
+                                            <select class="form-select" id="reviewSystem">
+                                                <option value="enabled" selected>Bật</option>
+                                                <option value="moderated">Bật (có kiểm duyệt)</option>
+                                                <option value="disabled">Tắt</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableWishlist" checked>
+                                                <label class="form-check-label" for="enableWishlist">Bật Danh Sách Yêu Thích</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="enableCompare" checked>
+                                                <label class="form-check-label" for="enableCompare">Bật Tính Năng So Sánh Sản Phẩm</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="showOutOfStock" checked>
+                                                <label class="form-check-label" for="showOutOfStock">Hiển Thị Sản Phẩm Hết Hàng</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Payment Settings -->
+                            <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                <h5 class="card-title">Cài Đặt Thanh Toán</h5>
+                                <form>
+                                    <div class="row mb-4">
+                                        <div class="col-md-12">
+                                            <h6 class="mb-3">Phương Thức Thanh Toán</h6>
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox" id="enableCOD" checked>
+                                                                <label class="form-check-label" for="enableCOD">Thanh Toán Khi Nhận Hàng (COD)</label>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#codSettings">Cài Đặt</button>
+                                                    </div>
+                                                    <div class="collapse mt-3" id="codSettings">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label for="codFee" class="form-label">Phí COD</label>
+                                                                <input type="number" class="form-control" id="codFee" value="0">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="codMinAmount" class="form-label">Đơn Hàng Tối Thiểu</label>
+                                                                <input type="number" class="form-control" id="codMinAmount" value="0">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox" id="enableBankTransfer" checked>
+                                                                <label class="form-check-label" for="enableBankTransfer">Chuyển Khoản Ngân Hàng</label>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#bankSettings">Cài Đặt</button>
+                                                    </div>
+                                                    <div class="collapse mt-3" id="bankSettings">
+                                                        <div class="mb-3">
+                                                            <label for="bankDetails" class="form-label">Thông Tin Tài Khoản</label>
+                                                            <textarea class="form-control" id="bankDetails" rows="3">Ngân hàng: Vietcombank
+Số tài khoản: 1234567890
+Chủ tài khoản: CÔNG TY TNHH DORI ĐÔNG GIÀY
+Chi nhánh: TP. Hồ Chí Minh</textarea>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="requireConfirmation" checked>
+                                                            <label class="form-check-label" for="requireConfirmation">
+                                                                Yêu cầu xác nhận thanh toán
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox" id="enableMomo" checked>
+                                                                <label class="form-check-label" for="enableMomo">Ví MoMo</label>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#momoSettings">Cài Đặt</button>
+                                                    </div>
+                                                    <div class="collapse mt-3" id="momoSettings">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label for="momoPartnerCode" class="form-label">Partner Code</label>
+                                                                <input type="text" class="form-control" id="momoPartnerCode" value="MOMOXYZ123">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="momoAccessKey" class="form-label">Access Key</label>
+                                                                <input type="password" class="form-control" id="momoAccessKey" value="********">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-2">
+                                                            <label for="momoSecretKey" class="form-label">Secret Key</label>
+                                                            <input type="password" class="form-control" id="momoSecretKey" value="********">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input" type="checkbox" id="enableVNPay" checked>
+                                                                <label class="form-check-label" for="enableVNPay">VNPay</label>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#vnpaySettings">Cài Đặt</button>
+                                                    </div>
+                                                    <div class="collapse mt-3" id="vnpaySettings">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <label for="vnpayMerchantID" class="form-label">Merchant ID</label>
+                                                                <input type="text" class="form-control" id="vnpayMerchantID" value="VNPAY123456">
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="vnpaySecureHash" class="form-label">Secure Hash</label>
+                                                                <input type="password" class="form-control" id="vnpaySecureHash" value="********">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="orderPrefix" class="form-label">Tiền Tố Mã Đơn Hàng</label>
+                                            <input type="text" class="form-control" id="orderPrefix" value="DDG">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="invoicePrefix" class="form-label">Tiền Tố Mã Hóa Đơn</label>
+                                            <input type="text" class="form-control" id="invoicePrefix" value="INV">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Shipping Settings -->
+                            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                                <h5 class="card-title">Cài Đặt Vận Chuyển</h5>
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="weightUnit" class="form-label">Đơn Vị Khối Lượng</label>
+                                            <select class="form-select" id="weightUnit">
+                                                <option value="g">Gram (g)</option>
+                                                <option value="kg" selected>Kilogram (kg)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="dimensionUnit" class="form-label">Đơn Vị Kích Thước</label>
+                                            <select class="form-select" id="dimensionUnit">
+                                                <option value="cm" selected>Centimeter (cm)</option>
+                                                <option value="m">Meter (m)</option>
+                                                <option value="in">Inch (in)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Phương Thức Vận Chuyển</h6>
+                                    
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enableStandardShipping" checked>
+                                                        <label class="form-check-label" for="enableStandardShipping">Vận Chuyển Tiêu Chuẩn</label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#standardShippingSettings">Cài Đặt</button>
+                                            </div>
+                                            <div class="collapse mt-3" id="standardShippingSettings">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="standardShippingFee" class="form-label">Phí Vận Chuyển</label>
+                                                        <input type="number" class="form-control" id="standardShippingFee" value="30000">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="standardShippingTime" class="form-label">Thời Gian Giao Hàng (ngày)</label>
+                                                        <input type="number" class="form-control" id="standardShippingTime" value="3">
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <label for="freeShippingThreshold" class="form-label">Ngưỡng Miễn Phí Vận Chuyển</label>
+                                                    <input type="number" class="form-control" id="freeShippingThreshold" value="500000">
+                                                    <small class="form-text text-muted">Đặt 0 để tắt miễn phí vận chuyển</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enableExpressShipping" checked>
+                                                        <label class="form-check-label" for="enableExpressShipping">Vận Chuyển Nhanh</label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#expressShippingSettings">Cài Đặt</button>
+                                            </div>
+                                            <div class="collapse mt-3" id="expressShippingSettings">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="expressShippingFee" class="form-label">Phí Vận Chuyển</label>
+                                                        <input type="number" class="form-control" id="expressShippingFee" value="60000">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="expressShippingTime" class="form-label">Thời Gian Giao Hàng (ngày)</label>
+                                                        <input type="number" class="form-control" id="expressShippingTime" value="1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" id="enableGHNShipping" checked>
+                                                        <label class="form-check-label" for="enableGHNShipping">Giao Hàng Nhanh (GHN)</label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#ghnShippingSettings">Cài Đặt</button>
+                                            </div>
+                                            <div class="collapse mt-3" id="ghnShippingSettings">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label for="ghnToken" class="form-label">API Token</label>
+                                                        <input type="password" class="form-control" id="ghnToken" value="********">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="ghnShopID" class="form-label">Shop ID</label>
+                                                        <input type="text" class="form-control" id="ghnShopID" value="123456">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Email Settings -->
+                            <div class="tab-pane fade" id="email" role="tabpanel" aria-labelledby="email-tab">
+                                <h5 class="card-title">Cài Đặt Email</h5>
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="emailProtocol" class="form-label">Giao Thức</label>
+                                            <select class="form-select" id="emailProtocol">
+                                                <option value="smtp" selected>SMTP</option>
+                                                <option value="sendmail">Sendmail</option>
+                                                <option value="mail">Mail</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="emailEncryption" class="form-label">Mã Hóa</label>
+                                            <select class="form-select" id="emailEncryption">
+                                                <option value="tls" selected>TLS</option>
+                                                <option value="ssl">SSL</option>
+                                                <option value="none">Không</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="smtpHost" class="form-label">SMTP Host</label>
+                                            <input type="text" class="form-control" id="smtpHost" value="smtp.gmail.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="smtpPort" class="form-label">SMTP Port</label>
+                                            <input type="number" class="form-control" id="smtpPort" value="587">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="smtpUsername" class="form-label">SMTP Username</label>
+                                            <input type="email" class="form-control" id="smtpUsername" value="contact@doridonggiay.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="smtpPassword" class="form-label">SMTP Password</label>
+                                            <input type="password" class="form-control" id="smtpPassword" value="********">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="emailFromName" class="form-label">Tên Người Gửi</label>
+                                            <input type="text" class="form-control" id="emailFromName" value="Dori Đông Giày">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="emailFromAddress" class="form-label">Email Người Gửi</label>
+                                            <input type="email" class="form-control" id="emailFromAddress" value="contact@doridonggiay.com">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="emailReplyTo" class="form-label">Email Trả Lời</label>
+                                            <input type="email" class="form-control" id="emailReplyTo" value="support@doridonggiay.com">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-secondary mt-4">Gửi Email Kiểm Tra</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Mẫu Email</h6>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Loại Email</th>
+                                                    <th>Trạng Thái</th>
+                                                    <th>Thao Tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Đăng Ký Tài Khoản</td>
+                                                    <td><span class="badge bg-success">Bật</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary">Chỉnh Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-secondary">Xem Trước</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Xác Nhận Đơn Hàng</td>
+                                                    <td><span class="badge bg-success">Bật</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary">Chỉnh Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-secondary">Xem Trước</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Cập Nhật Trạng Thái Đơn Hàng</td>
+                                                    <td><span class="badge bg-success">Bật</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary">Chỉnh Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-secondary">Xem Trước</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Quên Mật Khẩu</td>
+                                                    <td><span class="badge bg-success">Bật</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary">Chỉnh Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-secondary">Xem Trước</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Thông Báo Khuyến Mãi</td>
+                                                    <td><span class="badge bg-secondary">Tắt</span></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary">Chỉnh Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-secondary">Xem Trước</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Tax Settings -->
+                            <div class="tab-pane fade" id="tax" role="tabpanel" aria-labelledby="tax-tab">
+                                <h5 class="card-title">Cài Đặt Thuế</h5>
+                                <form>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="taxCalculation" class="form-label">Tính Thuế Dựa Trên</label>
+                                            <select class="form-select" id="taxCalculation">
+                                                <option value="shipping" selected>Địa Chỉ Giao Hàng</option>
+                                                <option value="billing">Địa Chỉ Thanh Toán</option>
+                                                <option value="store">Địa Chỉ Cửa Hàng</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="priceDisplay" class="form-label">Hiển Thị Giá</label>
+                                            <select class="form-select" id="priceDisplay">
+                                                <option value="including" selected>Đã bao gồm thuế</option>
+                                                <option value="excluding">Chưa bao gồm thuế</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Thuế Suất Mặc Định</h6>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="defaultTaxName" class="form-label">Tên Thuế</label>
+                                            <input type="text" class="form-control" id="defaultTaxName" value="VAT">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="defaultTaxRate" class="form-label">Thuế Suất (%)</label>
+                                            <input type="number" class="form-control" id="defaultTaxRate" value="10">
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Thuế Suất Theo Khu Vực</h6>
+                                    
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Khu Vực</th>
+                                                    <th>Tên Thuế</th>
+                                                    <th>Thuế Suất (%)</th>
+                                                    <th>Thao Tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>TP. Hồ Chí Minh</td>
+                                                    <td>VAT</td>
+                                                    <td>10</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-info">Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-danger">Xóa</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Hà Nội</td>
+                                                    <td>VAT</td>
+                                                    <td>10</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-info">Sửa</button>
+                                                        <button type="button" class="btn btn-sm btn-danger">Xóa</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <button type="button" class="btn btn-success mb-3">Thêm Thuế Suất Khu Vực</button>
+                                    
+                                    <h6 class="mt-4 mb-3">Thuế Suất Theo Sản Phẩm</h6>
+                                    
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableProductTax" checked>
+                                        <label class="form-check-label" for="enableProductTax">
+                                            Cho phép cài đặt thuế suất riêng cho từng sản phẩm
+                                        </label>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+
+                            <!-- Security Settings -->
+                            <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                                <h5 class="card-title">Cài Đặt Bảo Mật</h5>
+                                <form>
+                                    <h6 class="mt-3 mb-3">Chính Sách Mật Khẩu</h6>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="minPasswordLength" class="form-label">Độ Dài Tối Thiểu</label>
+                                            <input type="number" class="form-control" id="minPasswordLength" value="8">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="passwordExpiry" class="form-label">Thời Hạn Mật Khẩu (ngày)</label>
+                                            <input type="number" class="form-control" id="passwordExpiry" value="90">
+                                            <small class="form-text text-muted">Đặt 0 để không hết hạn</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="requireUppercase" checked>
+                                                <label class="form-check-label" for="requireUppercase">
+                                                    Yêu cầu ít nhất một ký tự viết hoa
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="requireLowercase" checked>
+                                                <label class="form-check-label" for="requireLowercase">
+                                                    Yêu cầu ít nhất một ký tự viết thường
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="requireNumber" checked>
+                                                <label class="form-check-label" for="requireNumber">
+                                                    Yêu cầu ít nhất một chữ số
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="requireSpecial" checked>
+                                                <label class="form-check-label" for="requireSpecial">
+                                                    Yêu cầu ít nhất một ký tự đặc biệt
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Đăng Nhập & Phiên Làm Việc</h6>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="sessionTimeout" class="form-label">Thời Gian Hết Phiên (phút)</label>
+                                            <input type="number" class="form-control" id="sessionTimeout" value="30">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="maxLoginAttempts" class="form-label">Số Lần Đăng Nhập Tối Đa</label>
+                                            <input type="number" class="form-control" id="maxLoginAttempts" value="5">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="lockoutTime" class="form-label">Thời Gian Khóa (phút)</label>
+                                            <input type="number" class="form-control" id="lockoutTime" value="30">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check mt-4">
+                                                <input class="form-check-input" type="checkbox" id="enableTwoFactor">
+                                                <label class="form-check-label" for="enableTwoFactor">
+                                                    Bật xác thực hai yếu tố
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mt-4 mb-3">Bảo Mật Khác</h6>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enableSSL" checked>
+                                                <label class="form-check-label" for="enableSSL">
+                                                    Bắt buộc sử dụng SSL
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enableCSRF" checked>
+                                                <label class="form-check-label" for="enableCSRF">
+                                                    Bảo vệ CSRF
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enableXSS" checked>
+                                                <label class="form-check-label" for="enableXSS">
+                                                    Bảo vệ XSS
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="enableCaptcha">
+                                                <label class="form-check-label" for="enableCaptcha">
+                                                    Bật CAPTCHA cho đăng ký và đăng nhập
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Save all settings button
+            $('#saveAllSettings').on('click', function() {
+                // Show saving indicator
+                $(this).html('<i class="fas fa-spinner fa-spin fa-sm text-white-50"></i> Đang lưu...');
+                
+                // Simulate saving
+                setTimeout(function() {
+                    $('#saveAllSettings').html('<i class="fas fa-save fa-sm text-white-50"></i> Lưu Tất Cả');
+                    
+                    // Show success message
+                    $('<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                      'Tất cả cài đặt đã được lưu thành công!' +
+                      '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                      '</div>').insertAfter('.d-sm-flex').delay(3000).fadeOut(function() {
+                        $(this).remove();
+                      });
+                }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>

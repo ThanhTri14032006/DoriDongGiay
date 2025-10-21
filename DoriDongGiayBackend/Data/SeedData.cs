@@ -81,6 +81,8 @@ namespace DoriDongGiay.Data
                         UserName = "admin@eshop.com",
                         Email = "admin@eshop.com",
                         FullName = "Administrator",
+                        Address = "123 Admin Street",
+                        Phone = "0123456789",
                         EmailConfirmed = true
                     };
 

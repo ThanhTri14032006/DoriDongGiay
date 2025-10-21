@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nhân Viên | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Staff Management Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Quản Lý Nhân Viên</h1>
+                    <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#addStaffModal">
+                        <i class="fas fa-user-plus fa-sm text-white-50"></i> Thêm Nhân Viên
+                    </button>
+                </div>
+
+                <!-- Staff Stats Cards -->
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Tổng Nhân Viên</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">12</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Quản Trị Viên</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-shield fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Nhân Viên Bán Hàng</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">7</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-tag fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Nhân Viên Kho</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-warehouse fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff List Card -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Nhân Viên</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end shadow animated--fade-in">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw me-2 text-gray-400"></i>Xuất Excel</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-print fa-sm fa-fw me-2 text-gray-400"></i>In danh sách</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"><i class="fas fa-trash fa-sm fa-fw me-2 text-gray-400"></i>Xóa đã chọn</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Search and Filter -->
+                        <div class="row mb-3">
+                            <div class="col-md-3 mb-2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <select class="form-select">
+                                    <option selected>Vai trò</option>
+                                    <option value="admin">Quản trị viên</option>
+                                    <option value="sales">Nhân viên bán hàng</option>
+                                    <option value="inventory">Nhân viên kho</option>
+                                    <option value="content">Nhân viên nội dung</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <select class="form-select">
+                                    <option selected>Trạng thái</option>
+                                    <option value="active">Đang hoạt động</option>
+                                    <option value="inactive">Không hoạt động</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <select class="form-select">
+                                    <option selected>Sắp xếp theo</option>
+                                    <option value="name_asc">Tên: A-Z</option>
+                                    <option value="name_desc">Tên: Z-A</option>
+                                    <option value="date_asc">Ngày tạo: Cũ nhất</option>
+                                    <option value="date_desc">Ngày tạo: Mới nhất</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Staff Table -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                                <label class="form-check-label" for="selectAll"></label>
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Ảnh</th>
+                                        <th>Họ Tên</th>
+                                        <th>Email</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Vai Trò</th>
+                                        <th>Ngày Tạo</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV001</td>
+                                        <td><img src="../img/admin-avatar.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Nguyễn Văn Admin</td>
+                                        <td>admin@doridonggiay.com</td>
+                                        <td>0901234567</td>
+                                        <td><span class="badge bg-danger">Quản trị viên</span></td>
+                                        <td>01/01/2023</td>
+                                        <td><span class="badge bg-success">Đang hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV002</td>
+                                        <td><img src="../img/staff-avatar-2.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Trần Thị Manager</td>
+                                        <td>manager@doridonggiay.com</td>
+                                        <td>0912345678</td>
+                                        <td><span class="badge bg-danger">Quản trị viên</span></td>
+                                        <td>15/01/2023</td>
+                                        <td><span class="badge bg-success">Đang hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV003</td>
+                                        <td><img src="../img/staff-avatar-3.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Lê Văn Sales</td>
+                                        <td>sales1@doridonggiay.com</td>
+                                        <td>0923456789</td>
+                                        <td><span class="badge bg-info">Nhân viên bán hàng</span></td>
+                                        <td>01/02/2023</td>
+                                        <td><span class="badge bg-success">Đang hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV004</td>
+                                        <td><img src="../img/staff-avatar-4.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Phạm Thị Sales</td>
+                                        <td>sales2@doridonggiay.com</td>
+                                        <td>0934567890</td>
+                                        <td><span class="badge bg-info">Nhân viên bán hàng</span></td>
+                                        <td>15/02/2023</td>
+                                        <td><span class="badge bg-success">Đang hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV005</td>
+                                        <td><img src="../img/staff-avatar-5.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Hoàng Văn Inventory</td>
+                                        <td>inventory1@doridonggiay.com</td>
+                                        <td>0945678901</td>
+                                        <td><span class="badge bg-warning text-dark">Nhân viên kho</span></td>
+                                        <td>01/03/2023</td>
+                                        <td><span class="badge bg-success">Đang hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                                <label class="form-check-label"></label>
+                                            </div>
+                                        </td>
+                                        <td>NV006</td>
+                                        <td><img src="../img/staff-avatar-6.jpg" class="rounded-circle" width="40" height="40" alt="Staff"></td>
+                                        <td>Vũ Thị Content</td>
+                                        <td>content@doridonggiay.com</td>
+                                        <td>0956789012</td>
+                                        <td><span class="badge bg-secondary">Nhân viên nội dung</span></td>
+                                        <td>15/03/2023</td>
+                                        <td><span class="badge bg-secondary">Không hoạt động</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#viewStaffModal"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStaffModal"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteStaffModal"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Sau</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Staff Modal -->
+    <div class="modal fade" id="addStaffModal" tabindex="-1" aria-labelledby="addStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStaffModalLabel">Thêm Nhân Viên Mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="staffFirstName" class="form-label">Họ</label>
+                                <input type="text" class="form-control" id="staffFirstName" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffLastName" class="form-label">Tên</label>
+                                <input type="text" class="form-control" id="staffLastName" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="staffEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="staffEmail" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffPhone" class="form-label">Số Điện Thoại</label>
+                                <input type="tel" class="form-control" id="staffPhone" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="staffUsername" class="form-label">Tên Đăng Nhập</label>
+                                <input type="text" class="form-control" id="staffUsername" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffPassword" class="form-label">Mật Khẩu</label>
+                                <input type="password" class="form-control" id="staffPassword" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="staffRole" class="form-label">Vai Trò</label>
+                                <select class="form-select" id="staffRole" required>
+                                    <option value="" selected disabled>Chọn vai trò</option>
+                                    <option value="admin">Quản trị viên</option>
+                                    <option value="sales">Nhân viên bán hàng</option>
+                                    <option value="inventory">Nhân viên kho</option>
+                                    <option value="content">Nhân viên nội dung</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="staffStatus" class="form-label">Trạng Thái</label>
+                                <select class="form-select" id="staffStatus" required>
+                                    <option value="active" selected>Đang hoạt động</option>
+                                    <option value="inactive">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="staffAvatar" class="form-label">Ảnh Đại Diện</label>
+                            <input type="file" class="form-control" id="staffAvatar">
+                        </div>
+                        <div class="mb-3">
+                            <label for="staffAddress" class="form-label">Địa Chỉ</label>
+                            <textarea class="form-control" id="staffAddress" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="staffNotes" class="form-label">Ghi Chú</label>
+                            <textarea class="form-control" id="staffNotes" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quyền Hạn</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permProducts">
+                                        <label class="form-check-label" for="permProducts">Quản lý sản phẩm</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permOrders">
+                                        <label class="form-check-label" for="permOrders">Quản lý đơn hàng</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permCustomers">
+                                        <label class="form-check-label" for="permCustomers">Quản lý khách hàng</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permContent">
+                                        <label class="form-check-label" for="permContent">Quản lý nội dung</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permReports">
+                                        <label class="form-check-label" for="permReports">Báo cáo & thống kê</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="permSettings">
+                                        <label class="form-check-label" for="permSettings">Cấu hình hệ thống</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Thêm Nhân Viên</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Staff Modal -->
+    <div class="modal fade" id="viewStaffModal" tabindex="-1" aria-labelledby="viewStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewStaffModalLabel">Thông Tin Nhân Viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <img src="../img/admin-avatar.jpg" class="rounded-circle img-thumbnail" width="150" height="150" alt="Staff">
+                            <h5 class="mt-2">Nguyễn Văn Admin</h5>
+                            <span class="badge bg-danger">Quản trị viên</span>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">ID Nhân Viên:</div>
+                                <div class="col-md-8">NV001</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Email:</div>
+                                <div class="col-md-8">admin@doridonggiay.com</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Số Điện Thoại:</div>
+                                <div class="col-md-8">0901234567</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Địa Chỉ:</div>
+                                <div class="col-md-8">123 Đường ABC, Quận 1, TP. Hồ Chí Minh</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Ngày Tạo:</div>
+                                <div class="col-md-8">01/01/2023</div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Trạng Thái:</div>
+                                <div class="col-md-8"><span class="badge bg-success">Đang hoạt động</span></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-md-4 fw-bold">Đăng Nhập Cuối:</div>
+                                <div class="col-md-8">15/06/2023 14:30:45</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6 class="mb-3">Quyền Hạn</h6>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Quản lý sản phẩm
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Quản lý đơn hàng
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Quản lý khách hàng
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Quản lý nội dung
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Báo cáo & thống kê
+                            </div>
+                            <div class="mb-2">
+                                <i class="fas fa-check-circle text-success"></i> Cấu hình hệ thống
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h6 class="mb-3">Hoạt Động Gần Đây</h6>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Thời Gian</th>
+                                    <th>Hoạt Động</th>
+                                    <th>Chi Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15/06/2023 14:30</td>
+                                    <td>Đăng nhập</td>
+                                    <td>Đăng nhập từ 192.168.1.1</td>
+                                </tr>
+                                <tr>
+                                    <td>15/06/2023 14:35</td>
+                                    <td>Cập nhật sản phẩm</td>
+                                    <td>Cập nhật sản phẩm #SP123</td>
+                                </tr>
+                                <tr>
+                                    <td>15/06/2023 14:45</td>
+                                    <td>Xử lý đơn hàng</td>
+                                    <td>Cập nhật trạng thái đơn hàng #DH456</td>
+                                </tr>
+                                <tr>
+                                    <td>15/06/2023 15:10</td>
+                                    <td>Thêm sản phẩm</td>
+                                    <td>Thêm sản phẩm mới #SP124</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editStaffModal">Chỉnh Sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Staff Modal -->
+    <div class="modal fade" id="editStaffModal" tabindex="-1" aria-labelledby="editStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editStaffModalLabel">Chỉnh Sửa Nhân Viên</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="editStaffFirstName" class="form-label">Họ</label>
+                                <input type="text" class="form-control" id="editStaffFirstName" value="Nguyễn Văn" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editStaffLastName" class="form-label">Tên</label>
+                                <input type="text" class="form-control" id="editStaffLastName" value="Admin" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="editStaffEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="editStaffEmail" value="admin@doridonggiay.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editStaffPhone" class="form-label">Số Điện Thoại</label>
+                                <input type="tel" class="form-control" id="editStaffPhone" value="0901234567" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="editStaffUsername" class="form-label">Tên Đăng Nhập</label>
+                                <input type="text" class="form-control" id="editStaffUsername" value="admin" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editStaffPassword" class="form-label">Mật Khẩu</label>
+                                <input type="password" class="form-control" id="editStaffPassword" placeholder="Để trống nếu không thay đổi">
+                                <small class="form-text text-muted">Để trống nếu không muốn thay đổi mật khẩu</small>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="editStaffRole" class="form-label">Vai Trò</label>
+                                <select class="form-select" id="editStaffRole" required>
+                                    <option value="admin" selected>Quản trị viên</option>
+                                    <option value="sales">Nhân viên bán hàng</option>
+                                    <option value="inventory">Nhân viên kho</option>
+                                    <option value="content">Nhân viên nội dung</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="editStaffStatus" class="form-label">Trạng Thái</label>
+                                <select class="form-select" id="editStaffStatus" required>
+                                    <option value="active" selected>Đang hoạt động</option>
+                                    <option value="inactive">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStaffAvatar" class="form-label">Ảnh Đại Diện</label>
+                            <input type="file" class="form-control" id="editStaffAvatar">
+                            <div class="mt-2">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="50" height="50" alt="Current Avatar">
+                                <small class="ms-2 form-text text-muted">Ảnh hiện tại</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStaffAddress" class="form-label">Địa Chỉ</label>
+                            <textarea class="form-control" id="editStaffAddress" rows="2">123 Đường ABC, Quận 1, TP. Hồ Chí Minh</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStaffNotes" class="form-label">Ghi Chú</label>
+                            <textarea class="form-control" id="editStaffNotes" rows="2">Quản trị viên chính của hệ thống</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quyền Hạn</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermProducts" checked>
+                                        <label class="form-check-label" for="editPermProducts">Quản lý sản phẩm</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermOrders" checked>
+                                        <label class="form-check-label" for="editPermOrders">Quản lý đơn hàng</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermCustomers" checked>
+                                        <label class="form-check-label" for="editPermCustomers">Quản lý khách hàng</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermContent" checked>
+                                        <label class="form-check-label" for="editPermContent">Quản lý nội dung</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermReports" checked>
+                                        <label class="form-check-label" for="editPermReports">Báo cáo & thống kê</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editPermSettings" checked>
+                                        <label class="form-check-label" for="editPermSettings">Cấu hình hệ thống</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Lưu Thay Đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Staff Modal -->
+    <div class="modal fade" id="deleteStaffModal" tabindex="-1" aria-labelledby="deleteStaffModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteStaffModalLabel">Xác Nhận Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa nhân viên <strong>Nguyễn Văn Admin</strong>?</p>
+                    <p class="text-danger">Lưu ý: Hành động này không thể hoàn tác.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Select all checkbox
+            $('#selectAll').on('click', function() {
+                $('tbody input[type="checkbox"]').prop('checked', $(this).prop('checked'));
+            });
+            
+            // Role filter change
+            $('select').on('change', function() {
+                // Simulate filter - in a real app, this would filter the data
+                console.log('Filter changed');
+            });
+        });
+    </script>
+</body>
+</html>

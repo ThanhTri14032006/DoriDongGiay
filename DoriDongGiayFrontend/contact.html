@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <h1 class="text-center mb-5">Liên hệ với chúng tôi</h1>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card border-0 shadow h-100">
+                        <div class="card-body">
+                            <h3 class="mb-4">Thông tin liên hệ</h3>
+                            <p class="mb-4">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Hãy liên hệ với chúng tôi qua các kênh sau:</p>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5>Địa chỉ</h5>
+                                    <p class="mb-0">123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-phone fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5>Điện thoại</h5>
+                                    <p class="mb-0">(028) 1234 5678</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-3">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-envelope fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5>Email</h5>
+                                    <p class="mb-0">info@doridonggiay.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex">
+                                <div class="contact-icon me-3">
+                                    <i class="fas fa-clock fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5>Giờ làm việc</h5>
+                                    <p class="mb-0">Thứ Hai - Thứ Bảy: 9:00 - 21:00<br>Chủ Nhật: 10:00 - 18:00</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>Kết nối với chúng tôi</h5>
+                                <div class="social-icons">
+                                    <a href="#" class="me-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                    <a href="#" class="me-2"><i class="fab fa-instagram fa-lg"></i></a>
+                                    <a href="#" class="me-2"><i class="fab fa-twitter fa-lg"></i></a>
+                                    <a href="#"><i class="fab fa-youtube fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 mb-4">
+                    <div class="card border-0 shadow h-100">
+                        <div class="card-body">
+                            <h3 class="mb-4">Gửi tin nhắn cho chúng tôi</h3>
+                            <form id="contact-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Họ và tên</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Số điện thoại</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Chủ đề</label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Nội dung</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card border-0 shadow">
+                        <div class="card-body p-0">
+                            <h3 class="text-center my-4">Vị trí cửa hàng</h3>
+                            <div class="map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4241674197956!2d106.69173781532069!3d10.780260992318766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f38f9ed887b%3A0x14aded5703768989!2zUGjhuqduIG3hu4FtIFF1w6FuIGzDvSBCw6FuIGjDoG5n!5e0!3m2!1svi!2s!4v1625647202998!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="text-center mb-4">Câu hỏi thường gặp</h3>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Làm thế nào để đặt hàng trên website?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Để đặt hàng trên website, bạn chỉ cần chọn sản phẩm, thêm vào giỏ hàng, và tiến hành thanh toán. Bạn có thể thanh toán bằng nhiều phương thức khác nhau như thẻ tín dụng, chuyển khoản ngân hàng, hoặc thanh toán khi nhận hàng.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Chính sách đổi trả của DoriDongGiay như thế nào?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    DoriDongGiay có chính sách đổi trả trong vòng 30 ngày kể từ ngày mua hàng. Sản phẩm đổi trả phải còn nguyên tem, nhãn, hộp và không có dấu hiệu đã qua sử dụng. Chúng tôi sẽ hoàn tiền hoặc đổi sản phẩm khác tùy theo yêu cầu của khách hàng.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Thời gian giao hàng mất bao lâu?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Thời gian giao hàng thông thường là 2-5 ngày làm việc đối với các thành phố lớn và 5-7 ngày làm việc đối với các tỉnh thành khác. Trong một số trường hợp, thời gian giao hàng có thể bị ảnh hưởng bởi các yếu tố khách quan như thời tiết, giao thông, v.v.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cảm ơn bạn đã liên hệ với chúng tôi! Chúng tôi sẽ phản hồi trong thời gian sớm nhất.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

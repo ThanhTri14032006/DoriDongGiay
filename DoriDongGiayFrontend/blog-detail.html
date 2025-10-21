@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết bài viết - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Detail Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <article>
+                        <!-- Title -->
+                        <h1 class="mb-3" id="blog-title">Xu hướng giày thể thao nổi bật năm 2023</h1>
+                        
+                        <!-- Meta -->
+                        <div class="text-muted mb-4">
+                            <span><i class="fas fa-calendar-alt me-1"></i> Đăng ngày: <span id="blog-date">15 Tháng 6, 2023</span></span>
+                            <span class="ms-3"><i class="fas fa-user me-1"></i> Tác giả: <span id="blog-author">Admin</span></span>
+                            <span class="ms-3"><i class="fas fa-tag me-1"></i> Danh mục: <span id="blog-category">Xu hướng</span></span>
+                        </div>
+                        
+                        <!-- Featured Image -->
+                        <div class="mb-4">
+                            <img src="images/blog-1.jpg" class="img-fluid rounded shadow" alt="Xu hướng giày 2023" id="blog-image">
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="blog-content" id="blog-content">
+                            <p class="lead">Năm 2023 chứng kiến sự trở lại mạnh mẽ của nhiều xu hướng giày thể thao cổ điển cùng với những thiết kế đột phá mới. Hãy cùng DoriDongGiay điểm qua những xu hướng nổi bật nhất trong năm nay.</p>
+                            
+                            <h2>1. Sự trở lại của giày Retro</h2>
+                            <p>Những đôi giày retro từ thập niên 80, 90 đang có sự trở lại mạnh mẽ trong năm 2023. Các thương hiệu lớn như Nike, Adidas, và New Balance đều cho ra mắt lại những mẫu giày kinh điển với phối màu mới, hiện đại hơn nhưng vẫn giữ được nét đặc trưng vốn có.</p>
+                            <p>Đặc biệt, dòng Nike Air Jordan 1, Adidas Superstar, và New Balance 574 đang dẫn đầu xu hướng này với nhiều phiên bản giới hạn được giới trẻ săn đón.</p>
+                            
+                            <h2>2. Giày thể thao bền vững</h2>
+                            <p>Xu hướng bảo vệ môi trường đang ảnh hưởng mạnh mẽ đến ngành công nghiệp giày dép. Các thương hiệu đang tập trung vào việc sử dụng vật liệu tái chế, quy trình sản xuất thân thiện với môi trường, và thiết kế bền vững.</p>
+                            <p>Adidas với dòng sản phẩm "Made with Recycled Ocean Plastic" và Nike với công nghệ "Move to Zero" đang dẫn đầu xu hướng này. Người tiêu dùng ngày càng ưa chuộng những sản phẩm không chỉ đẹp mà còn thân thiện với môi trường.</p>
+                            
+                            <h2>3. Giày đa năng</h2>
+                            <p>Với lối sống ngày càng bận rộn, người tiêu dùng đang tìm kiếm những đôi giày có thể sử dụng trong nhiều hoàn cảnh khác nhau. Xu hướng giày đa năng, có thể chuyển đổi từ phong cách thể thao sang casual một cách dễ dàng, đang rất được ưa chuộng.</p>
+                            <p>Những đôi giày như Nike Air Max 270, Adidas Ultraboost, và Puma RS-X với thiết kế linh hoạt có thể phối với nhiều loại trang phục khác nhau, từ quần áo thể thao đến jeans và áo thun đơn giản.</p>
+                            
+                            <h2>4. Màu sắc táo bạo</h2>
+                            <p>Năm 2023 chứng kiến sự bùng nổ của những gam màu táo bạo, neon, và phối màu đa sắc. Thay vì những màu trung tính truyền thống, người tiêu dùng đang tìm kiếm những đôi giày với màu sắc nổi bật để thể hiện cá tính.</p>
+                            <p>Các màu như xanh neon, cam đất, và tím lavender đang trở thành những lựa chọn phổ biến. Đặc biệt, những đôi giày với phối màu gradient (chuyển màu) đang tạo nên cơn sốt trong giới trẻ.</p>
+                            
+                            <h2>5. Công nghệ đệm tiên tiến</h2>
+                            <p>Công nghệ đệm giày đang có những bước tiến vượt bậc, mang lại trải nghiệm thoải mái hơn cho người sử dụng. Nike với công nghệ React và ZoomX, Adidas với Boost và Lightstrike, New Balance với Fresh Foam đang cạnh tranh để mang đến những đôi giày nhẹ nhất, êm ái nhất cho người dùng.</p>
+                            <p>Xu hướng này đặc biệt phổ biến trong phân khúc giày chạy bộ và giày tập luyện đa năng, nơi sự thoải mái và hiệu suất là yếu tố quan trọng hàng đầu.</p>
+                            
+                            <h2>Kết luận</h2>
+                            <p>Xu hướng giày thể thao năm 2023 đang phát triển theo hướng kết hợp giữa phong cách retro và công nghệ hiện đại, cùng với sự chú trọng đến tính bền vững và đa năng. Dù bạn là người yêu thích thời trang hay một người đam mê thể thao, những xu hướng này đều mang đến nhiều lựa chọn phù hợp với nhu cầu và phong cách cá nhân.</p>
+                            <p>Hãy ghé thăm DoriDongGiay để khám phá bộ sưu tập giày thể thao mới nhất, theo kịp xu hướng năm 2023!</p>
+                        </div>
+                        
+                        <!-- Tags -->
+                        <div class="mt-4">
+                            <h5>Thẻ:</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Xu hướng</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Thể thao</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">2023</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Retro</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Bền vững</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Author Bio -->
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <img src="images/author.jpg" class="rounded-circle me-3" width="80" height="80" alt="Tác giả">
+                                    <div>
+                                        <h5 class="card-title">Về tác giả</h5>
+                                        <p class="card-text">Admin là chuyên gia về giày với hơn 10 năm kinh nghiệm trong ngành. Với niềm đam mê về giày và thời trang, Admin thường xuyên cập nhật những xu hướng mới nhất và chia sẻ kiến thức chuyên sâu về giày dép.</p>
+                                        <div class="social-icons">
+                                            <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                                            <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comments -->
+                        <div class="mt-5">
+                            <h3 class="mb-4">Bình luận (12)</h3>
+                            
+                            <!-- Comment Form -->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <form id="comment-form">
+                                        <div class="mb-3">
+                                            <label for="comment-name" class="form-label">Tên của bạn</label>
+                                            <input type="text" class="form-control" id="comment-name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="comment-email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="comment-email" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="comment-content" class="form-label">Bình luận</label>
+                                            <textarea class="form-control" id="comment-content" rows="3" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Gửi bình luận</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <!-- Comment List -->
+                            <div class="comments-list">
+                                <!-- Comment 1 -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex mb-3">
+                                            <img src="images/user-1.jpg" class="rounded-circle me-3" width="50" height="50" alt="Người bình luận">
+                                            <div>
+                                                <h6 class="mb-0">Nguyễn Văn A</h6>
+                                                <small class="text-muted">15 Tháng 6, 2023 - 10:30</small>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">Bài viết rất hay và bổ ích! Tôi đặc biệt thích xu hướng giày retro, đã mua một đôi Nike Air Jordan 1 gần đây và rất hài lòng với nó.</p>
+                                        <a href="#" class="btn btn-sm btn-link">Trả lời</a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Comment 2 -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex mb-3">
+                                            <img src="images/user-2.jpg" class="rounded-circle me-3" width="50" height="50" alt="Người bình luận">
+                                            <div>
+                                                <h6 class="mb-0">Trần Thị B</h6>
+                                                <small class="text-muted">15 Tháng 6, 2023 - 11:45</small>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">Tôi rất quan tâm đến xu hướng giày bền vững. Bạn có thể giới thiệu thêm một số thương hiệu giày thân thiện với môi trường không?</p>
+                                        <a href="#" class="btn btn-sm btn-link">Trả lời</a>
+                                    </div>
+                                </div>
+                                
+                                <!-- Comment 3 with Reply -->
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex mb-3">
+                                            <img src="images/user-3.jpg" class="rounded-circle me-3" width="50" height="50" alt="Người bình luận">
+                                            <div>
+                                                <h6 class="mb-0">Lê Văn C</h6>
+                                                <small class="text-muted">15 Tháng 6, 2023 - 14:20</small>
+                                            </div>
+                                        </div>
+                                        <p class="card-text">Màu sắc táo bạo là xu hướng tôi yêu thích nhất! Đã sở hữu một đôi giày màu neon và nó thực sự làm nổi bật phong cách của tôi.</p>
+                                        <a href="#" class="btn btn-sm btn-link">Trả lời</a>
+                                        
+                                        <!-- Reply -->
+                                        <div class="card mt-3 ms-5">
+                                            <div class="card-body">
+                                                <div class="d-flex mb-3">
+                                                    <img src="images/author.jpg" class="rounded-circle me-3" width="40" height="40" alt="Admin">
+                                                    <div>
+                                                        <h6 class="mb-0">Admin</h6>
+                                                        <small class="text-muted">15 Tháng 6, 2023 - 15:10</small>
+                                                    </div>
+                                                </div>
+                                                <p class="card-text">Cảm ơn bạn đã chia sẻ! Màu neon đúng là một trong những xu hướng nổi bật nhất năm nay. Bạn có thể chia sẻ thêm về cách phối đồ với giày màu neon không?</p>
+                                                <a href="#" class="btn btn-sm btn-link">Trả lời</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Load More Comments -->
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-outline-primary">Xem thêm bình luận</button>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Search -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Tìm kiếm</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Tìm kiếm bài viết...">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Danh mục</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Xu hướng thời trang
+                                    <span class="badge bg-primary rounded-pill">14</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Mẹo bảo quản giày
+                                    <span class="badge bg-primary rounded-pill">8</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Sức khỏe bàn chân
+                                    <span class="badge bg-primary rounded-pill">5</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Phối đồ với giày
+                                    <span class="badge bg-primary rounded-pill">12</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Lịch sử giày
+                                    <span class="badge bg-primary rounded-pill">3</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Posts -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Bài viết gần đây</h5>
+                            <div class="list-group list-group-flush">
+                                <a href="blog-detail.html?id=1" class="list-group-item list-group-item-action border-0 px-0">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Xu hướng giày thể thao nổi bật năm 2023</h6>
+                                        <small class="text-muted">15/06/2023</small>
+                                    </div>
+                                </a>
+                                <a href="blog-detail.html?id=2" class="list-group-item list-group-item-action border-0 px-0">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">5 bí quyết chọn giày phù hợp với dáng người</h6>
+                                        <small class="text-muted">10/06/2023</small>
+                                    </div>
+                                </a>
+                                <a href="blog-detail.html?id=3" class="list-group-item list-group-item-action border-0 px-0">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Cách bảo quản giày thể thao luôn như mới</h6>
+                                        <small class="text-muted">05/06/2023</small>
+                                    </div>
+                                </a>
+                                <a href="blog-detail.html?id=4" class="list-group-item list-group-item-action border-0 px-0">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-1">Ảnh hưởng của giày đến sức khỏe bàn chân</h6>
+                                        <small class="text-muted">01/06/2023</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Related Products -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Sản phẩm liên quan</h5>
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <div class="card h-100 border-0">
+                                        <img src="images/product-1.jpg" class="card-img-top" alt="Sản phẩm liên quan">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-1">Nike Air Jordan 1</h6>
+                                            <p class="card-text text-danger mb-0">2.500.000₫</p>
+                                            <a href="product-detail.html?id=1" class="stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <div class="card h-100 border-0">
+                                        <img src="images/product-2.jpg" class="card-img-top" alt="Sản phẩm liên quan">
+                                        <div class="card-body p-2">
+                                            <h6 class="card-title mb-1">Adidas Superstar</h6>
+                                            <p class="card-text text-danger mb-0">1.800.000₫</p>
+                                            <a href="product-detail.html?id=2" class="stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tags -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Thẻ</h5>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Xu hướng</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Thể thao</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Bảo quản</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Sức khỏe</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Thời trang</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Phối đồ</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Lịch sử</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Giày nam</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Giày nữ</a>
+                                <a href="#" class="btn btn-sm btn-outline-secondary">Mẹo hay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        // Xử lý form bình luận
+        document.getElementById('comment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cảm ơn bạn đã bình luận! Bình luận của bạn đang chờ phê duyệt.');
+            this.reset();
+        });
+        
+        // Xử lý hiển thị bài viết dựa trên ID
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy ID bài viết từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const blogId = urlParams.get('id');
+            
+            // Trong thực tế, bạn sẽ gọi API để lấy dữ liệu bài viết dựa trên ID
+            // Đây chỉ là mã giả để minh họa
+            if (blogId) {
+                // Giả lập việc lấy dữ liệu từ API
+                console.log('Đang tải bài viết có ID: ' + blogId);
+                
+                // Trong thực tế, bạn sẽ cập nhật nội dung trang dựa trên dữ liệu từ API
+                // Đây chỉ là ví dụ
+                if (blogId !== '1') {
+                    document.getElementById('blog-title').textContent = 'Bài viết #' + blogId;
+                    document.getElementById('blog-date').textContent = '10 Tháng 6, 2023';
+                    document.getElementById('blog-image').src = 'images/blog-' + blogId + '.jpg';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

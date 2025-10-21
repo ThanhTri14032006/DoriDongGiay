@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tìm kiếm</li>
+                </ol>
+            </nav>
+            
+            <!-- Search Form -->
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Tìm kiếm sản phẩm</h3>
+                            <form id="search-form">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control form-control-lg" id="search-input" placeholder="Nhập từ khóa tìm kiếm..." aria-label="Search" aria-describedby="search-button">
+                                    <button class="btn btn-primary" type="submit" id="search-button">
+                                        <i class="fas fa-search me-2"></i>Tìm kiếm
+                                    </button>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="category" class="form-label">Danh mục</label>
+                                        <select class="form-select" id="category">
+                                            <option value="">Tất cả danh mục</option>
+                                            <option value="men">Giày nam</option>
+                                            <option value="women">Giày nữ</option>
+                                            <option value="sport">Giày thể thao</option>
+                                            <option value="casual">Giày casual</option>
+                                            <option value="sandals">Dép & Sandals</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="brand" class="form-label">Thương hiệu</label>
+                                        <select class="form-select" id="brand">
+                                            <option value="">Tất cả thương hiệu</option>
+                                            <option value="nike">Nike</option>
+                                            <option value="adidas">Adidas</option>
+                                            <option value="puma">Puma</option>
+                                            <option value="newbalance">New Balance</option>
+                                            <option value="converse">Converse</option>
+                                            <option value="vans">Vans</option>
+                                            <option value="other">Khác</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="price-range" class="form-label">Khoảng giá</label>
+                                        <select class="form-select" id="price-range">
+                                            <option value="">Tất cả mức giá</option>
+                                            <option value="0-1000000">Dưới 1.000.000₫</option>
+                                            <option value="1000000-2000000">1.000.000₫ - 2.000.000₫</option>
+                                            <option value="2000000-3000000">2.000.000₫ - 3.000.000₫</option>
+                                            <option value="3000000-5000000">3.000.000₫ - 5.000.000₫</option>
+                                            <option value="5000000-">Trên 5.000.000₫</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Kích cỡ</label>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-36" value="36">
+                                                <label class="form-check-label" for="size-36">36</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-37" value="37">
+                                                <label class="form-check-label" for="size-37">37</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-38" value="38">
+                                                <label class="form-check-label" for="size-38">38</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-39" value="39">
+                                                <label class="form-check-label" for="size-39">39</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-40" value="40">
+                                                <label class="form-check-label" for="size-40">40</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-41" value="41">
+                                                <label class="form-check-label" for="size-41">41</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-42" value="42">
+                                                <label class="form-check-label" for="size-42">42</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="size-43" value="43">
+                                                <label class="form-check-label" for="size-43">43</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Màu sắc</label>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <div class="color-option" style="background-color: #000000;" data-color="black"></div>
+                                            <div class="color-option" style="background-color: #ffffff; border: 1px solid #ddd;" data-color="white"></div>
+                                            <div class="color-option" style="background-color: #ff0000;" data-color="red"></div>
+                                            <div class="color-option" style="background-color: #0000ff;" data-color="blue"></div>
+                                            <div class="color-option" style="background-color: #00ff00;" data-color="green"></div>
+                                            <div class="color-option" style="background-color: #ffff00;" data-color="yellow"></div>
+                                            <div class="color-option" style="background-color: #ffa500;" data-color="orange"></div>
+                                            <div class="color-option" style="background-color: #800080;" data-color="purple"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="fas fa-redo me-2"></i>Đặt lại
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search me-2"></i>Tìm kiếm
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Results -->
+            <div id="search-results">
+                <h2 class="mb-4">Kết quả tìm kiếm: <span id="search-term">"giày thể thao"</span></h2>
+                <p class="text-muted mb-4">Tìm thấy <span id="result-count">12</span> sản phẩm</p>
+                
+                <div class="row" id="products-grid">
+                    <!-- Product 1 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">-17%</div>
+                            <img src="images/product-1.jpg" class="card-img-top" alt="Nike Air Jordan 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Nike Air Jordan 1</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">2.500.000₫</span>
+                                        <span class="text-muted text-decoration-line-through">3.000.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(1)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(1)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=1" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">-15%</div>
+                            <img src="images/product-2.jpg" class="card-img-top" alt="Adidas Superstar">
+                            <div class="card-body">
+                                <h5 class="card-title">Adidas Superstar</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">1.800.000₫</span>
+                                        <span class="text-muted text-decoration-line-through">2.100.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(2)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(2)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=2" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <img src="images/product-3.jpg" class="card-img-top" alt="Nike Air Force 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Nike Air Force 1</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">2.200.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(3)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(3)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=3" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">-20%</div>
+                            <img src="images/product-4.jpg" class="card-img-top" alt="Puma RS-X">
+                            <div class="card-body">
+                                <h5 class="card-title">Puma RS-X</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">1.920.000₫</span>
+                                        <span class="text-muted text-decoration-line-through">2.400.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(4)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(4)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=4" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 5 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <div class="badge bg-success position-absolute" style="top: 10px; right: 10px">Mới</div>
+                            <img src="images/product-5.jpg" class="card-img-top" alt="New Balance 574">
+                            <div class="card-body">
+                                <h5 class="card-title">New Balance 574</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">1.950.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(5)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(5)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=5" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 6 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <img src="images/product-6.jpg" class="card-img-top" alt="Converse Chuck Taylor">
+                            <div class="card-body">
+                                <h5 class="card-title">Converse Chuck Taylor</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">1.500.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(6)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(6)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=6" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 7 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px">-10%</div>
+                            <img src="images/product-7.jpg" class="card-img-top" alt="Vans Old Skool">
+                            <div class="card-body">
+                                <h5 class="card-title">Vans Old Skool</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">1.620.000₫</span>
+                                        <span class="text-muted text-decoration-line-through">1.800.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="far fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(7)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(7)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=7" class="stretched-link"></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 8 -->
+                    <div class="col-md-3 col-6 mb-4">
+                        <div class="card h-100 product-card">
+                            <img src="images/product-8.jpg" class="card-img-top" alt="Adidas Ultra Boost">
+                            <div class="card-body">
+                                <h5 class="card-title">Adidas Ultra Boost</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="text-danger fw-bold">3.200.000₫</span>
+                                    </div>
+                                    <div class="ratings">
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star text-warning"></i>
+                                        <i class="fas fa-star-half-alt text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-sm btn-outline-primary" onclick="addToCart(8)">
+                                    <i class="fas fa-shopping-cart me-1"></i>Thêm vào giỏ
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="addToWishlist(8)">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="product-detail.html?id=8" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Sau</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- No Results -->
+            <div id="no-results" style="display: none;">
+                <div class="text-center py-5">
+                    <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                    <h3>Không tìm thấy kết quả nào</h3>
+                    <p class="text-muted">Không tìm thấy sản phẩm nào phù hợp với từ khóa "<span id="no-results-term">giày đá bóng</span>"</p>
+                    <div class="mt-4">
+                        <h5>Gợi ý:</h5>
+                        <ul class="list-unstyled">
+                            <li>Kiểm tra lại chính tả của từ khóa tìm kiếm</li>
+                            <li>Sử dụng các từ khóa khác</li>
+                            <li>Sử dụng các từ khóa ngắn hơn</li>
+                            <li>Thử tìm kiếm với ít bộ lọc hơn</li>
+                        </ul>
+                    </div>
+                    <a href="products.html" class="btn btn-primary mt-3">
+                        <i class="fas fa-th-large me-2"></i>Xem tất cả sản phẩm
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Searches -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h3 class="mb-4">Tìm kiếm phổ biến</h3>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="research.html?q=giày thể thao nam" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-running fa-2x text-primary mb-3"></i>
+                                <h5 class="card-title">Giày thể thao nam</h5>
+                                <p class="card-text text-muted">125 sản phẩm</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="research.html?q=giày thể thao nữ" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-running fa-2x text-danger mb-3"></i>
+                                <h5 class="card-title">Giày thể thao nữ</h5>
+                                <p class="card-text text-muted">98 sản phẩm</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="research.html?q=giày nike" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fab fa-nike fa-2x text-dark mb-3"></i>
+                                <h5 class="card-title">Giày Nike</h5>
+                                <p class="card-text text-muted">87 sản phẩm</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="research.html?q=giày adidas" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fab fa-adversal fa-2x text-dark mb-3"></i>
+                                <h5 class="card-title">Giày Adidas</h5>
+                                <p class="card-text text-muted">76 sản phẩm</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Searches -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Tìm kiếm gần đây</h3>
+                <button class="btn btn-sm btn-outline-danger" id="clear-history">
+                    <i class="fas fa-trash-alt me-2"></i>Xóa lịch sử
+                </button>
+            </div>
+            <div class="row" id="recent-searches">
+                <div class="col-md-3 col-6 mb-3">
+                    <a href="research.html?q=giày chạy bộ" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-search text-muted me-2"></i>
+                                        <span>Giày chạy bộ</span>
+                                    </div>
+                                    <small class="text-muted">1 giờ trước</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <a href="research.html?q=giày đi bộ" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-search text-muted me-2"></i>
+                                        <span>Giày đi bộ</span>
+                                    </div>
+                                    <small class="text-muted">3 giờ trước</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <a href="research.html?q=giày converse" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-search text-muted me-2"></i>
+                                        <span>Giày Converse</span>
+                                    </div>
+                                    <small class="text-muted">1 ngày trước</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <a href="research.html?q=giày vans" class="text-decoration-none">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <i class="fas fa-search text-muted me-2"></i>
+                                        <span>Giày Vans</span>
+                                    </div>
+                                    <small class="text-muted">2 ngày trước</small>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        // Xử lý form tìm kiếm
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Lấy giá trị từ khóa tìm kiếm
+            const searchTerm = document.getElementById('search-input').value.trim();
+            
+            if (searchTerm === '') {
+                alert('Vui lòng nhập từ khóa tìm kiếm!');
+                return;
+            }
+            
+            // Lấy các giá trị bộ lọc
+            const category = document.getElementById('category').value;
+            const brand = document.getElementById('brand').value;
+            const priceRange = document.getElementById('price-range').value;
+            const selectedSizes = Array.from(document.querySelectorAll('input[type="checkbox"][id^="size-"]:checked')).map(cb => cb.value);
+            const selectedColors = Array.from(document.querySelectorAll('.color-option.active')).map(color => color.dataset.color);
+            
+            // Trong thực tế, bạn sẽ gọi API để tìm kiếm sản phẩm dựa trên các giá trị này
+            console.log('Tìm kiếm:');
+            console.log('Từ khóa:', searchTerm);
+            console.log('Danh mục:', category);
+            console.log('Thương hiệu:', brand);
+            console.log('Khoảng giá:', priceRange);
+            console.log('Kích cỡ:', selectedSizes);
+            console.log('Màu sắc:', selectedColors);
+            
+            // Giả lập việc tìm kiếm
+            simulateSearch(searchTerm);
+            
+            // Lưu tìm kiếm gần đây
+            saveRecentSearch(searchTerm);
+        });
+        
+        // Giả lập việc tìm kiếm
+        function simulateSearch(searchTerm) {
+            // Hiển thị từ khóa tìm kiếm
+            document.getElementById('search-term').textContent = `"${searchTerm}"`;
+            
+            // Giả lập không tìm thấy kết quả cho một số từ khóa cụ thể
+            if (searchTerm.toLowerCase() === 'giày đá bóng' || searchTerm.toLowerCase() === 'sandal') {
+                document.getElementById('search-results').style.display = 'none';
+                document.getElementById('no-results').style.display = 'block';
+                document.getElementById('no-results-term').textContent = searchTerm;
+            } else {
+                document.getElementById('search-results').style.display = 'block';
+                document.getElementById('no-results').style.display = 'none';
+                
+                // Cập nhật số lượng kết quả (giả lập)
+                const resultCount = Math.floor(Math.random() * 20) + 1;
+                document.getElementById('result-count').textContent = resultCount;
+            }
+        }
+        
+        // Lưu tìm kiếm gần đây
+        function saveRecentSearch(searchTerm) {
+            // Trong thực tế, bạn sẽ lưu tìm kiếm gần đây vào localStorage hoặc cơ sở dữ liệu
+            console.log('Đã lưu tìm kiếm gần đây:', searchTerm);
+        }
+        
+        // Xử lý xóa lịch sử tìm kiếm
+        document.getElementById('clear-history').addEventListener('click', function() {
+            // Trong thực tế, bạn sẽ xóa lịch sử tìm kiếm từ localStorage hoặc cơ sở dữ liệu
+            document.getElementById('recent-searches').innerHTML = '<div class="col-12 text-center py-4"><p class="text-muted">Không có lịch sử tìm kiếm</p></div>';
+            alert('Đã xóa lịch sử tìm kiếm!');
+        });
+        
+        // Xử lý chọn màu sắc
+        const colorOptions = document.querySelectorAll('.color-option');
+        colorOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+        
+        // Xử lý thêm vào giỏ hàng
+        function addToCart(productId) {
+            // Ngăn chặn sự kiện click lan truyền đến thẻ a (stretched-link)
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Trong thực tế, bạn sẽ gọi API để thêm sản phẩm vào giỏ hàng
+            console.log('Đã thêm sản phẩm có ID ' + productId + ' vào giỏ hàng');
+            
+            // Cập nhật số lượng sản phẩm trong giỏ hàng
+            const cartCount = document.getElementById('cart-count');
+            cartCount.textContent = parseInt(cartCount.textContent) + 1;
+            
+            // Hiển thị thông báo
+            alert('Đã thêm sản phẩm vào giỏ hàng!');
+        }
+        
+        // Xử lý thêm vào danh sách yêu thích
+        function addToWishlist(productId) {
+            // Ngăn chặn sự kiện click lan truyền đến thẻ a (stretched-link)
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // Trong thực tế, bạn sẽ gọi API để thêm sản phẩm vào danh sách yêu thích
+            console.log('Đã thêm sản phẩm có ID ' + productId + ' vào danh sách yêu thích');
+            
+            // Hiển thị thông báo
+            alert('Đã thêm sản phẩm vào danh sách yêu thích!');
+        }
+        
+        // Xử lý tham số tìm kiếm từ URL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy tham số tìm kiếm từ URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q');
+            
+            if (searchQuery) {
+                // Điền từ khóa tìm kiếm vào ô input
+                document.getElementById('search-input').value = searchQuery;
+                
+                // Thực hiện tìm kiếm
+                simulateSearch(searchQuery);
+                
+                // Cuộn đến kết quả tìm kiếm
+                document.getElementById('search-results').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    </script>
+</body>
+</html>

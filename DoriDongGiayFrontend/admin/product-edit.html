@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Sản Phẩm | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="ms-auto d-flex">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                            <span class="ms-1 d-none d-sm-inline">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                            <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Product Edit Content -->
+        <div class="container-fluid">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800" id="pageTitle">Chỉnh Sửa Sản Phẩm</h1>
+                <a href="products.html" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                    <i class="fas fa-arrow-left fa-sm text-white-50"></i> Quay Lại
+                </a>
+            </div>
+
+            <!-- Product Form -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Thông Tin Sản Phẩm</h6>
+                </div>
+                <div class="card-body">
+                    <form id="productForm" enctype="multipart/form-data">
+                        <input type="hidden" id="productId" name="id" value="0">
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Tên Sản Phẩm <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="categoryId" class="form-label">Danh Mục <span class="text-danger">*</span></label>
+                                <select class="form-select" id="categoryId" name="categoryId" required>
+                                    <option value="">Chọn danh mục</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="price" class="form-label">Giá (VNĐ) <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="price" name="price" min="0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="oldPrice" class="form-label">Giá Cũ (VNĐ)</label>
+                                <input type="number" class="form-control" id="oldPrice" name="oldPrice" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="stockQuantity" class="form-label">Số Lượng Tồn <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="stockQuantity" name="stockQuantity" min="0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="isActive" class="form-label">Trạng Thái</label>
+                                <select class="form-select" id="isActive" name="isActive">
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Không hoạt động</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Mô Tả</label>
+                            <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="imageFile" class="form-label">Hình Ảnh</label>
+                            <input type="file" class="form-control" id="imageFile" name="imageFile" accept="image/*">
+                            <div class="mt-2" id="currentImageContainer" style="display: none;">
+                                <p>Ảnh hiện tại:</p>
+                                <img id="currentImage" src="" alt="Current product image" style="max-width: 200px; max-height: 200px;">
+                                <input type="hidden" id="imageUrl" name="imageUrl">
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-secondary me-2" onclick="window.location.href='products.html'">Hủy</button>
+                            <button type="submit" class="btn btn-primary">Lưu Sản Phẩm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Admin JS -->
+<script src="js/admin.js"></script>
+<!-- Product Edit JS -->
+<script>
+    let isEditMode = false;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Dữ liệu mẫu danh mục
+        const sampleCategories = [
+            {id: 1, name: "Giày Thể Thao"},
+            {id: 2, name: "Giày Casual"},
+            {id: 3, name: "Giày Đá Bóng"},
+            {id: 4, name: "Giày Chạy Bộ"},
+            {id: 5, name: "Giày Thời Trang"}
+        ];
+        
+        // Dữ liệu mẫu sản phẩm
+        const sampleProducts = [
+            {id: 1, name: "Giày Nike Air Max", categoryId: 1, price: 2500000, oldPrice: 2800000, stockQuantity: 12, imageUrl: "img/products/product-1.jpg", description: "Giày Nike Air Max với công nghệ đệm khí tiên tiến.", isActive: true},
+            {id: 2, name: "Giày Adidas Ultraboost", categoryId: 1, price: 3200000, oldPrice: 3500000, stockQuantity: 8, imageUrl: "img/products/product-2.jpg", description: "Giày Adidas Ultraboost với công nghệ đệm Boost.", isActive: true},
+            {id: 3, name: "Giày Converse Classic", categoryId: 2, price: 1500000, oldPrice: null, stockQuantity: 15, imageUrl: "img/products/product-3.jpg", description: "Giày Converse Classic phong cách cổ điển.", isActive: true},
+            {id: 4, name: "Giày Vans Old Skool", categoryId: 2, price: 1800000, oldPrice: 2000000, stockQuantity: 10, imageUrl: "img/products/product-4.jpg", description: "Giày Vans Old Skool phong cách đường phố.", isActive: true},
+            {id: 5, name: "Giày Nike Mercurial", categoryId: 3, price: 2800000, oldPrice: null, stockQuantity: 0, imageUrl: "img/products/product-5.jpg", description: "Giày Nike Mercurial dành cho sân cỏ nhân tạo.", isActive: false}
+        ];
+        
+        // Load categories
+        loadCategories(sampleCategories);
+        
+        // Check if we're in edit mode
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        if (productId) {
+            isEditMode = true;
+            document.getElementById('pageTitle').textContent = 'Chỉnh Sửa Sản Phẩm';
+            loadProductDetails(productId, sampleProducts);
+        } else {
+            isEditMode = false;
+            document.getElementById('pageTitle').textContent = 'Thêm Sản Phẩm Mới';
+        }
+        
+        // Form submit handler
+        document.getElementById('productForm').addEventListener('submit', function(event) {
+            handleFormSubmit(event, sampleProducts);
+        });
+    });
+    
+    function loadCategories(categories) {
+        try {
+            const categorySelect = document.getElementById('categoryId');
+            
+            categories.forEach(category => {
+                const option = document.createElement('option');
+                option.value = category.id;
+                option.textContent = category.name;
+                categorySelect.appendChild(option);
+            });
+        } catch (error) {
+            showAlert('Không thể tải danh mục sản phẩm: ' + error.message, 'danger');
+        }
+    }
+    
+    function loadProductDetails(productId, products) {
+        try {
+            const product = products.find(p => p.id == productId);
+            
+            if (!product) {
+                showAlert('Không tìm thấy sản phẩm!', 'danger');
+                return;
+            }
+            
+            // Fill form with product details
+            document.getElementById('productId').value = product.id;
+            document.getElementById('name').value = product.name;
+            document.getElementById('categoryId').value = product.categoryId;
+            document.getElementById('price').value = product.price;
+            document.getElementById('oldPrice').value = product.oldPrice || '';
+            document.getElementById('stockQuantity').value = product.stockQuantity;
+            document.getElementById('description').value = product.description || '';
+            document.getElementById('isActive').value = product.isActive.toString();
+            
+            // Show current image if exists
+            if (product.imageUrl) {
+                document.getElementById('currentImageContainer').style.display = 'block';
+                document.getElementById('currentImage').src = product.imageUrl.startsWith('/') 
+                    ? '../' + product.imageUrl.substring(1) 
+                    : '../' + product.imageUrl;
+                document.getElementById('imageUrl').value = product.imageUrl;
+            }
+        } catch (error) {
+            showAlert('Không thể tải thông tin sản phẩm: ' + error.message, 'danger');
+        }
+    }
+    
+    function handleFormSubmit(event, products) {
+        event.preventDefault();
+        
+        const formData = new FormData(document.getElementById('productForm'));
+        const productId = document.getElementById('productId').value;
+        
+        try {
+            let response = {
+                success: true,
+                message: isEditMode ? 'Cập nhật sản phẩm thành công!' : 'Thêm sản phẩm mới thành công!'
+            };
+            
+            if (response.success) {
+                showAlert(response.message, 'success');
+                setTimeout(() => {
+                    window.location.href = 'products.html';
+                }, 1500);
+            } else {
+                showAlert(response.message || 'Có lỗi xảy ra', 'danger');
+            }
+        } catch (error) {
+            showAlert('Không thể lưu sản phẩm: ' + error.message, 'danger');
+        }
+    }
+    
+    function showAlert(message, type = 'info') {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+        alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        
+        const container = document.querySelector('.container-fluid');
+        container.insertBefore(alertDiv, container.firstChild);
+        
+        // Auto dismiss after 5 seconds
+        setTimeout(() => {
+            alertDiv.classList.remove('show');
+            setTimeout(() => alertDiv.remove(), 300);
+        }, 5000);
+    }
+</script>
+</body>
+</html>

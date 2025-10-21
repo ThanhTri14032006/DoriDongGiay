@@ -1,0 +1,83 @@
+<!-- Sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <img src="../img/logo.png" alt="Dori Đông Giày" class="logo">
+        <h5>Quản Trị Hệ Thống</h5>
+    </div>
+    <ul class="list-unstyled components">
+        <li>
+            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Bảng Điều Khiển</a>
+        </li>
+        <li>
+            <a href="#productSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-box"></i> Quản Lý Sản Phẩm
+            </a>
+            <ul class="collapse list-unstyled" id="productSubmenu">
+                <li><a href="products.html">Danh Sách Sản Phẩm</a></li>
+                <li><a href="product-add.html">Thêm Sản Phẩm</a></li>
+                <li><a href="categories.html">Danh Mục</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản Lý Đơn Hàng</a>
+        </li>
+        <li>
+            <a href="customers.html"><i class="fas fa-users"></i> Quản Lý Khách Hàng</a>
+        </li>
+        <li>
+            <a href="#contentSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-newspaper"></i> Quản Lý Nội Dung
+            </a>
+            <ul class="collapse list-unstyled" id="contentSubmenu">
+                <li><a href="blog-posts.html">Bài Viết Blog</a></li>
+                <li><a href="pages.html">Trang Tĩnh</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="reports.html"><i class="fas fa-chart-bar"></i> Báo Cáo & Thống Kê</a>
+        </li>
+        <li>
+            <a href="settings.html"><i class="fas fa-cog"></i> Cấu Hình Hệ Thống</a>
+        </li>
+        <li>
+            <a href="staff.html"><i class="fas fa-user-tie"></i> Quản Lý Nhân Viên</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="ms-auto d-flex">
+            <div class="dropdown me-3">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge bg-danger">3</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                    <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                    <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                    <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                    <span class="ms-1 d-none d-sm-inline">Admin</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                    <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

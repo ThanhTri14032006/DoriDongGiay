@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - DoriDongGiay Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css" rel="stylesheet">
+    <link href="css/admin-style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <div id="header-placeholder"></div>
+        <!-- End Header -->
+
+        <!-- Page Content -->
+        <div id="content">
+
+            <!-- Dashboard Content -->
+            <div class="container-fluid">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <h2>Bảng Điều Khiển</h2>
+                        <p class="text-muted">Xin chào Admin, chào mừng trở lại với hệ thống quản trị.</p>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Doanh Thu (Tháng)</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">40,000,000 VNĐ</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Đơn Hàng (Hôm nay)</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Khách Hàng Mới</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Sản Phẩm Hết Hàng</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row mb-4">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Doanh Thu Theo Tháng</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="#">Xuất báo cáo</a>
+                                        <a class="dropdown-item" href="#">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="revenueChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Phân Bổ Doanh Thu</h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="#">Xuất báo cáo</a>
+                                        <a class="dropdown-item" href="#">Xem chi tiết</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-pie">
+                                    <canvas id="salesDistributionChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders & Top Products -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Đơn Hàng Gần Đây</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã Đơn</th>
+                                                <th>Khách Hàng</th>
+                                                <th>Tổng Tiền</th>
+                                                <th>Trạng Thái</th>
+                                                <th>Thao Tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#1234</td>
+                                                <td>Nguyễn Văn A</td>
+                                                <td>1,200,000 VNĐ</td>
+                                                <td><span class="badge bg-success">Hoàn thành</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1235</td>
+                                                <td>Trần Thị B</td>
+                                                <td>850,000 VNĐ</td>
+                                                <td><span class="badge bg-warning">Đang giao</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1236</td>
+                                                <td>Lê Văn C</td>
+                                                <td>2,500,000 VNĐ</td>
+                                                <td><span class="badge bg-info">Đã xác nhận</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>#1237</td>
+                                                <td>Phạm Thị D</td>
+                                                <td>1,800,000 VNĐ</td>
+                                                <td><span class="badge bg-danger">Đã hủy</span></td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="orders.html" class="btn btn-sm btn-primary">Xem tất cả đơn hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Sản Phẩm Bán Chạy</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Sản Phẩm</th>
+                                                <th>Danh Mục</th>
+                                                <th>Đã Bán</th>
+                                                <th>Tồn Kho</th>
+                                                <th>Thao Tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Giày Nike Air Max</td>
+                                                <td>Giày Thể Thao</td>
+                                                <td>45</td>
+                                                <td>12</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giày Adidas Ultraboost</td>
+                                                <td>Giày Thể Thao</td>
+                                                <td>38</td>
+                                                <td>8</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giày Converse Classic</td>
+                                                <td>Giày Casual</td>
+                                                <td>32</td>
+                                                <td>15</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Giày Vans Old Skool</td>
+                                                <td>Giày Casual</td>
+                                                <td>29</td>
+                                                <td>10</td>
+                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="products.html" class="btn btn-sm btn-primary">Xem tất cả sản phẩm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div id="footer-placeholder"></div>
+        <!-- End Footer -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+            // Revenue Chart
+            var ctx = document.getElementById('revenueChart').getContext('2d');
+            var revenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
+                    datasets: [{
+                        label: 'Doanh Thu (triệu VNĐ)',
+                        data: [25, 30, 28, 35, 40, 45],
+                        backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        pointBackgroundColor: 'rgba(78, 115, 223, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(78, 115, 223, 1)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Sales Distribution Chart
+            var ctx2 = document.getElementById('salesDistributionChart').getContext('2d');
+            var salesDistributionChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Giày Thể Thao', 'Giày Casual', 'Giày Đá Bóng', 'Giày Sandal'],
+                    datasets: [{
+                        data: [45, 25, 20, 10],
+                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e'],
+                        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#dda20a'],
+                        hoverBorderColor: "rgba(234, 236, 244, 1)",
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

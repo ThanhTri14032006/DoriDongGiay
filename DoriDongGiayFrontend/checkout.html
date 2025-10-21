@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown" id="user-menu" style="display: none;">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item" id="login-menu">
+                        <a class="nav-link" href="login.html">Đăng nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="cart.html">Giỏ hàng</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thanh toán</li>
+                </ol>
+            </nav>
+            
+            <h2 class="mb-4">Thanh toán</h2>
+            
+            <!-- Checkout Process Steps -->
+            <div class="checkout-steps mb-5">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="step completed">
+                            <div class="step-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="step-text">Giỏ hàng</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="step active">
+                            <div class="step-icon">
+                                <i class="fas fa-address-card"></i>
+                            </div>
+                            <div class="step-text">Thông tin</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="step-text">Thanh toán</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="step">
+                            <div class="step-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="step-text">Hoàn tất</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Checkout Form -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Thông tin giao hàng</h4>
+                            
+                            <form id="checkout-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="first-name" class="form-label">Họ <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="first-name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="last-name" class="form-label">Tên <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="last-name" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Địa chỉ <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="address" required>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="province" class="form-label">Tỉnh/Thành phố <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="province" required>
+                                            <option value="">Chọn tỉnh/thành phố</option>
+                                            <option value="HCM">TP. Hồ Chí Minh</option>
+                                            <option value="HN">Hà Nội</option>
+                                            <option value="DN">Đà Nẵng</option>
+                                            <option value="CT">Cần Thơ</option>
+                                            <option value="HP">Hải Phòng</option>
+                                            <!-- Thêm các tỉnh/thành phố khác -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="district" class="form-label">Quận/Huyện <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="district" required>
+                                            <option value="">Chọn quận/huyện</option>
+                                            <!-- Các quận/huyện sẽ được cập nhật dựa trên tỉnh/thành phố đã chọn -->
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="ward" class="form-label">Phường/Xã <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="ward" required>
+                                            <option value="">Chọn phường/xã</option>
+                                            <!-- Các phường/xã sẽ được cập nhật dựa trên quận/huyện đã chọn -->
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="note" class="form-label">Ghi chú</label>
+                                    <textarea class="form-control" id="note" rows="3" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."></textarea>
+                                </div>
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="save-info">
+                                    <label class="form-check-label" for="save-info">
+                                        Lưu thông tin này cho lần sau
+                                    </label>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h4 class="mb-3">Phương thức vận chuyển</h4>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="shipping-method" id="standard-shipping" value="standard" checked>
+                                        <label class="form-check-label d-flex justify-content-between align-items-center" for="standard-shipping">
+                                            <span>Giao hàng tiêu chuẩn (2-3 ngày)</span>
+                                            <span>30.000₫</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="shipping-method" id="express-shipping" value="express">
+                                        <label class="form-check-label d-flex justify-content-between align-items-center" for="express-shipping">
+                                            <span>Giao hàng nhanh (1-2 ngày)</span>
+                                            <span>60.000₫</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="shipping-method" id="same-day-shipping" value="same-day">
+                                        <label class="form-check-label d-flex justify-content-between align-items-center" for="same-day-shipping">
+                                            <span>Giao hàng trong ngày (Chỉ áp dụng cho nội thành)</span>
+                                            <span>100.000₫</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <h4 class="mb-3">Phương thức thanh toán</h4>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment-method" id="cod" value="cod" checked>
+                                        <label class="form-check-label" for="cod">
+                                            <i class="fas fa-money-bill-wave me-2"></i>Thanh toán khi nhận hàng (COD)
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment-method" id="bank-transfer" value="bank-transfer">
+                                        <label class="form-check-label" for="bank-transfer">
+                                            <i class="fas fa-university me-2"></i>Chuyển khoản ngân hàng
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="payment-method" id="credit-card" value="credit-card">
+                                        <label class="form-check-label" for="credit-card">
+                                            <i class="fas fa-credit-card me-2"></i>Thẻ tín dụng/Ghi nợ
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="payment-method" id="momo" value="momo">
+                                        <label class="form-check-label" for="momo">
+                                            <i class="fas fa-wallet me-2"></i>Ví điện tử (MoMo, ZaloPay, VNPay)
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Credit Card Form (hiển thị khi chọn phương thức thanh toán là thẻ tín dụng) -->
+                                <div id="credit-card-form" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cc-name" class="form-label">Tên chủ thẻ</label>
+                                            <input type="text" class="form-control" id="cc-name">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cc-number" class="form-label">Số thẻ</label>
+                                            <input type="text" class="form-control" id="cc-number">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="cc-expiration-month" class="form-label">Tháng hết hạn</label>
+                                            <select class="form-select" id="cc-expiration-month">
+                                                <option value="">Tháng</option>
+                                                <option value="01">01</option>
+                                                <option value="02">02</option>
+                                                <!-- Thêm các tháng khác -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="cc-expiration-year" class="form-label">Năm hết hạn</label>
+                                            <select class="form-select" id="cc-expiration-year">
+                                                <option value="">Năm</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                                <!-- Thêm các năm khác -->
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="cc-cvv" class="form-label">CVV</label>
+                                            <input type="text" class="form-control" id="cc-cvv">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bank Transfer Info (hiển thị khi chọn phương thức thanh toán là chuyển khoản) -->
+                                <div id="bank-transfer-info" style="display: none;">
+                                    <div class="alert alert-info">
+                                        <h5 class="alert-heading">Thông tin chuyển khoản</h5>
+                                        <p class="mb-0">Vui lòng chuyển khoản đến tài khoản sau:</p>
+                                        <ul class="mb-0">
+                                            <li>Ngân hàng: Vietcombank</li>
+                                            <li>Số tài khoản: 1234567890</li>
+                                            <li>Chủ tài khoản: CÔNG TY TNHH DORIDONGGIAY</li>
+                                            <li>Nội dung chuyển khoản: [Mã đơn hàng] - [Họ tên]</li>
+                                        </ul>
+                                        <p class="mt-2 mb-0">Đơn hàng của bạn sẽ được xử lý sau khi chúng tôi nhận được thanh toán.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- E-Wallet Info (hiển thị khi chọn phương thức thanh toán là ví điện tử) -->
+                                <div id="e-wallet-info" style="display: none;">
+                                    <div class="alert alert-info">
+                                        <h5 class="alert-heading">Thanh toán qua ví điện tử</h5>
+                                        <p>Sau khi đặt hàng, bạn sẽ được chuyển đến trang thanh toán của ví điện tử để hoàn tất giao dịch.</p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="e-wallet" id="momo-wallet" value="momo" checked>
+                                                <label class="form-check-label" for="momo-wallet">
+                                                    <img src="images/momo-logo.png" alt="MoMo" height="30"> MoMo
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="e-wallet" id="zalopay-wallet" value="zalopay">
+                                                <label class="form-check-label" for="zalopay-wallet">
+                                                    <img src="images/zalopay-logo.png" alt="ZaloPay" height="30"> ZaloPay
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="e-wallet" id="vnpay-wallet" value="vnpay">
+                                                <label class="form-check-label" for="vnpay-wallet">
+                                                    <img src="images/vnpay-logo.png" alt="VNPay" height="30"> VNPay
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr class="my-4">
+                                
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="terms" required>
+                                    <label class="form-check-label" for="terms">
+                                        Tôi đã đọc và đồng ý với <a href="#">điều khoản và điều kiện</a> của cửa hàng
+                                    </label>
+                                </div>
+                                
+                                <button class="btn btn-primary btn-lg w-100" type="submit">Đặt hàng</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Tóm tắt đơn hàng</h4>
+                            
+                            <div class="order-summary">
+                                <div class="order-products mb-3">
+                                    <div class="product-item d-flex mb-3">
+                                        <img src="images/product-1.jpg" alt="Nike Air Jordan 1" class="img-thumbnail me-2" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Nike Air Jordan 1</h6>
+                                            <small class="text-muted">Kích cỡ: 42 | Màu: Đỏ | Số lượng: 1</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="fw-bold">2.500.000₫</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-item d-flex mb-3">
+                                        <img src="images/product-2.jpg" alt="Adidas Superstar" class="img-thumbnail me-2" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Adidas Superstar</h6>
+                                            <small class="text-muted">Kích cỡ: 41 | Màu: Trắng | Số lượng: 1</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="fw-bold">1.800.000₫</span>
+                                        </div>
+                                    </div>
+                                    <div class="product-item d-flex mb-3">
+                                        <img src="images/product-3.jpg" alt="Nike Air Force 1" class="img-thumbnail me-2" style="width: 60px; height: 60px; object-fit: cover;">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">Nike Air Force 1</h6>
+                                            <small class="text-muted">Kích cỡ: 43 | Màu: Trắng | Số lượng: 1</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="fw-bold">2.200.000₫</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <hr>
+                                
+                                <div class="order-totals">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Tạm tính</span>
+                                        <span>6.500.000₫</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Phí vận chuyển</span>
+                                        <span id="shipping-fee">30.000₫</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Giảm giá</span>
+                                        <span>-500.000₫</span>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between mb-0">
+                                        <span class="fw-bold">Tổng cộng</span>
+                                        <span class="fw-bold text-danger fs-5" id="total-amount">6.030.000₫</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coupon Code -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Mã giảm giá</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Nhập mã giảm giá" id="coupon-code">
+                                <button class="btn btn-outline-primary" type="button" id="apply-coupon">Áp dụng</button>
+                            </div>
+                            <div class="mt-2">
+                                <small class="text-muted">Mã giảm giá sẽ được áp dụng cho đơn hàng của bạn nếu phù hợp.</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Need Help -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">Bạn cần hỗ trợ?</h5>
+                            <p class="card-text">Nếu bạn có bất kỳ câu hỏi nào về đơn hàng hoặc quá trình thanh toán, vui lòng liên hệ với chúng tôi.</p>
+                            <div class="d-grid gap-2">
+                                <a href="contact.html" class="btn btn-outline-primary">
+                                    <i class="fas fa-headset me-2"></i>Liên hệ hỗ trợ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        // Xử lý hiển thị form thanh toán dựa trên phương thức thanh toán đã chọn
+        document.querySelectorAll('input[name="payment-method"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                // Ẩn tất cả các form thanh toán
+                document.getElementById('credit-card-form').style.display = 'none';
+                document.getElementById('bank-transfer-info').style.display = 'none';
+                document.getElementById('e-wallet-info').style.display = 'none';
+                
+                // Hiển thị form tương ứng với phương thức thanh toán đã chọn
+                if (this.value === 'credit-card') {
+                    document.getElementById('credit-card-form').style.display = 'block';
+                } else if (this.value === 'bank-transfer') {
+                    document.getElementById('bank-transfer-info').style.display = 'block';
+                } else if (this.value === 'momo') {
+                    document.getElementById('e-wallet-info').style.display = 'block';
+                }
+            });
+        });
+        
+        // Xử lý cập nhật phí vận chuyển và tổng tiền khi thay đổi phương thức vận chuyển
+        document.querySelectorAll('input[name="shipping-method"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                let shippingFee = '30.000₫';
+                let totalAmount = '6.030.000₫';
+                
+                if (this.value === 'standard') {
+                    shippingFee = '30.000₫';
+                    totalAmount = '6.030.000₫';
+                } else if (this.value === 'express') {
+                    shippingFee = '60.000₫';
+                    totalAmount = '6.060.000₫';
+                } else if (this.value === 'same-day') {
+                    shippingFee = '100.000₫';
+                    totalAmount = '6.100.000₫';
+                }
+                
+                document.getElementById('shipping-fee').textContent = shippingFee;
+                document.getElementById('total-amount').textContent = totalAmount;
+            });
+        });
+        
+        // Xử lý form đặt hàng
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Kiểm tra xem đã chọn điều khoản và điều kiện chưa
+            if (!document.getElementById('terms').checked) {
+                alert('Vui lòng đồng ý với điều khoản và điều kiện của cửa hàng!');
+                return;
+            }
+            
+            // Trong thực tế, bạn sẽ gửi dữ liệu đơn hàng đến máy chủ để xử lý
+            // Ở đây, chúng ta sẽ giả lập việc đặt hàng thành công
+            alert('Đặt hàng thành công! Cảm ơn bạn đã mua sắm tại DoriDongGiay.');
+            
+            // Chuyển hướng đến trang xác nhận đơn hàng
+            window.location.href = 'order-confirmation.html';
+        });
+        
+        // Xử lý áp dụng mã giảm giá
+        document.getElementById('apply-coupon').addEventListener('click', function() {
+            const couponCode = document.getElementById('coupon-code').value.trim();
+            
+            if (couponCode === '') {
+                alert('Vui lòng nhập mã giảm giá!');
+                return;
+            }
+            
+            // Trong thực tế, bạn sẽ gửi mã giảm giá đến máy chủ để kiểm tra tính hợp lệ
+            // Ở đây, chúng ta sẽ giả lập việc áp dụng mã giảm giá
+            if (couponCode.toUpperCase() === 'WELCOME10') {
+                alert('Mã giảm giá đã được áp dụng thành công! Bạn được giảm 10% tổng giá trị đơn hàng.');
+                
+                // Cập nhật tổng tiền
+                document.getElementById('total-amount').textContent = '5.427.000₫';
+            } else {
+                alert('Mã giảm giá không hợp lệ hoặc đã hết hạn!');
+            }
+        });
+        
+        // Xử lý cập nhật quận/huyện dựa trên tỉnh/thành phố đã chọn
+        document.getElementById('province').addEventListener('change', function() {
+            const province = this.value;
+            const districtSelect = document.getElementById('district');
+            
+            // Xóa tất cả các option hiện tại
+            districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+            
+            // Thêm các quận/huyện mới dựa trên tỉnh/thành phố đã chọn
+            if (province === 'HCM') {
+                const districts = ['Quận 1', 'Quận 2', 'Quận 3', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Quận 9', 'Quận 10', 'Quận 11', 'Quận 12', 'Quận Bình Thạnh', 'Quận Tân Bình', 'Quận Tân Phú', 'Quận Phú Nhuận', 'Quận Gò Vấp', 'Quận Thủ Đức', 'Huyện Củ Chi', 'Huyện Hóc Môn', 'Huyện Bình Chánh', 'Huyện Nhà Bè', 'Huyện Cần Giờ'];
+                
+                districts.forEach(function(district) {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            } else if (province === 'HN') {
+                const districts = ['Quận Ba Đình', 'Quận Hoàn Kiếm', 'Quận Tây Hồ', 'Quận Long Biên', 'Quận Cầu Giấy', 'Quận Đống Đa', 'Quận Hai Bà Trưng', 'Quận Hoàng Mai', 'Quận Thanh Xuân', 'Quận Hà Đông', 'Quận Nam Từ Liêm', 'Quận Bắc Từ Liêm'];
+                
+                districts.forEach(function(district) {
+                    const option = document.createElement('option');
+                    option.value = district;
+                    option.textContent = district;
+                    districtSelect.appendChild(option);
+                });
+            }
+            // Thêm các tỉnh/thành phố khác nếu cần
+        });
+        
+        // Xử lý cập nhật phường/xã dựa trên quận/huyện đã chọn
+        document.getElementById('district').addEventListener('change', function() {
+            const district = this.value;
+            const wardSelect = document.getElementById('ward');
+            
+            // Xóa tất cả các option hiện tại
+            wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+            
+            // Thêm các phường/xã mới dựa trên quận/huyện đã chọn
+            if (district === 'Quận 1') {
+                const wards = ['Phường Bến Nghé', 'Phường Bến Thành', 'Phường Cầu Kho', 'Phường Cầu Ông Lãnh', 'Phường Cô Giang', 'Phường Đa Kao', 'Phường Nguyễn Cư Trinh', 'Phường Nguyễn Thái Bình', 'Phường Phạm Ngũ Lão', 'Phường Tân Định'];
+                
+                wards.forEach(function(ward) {
+                    const option = document.createElement('option');
+                    option.value = ward;
+                    option.textContent = ward;
+                    wardSelect.appendChild(option);
+                });
+            } else if (district === 'Quận Hoàn Kiếm') {
+                const wards = ['Phường Chương Dương', 'Phường Cửa Đông', 'Phường Cửa Nam', 'Phường Đồng Xuân', 'Phường Hàng Bạc', 'Phường Hàng Bài', 'Phường Hàng Bồ', 'Phường Hàng Buồm', 'Phường Hàng Đào', 'Phường Hàng Gai'];
+                
+                wards.forEach(function(ward) {
+                    const option = document.createElement('option');
+                    option.value = ward;
+                    option.textContent = ward;
+                    wardSelect.appendChild(option);
+                });
+            }
+            // Thêm các quận/huyện khác nếu cần
+        });
+    </script>
+</body>
+</html>

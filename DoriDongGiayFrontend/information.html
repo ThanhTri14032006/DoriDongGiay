@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản - DoriDongGiay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>DoriDongGiay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.html">Sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-danger" id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                            <span id="user-name">Nguyễn Văn A</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="information.html">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Lịch sử đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Information Content -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thông tin tài khoản</li>
+                </ol>
+            </nav>
+            
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3 mb-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="flex-shrink-0">
+                                    <img src="images/avatar.jpg" alt="User Avatar" class="rounded-circle" width="60" height="60">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5 class="mb-0">Nguyễn Văn A</h5>
+                                    <p class="text-muted mb-0">nguyenvana@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="list-group list-group-flush">
+                                <a href="information.html" class="list-group-item list-group-item-action active">
+                                    <i class="fas fa-user-circle me-2"></i>Thông tin tài khoản
+                                </a>
+                                <a href="orders.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-shopping-bag me-2"></i>Lịch sử đơn hàng
+                                </a>
+                                <a href="wishlist.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-heart me-2"></i>Danh sách yêu thích
+                                </a>
+                                <a href="addresses.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Sổ địa chỉ
+                                </a>
+                                <a href="change-password.html" class="list-group-item list-group-item-action">
+                                    <i class="fas fa-lock me-2"></i>Đổi mật khẩu
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action text-danger" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Đăng xuất
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="col-lg-9">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h4 class="card-title mb-0">Thông tin cá nhân</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="profile-form">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="first-name" class="form-label">Họ <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="first-name" value="Nguyễn" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="last-name" class="form-label">Tên <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="last-name" value="Văn A" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" value="nguyenvana@gmail.com" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Số điện thoại <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" value="0912345678" required>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gender" class="form-label">Giới tính</label>
+                                        <select class="form-select" id="gender">
+                                            <option value="">Chọn giới tính</option>
+                                            <option value="male" selected>Nam</option>
+                                            <option value="female">Nữ</option>
+                                            <option value="other">Khác</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="birthday" class="form-label">Ngày sinh</label>
+                                        <input type="date" class="form-control" id="birthday" value="1990-01-01">
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="fas fa-undo me-2"></i>Hủy
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Lưu thay đổi
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h4 class="card-title mb-0">Địa chỉ mặc định</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Địa chỉ giao hàng</h5>
+                                            <address class="mb-0">
+                                                <strong>Nguyễn Văn A</strong><br>
+                                                123 Đường Nguyễn Văn Cừ<br>
+                                                Phường 4, Quận 5<br>
+                                                TP. Hồ Chí Minh<br>
+                                                <abbr title="Phone">SĐT:</abbr> 0912345678
+                                            </address>
+                                        </div>
+                                        <div class="card-footer bg-white border-top-0">
+                                            <a href="addresses.html" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-edit me-1"></i>Chỉnh sửa
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Địa chỉ thanh toán</h5>
+                                            <address class="mb-0">
+                                                <strong>Nguyễn Văn A</strong><br>
+                                                123 Đường Nguyễn Văn Cừ<br>
+                                                Phường 4, Quận 5<br>
+                                                TP. Hồ Chí Minh<br>
+                                                <abbr title="Phone">SĐT:</abbr> 0912345678
+                                            </address>
+                                        </div>
+                                        <div class="card-footer bg-white border-top-0">
+                                            <a href="addresses.html" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-edit me-1"></i>Chỉnh sửa
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h4 class="card-title mb-0">Thông báo</h4>
+                        </div>
+                        <div class="card-body">
+                            <form id="notification-form">
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="email-notifications" checked>
+                                        <label class="form-check-label" for="email-notifications">
+                                            Nhận thông báo qua email
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-muted">Nhận thông báo về đơn hàng, khuyến mãi và cập nhật sản phẩm mới qua email.</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="sms-notifications" checked>
+                                        <label class="form-check-label" for="sms-notifications">
+                                            Nhận thông báo qua SMS
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-muted">Nhận thông báo về trạng thái đơn hàng qua SMS.</div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="newsletter" checked>
+                                        <label class="form-check-label" for="newsletter">
+                                            Đăng ký nhận bản tin
+                                        </label>
+                                    </div>
+                                    <div class="form-text text-muted">Nhận thông tin về khuyến mãi, sự kiện và xu hướng mới nhất.</div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Lưu thay đổi
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <!-- End Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/include.js"></script>
+    <script>
+        // Xử lý form thông tin cá nhân
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Trong thực tế, bạn sẽ gửi dữ liệu đến máy chủ để cập nhật thông tin cá nhân
+            // Ở đây, chúng ta sẽ giả lập việc cập nhật thành công
+            alert('Thông tin cá nhân đã được cập nhật thành công!');
+        });
+        
+        // Xử lý form thông báo
+        document.getElementById('notification-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Trong thực tế, bạn sẽ gửi dữ liệu đến máy chủ để cập nhật cài đặt thông báo
+            // Ở đây, chúng ta sẽ giả lập việc cập nhật thành công
+            alert('Cài đặt thông báo đã được cập nhật thành công!');
+        });
+        
+        // Xử lý đăng xuất
+        function logout() {
+            // Trong thực tế, bạn sẽ xóa token xác thực và chuyển hướng người dùng đến trang đăng nhập
+            // Ở đây, chúng ta sẽ giả lập việc đăng xuất
+            if (confirm('Bạn có chắc chắn muốn đăng xuất?')) {
+                alert('Đã đăng xuất thành công!');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

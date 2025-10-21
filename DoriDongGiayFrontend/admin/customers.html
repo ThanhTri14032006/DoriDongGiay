@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Khách Hàng | Dori Đông Giày Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+    <!-- End Header -->
+
+    <!-- Page Content -->
+    <div id="content">
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ms-auto d-flex">
+                        <div class="dropdown me-3">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="badge bg-danger">3</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Thông Báo</h6></li>
+                                <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
+                                <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
+                                <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
+                                <span class="ms-1 d-none d-sm-inline">Admin</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
+                                <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Customers Content -->
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Quản Lý Khách Hàng</h1>
+                    <div>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm me-2" data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+                            <i class="fas fa-user-plus fa-sm text-white-50"></i> Thêm Khách Hàng
+                        </a>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Xuất Danh Sách
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Customer Stats -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Tổng Khách Hàng</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">215</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                            Khách Hàng Mới (Tháng)</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            Tỷ Lệ Mua Lại</div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">65%</div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="progress progress-sm mr-2">
+                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                            Giá Trị Trung Bình/Đơn</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">1.2M VNĐ</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Filters -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Bộ Lọc Khách Hàng</h6>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-md-4">
+                                <label for="searchCustomer" class="form-label">Tìm kiếm</label>
+                                <input type="text" class="form-control" id="searchCustomer" placeholder="Tên, email, số điện thoại...">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="customerGroup" class="form-label">Nhóm khách hàng</label>
+                                <select class="form-select" id="customerGroup">
+                                    <option value="">Tất cả</option>
+                                    <option value="regular">Thường xuyên</option>
+                                    <option value="vip">VIP</option>
+                                    <option value="new">Mới</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="customerStatus" class="form-label">Trạng thái</label>
+                                <select class="form-select" id="customerStatus">
+                                    <option value="">Tất cả</option>
+                                    <option value="active">Hoạt động</option>
+                                    <option value="inactive">Không hoạt động</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="registrationDate" class="form-label">Ngày đăng ký</label>
+                                <input type="date" class="form-control" id="registrationDate">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary w-100">Lọc</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Customers Table -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh Sách Khách Hàng</h6>
+                        <div class="dropdown no-arrow">
+                            <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="#"><i class="fas fa-file-export fa-sm fa-fw me-2 text-gray-400"></i>Xuất Excel</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-envelope fa-sm fa-fw me-2 text-gray-400"></i>Gửi email hàng loạt</a>
+                                <a class="dropdown-item" href="#"><i class="fas fa-tag fa-sm fa-fw me-2 text-gray-400"></i>Gán nhãn hàng loạt</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                            </div>
+                                        </th>
+                                        <th>ID</th>
+                                        <th>Khách Hàng</th>
+                                        <th>Email</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Ngày Đăng Ký</th>
+                                        <th>Đơn Hàng</th>
+                                        <th>Tổng Chi Tiêu</th>
+                                        <th>Trạng Thái</th>
+                                        <th>Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#001</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../img/avatar-1.jpg" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                                                <div>
+                                                    <div>Nguyễn Văn A</div>
+                                                    <span class="badge bg-success">VIP</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>nguyenvana@example.com</td>
+                                        <td>0901234567</td>
+                                        <td>15/01/2023</td>
+                                        <td>12</td>
+                                        <td>15,600,000 VNĐ</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCustomerModal"><i class="fas fa-eye"></i></button>
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#002</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../img/avatar-2.jpg" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                                                <div>
+                                                    <div>Trần Thị B</div>
+                                                    <span class="badge bg-primary">Thường xuyên</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>tranthib@example.com</td>
+                                        <td>0912345678</td>
+                                        <td>20/02/2023</td>
+                                        <td>8</td>
+                                        <td>9,800,000 VNĐ</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCustomerModal"><i class="fas fa-eye"></i></button>
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#003</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../img/avatar-3.jpg" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                                                <div>
+                                                    <div>Lê Văn C</div>
+                                                    <span class="badge bg-secondary">Mới</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>levanc@example.com</td>
+                                        <td>0923456789</td>
+                                        <td>05/07/2023</td>
+                                        <td>2</td>
+                                        <td>2,500,000 VNĐ</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCustomerModal"><i class="fas fa-eye"></i></button>
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#004</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../img/avatar-4.jpg" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                                                <div>
+                                                    <div>Phạm Thị D</div>
+                                                    <span class="badge bg-primary">Thường xuyên</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>phamthid@example.com</td>
+                                        <td>0934567890</td>
+                                        <td>10/03/2023</td>
+                                        <td>6</td>
+                                        <td>7,200,000 VNĐ</td>
+                                        <td><span class="badge bg-danger">Không hoạt động</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCustomerModal"><i class="fas fa-eye"></i></button>
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>#005</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="../img/avatar-5.jpg" class="rounded-circle me-2" width="40" height="40" alt="Avatar">
+                                                <div>
+                                                    <div>Hoàng Văn E</div>
+                                                    <span class="badge bg-success">VIP</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>hoangvane@example.com</td>
+                                        <td>0945678901</td>
+                                        <td>25/01/2023</td>
+                                        <td>15</td>
+                                        <td>18,900,000 VNĐ</td>
+                                        <td><span class="badge bg-success">Hoạt động</span></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCustomerModal"><i class="fas fa-eye"></i></button>
+                                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCustomerModal"><i class="fas fa-trash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mt-4">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Sau</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Customer Modal -->
+    <div class="modal fade" id="viewCustomerModal" tabindex="-1" aria-labelledby="viewCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewCustomerModalLabel">Thông Tin Khách Hàng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-4">
+                            <img src="../img/avatar-1.jpg" class="rounded-circle mb-3" width="150" height="150" alt="Avatar">
+                            <h5>Nguyễn Văn A</h5>
+                            <span class="badge bg-success mb-2">VIP</span>
+                            <p class="text-muted">Khách hàng từ: 15/01/2023</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Thông Tin Cá Nhân</h6>
+                                    <p><strong>Email:</strong> nguyenvana@example.com</p>
+                                    <p><strong>Số điện thoại:</strong> 0901234567</p>
+                                    <p><strong>Ngày sinh:</strong> 15/05/1990</p>
+                                    <p><strong>Giới tính:</strong> Nam</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Thông Tin Mua Hàng</h6>
+                                    <p><strong>Tổng đơn hàng:</strong> 12</p>
+                                    <p><strong>Tổng chi tiêu:</strong> 15,600,000 VNĐ</p>
+                                    <p><strong>Đơn hàng gần nhất:</strong> 05/07/2023</p>
+                                    <p><strong>Giá trị trung bình/đơn:</strong> 1,300,000 VNĐ</p>
+                                </div>
+                            </div>
+                            
+                            <h6 class="fw-bold">Địa Chỉ</h6>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <h6 class="card-subtitle mb-2">Địa chỉ mặc định</h6>
+                                        <span class="badge bg-primary">Mặc định</span>
+                                    </div>
+                                    <p class="card-text">123 Đường ABC, Phường XYZ, Quận 1, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6 class="card-subtitle mb-2">Địa chỉ 2</h6>
+                                    <p class="card-text">456 Đường DEF, Phường UVW, Quận 2, TP. Hồ Chí Minh</p>
+                                </div>
+                            </div>
+                            
+                            <h6 class="fw-bold">Ghi Chú</h6>
+                            <p>Khách hàng thường xuyên mua giày thể thao, ưu tiên các thương hiệu Nike và Adidas. Thích được thông báo về các chương trình khuyến mãi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs" id="customerTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="true">Đơn Hàng Gần Đây</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="wishlist-tab" data-bs-toggle="tab" data-bs-target="#wishlist" type="button" role="tab" aria-controls="wishlist" aria-selected="false">Sản Phẩm Yêu Thích</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Đánh Giá</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3 border border-top-0 rounded-bottom" id="customerTabsContent">
+                                <div class="tab-pane fade show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mã Đơn</th>
+                                                    <th>Ngày</th>
+                                                    <th>Tổng Tiền</th>
+                                                    <th>Trạng Thái</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#1234</td>
+                                                    <td>05/07/2023</td>
+                                                    <td>1,200,000 VNĐ</td>
+                                                    <td><span class="badge bg-success">Hoàn thành</span></td>
+                                                    <td><a href="#" class="btn btn-sm btn-outline-primary">Xem</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#1180</td>
+                                                    <td>20/06/2023</td>
+                                                    <td>1,500,000 VNĐ</td>
+                                                    <td><span class="badge bg-success">Hoàn thành</span></td>
+                                                    <td><a href="#" class="btn btn-sm btn-outline-primary">Xem</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#1120</td>
+                                                    <td>05/06/2023</td>
+                                                    <td>900,000 VNĐ</td>
+                                                    <td><span class="badge bg-success">Hoàn thành</span></td>
+                                                    <td><a href="#" class="btn btn-sm btn-outline-primary">Xem</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img src="../img/products/product-1.jpg" class="card-img-top" alt="Product">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Giày Nike Air Max</h6>
+                                                    <p class="card-text text-danger">1,200,000 VNĐ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img src="../img/products/product-2.jpg" class="card-img-top" alt="Product">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Giày Adidas Ultraboost</h6>
+                                                    <p class="card-text text-danger">1,800,000 VNĐ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img src="../img/products/product-3.jpg" class="card-img-top" alt="Product">
+                                                <div class="card-body">
+                                                    <h6 class="card-title">Giày Puma RS-X</h6>
+                                                    <p class="card-text text-danger">1,500,000 VNĐ</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                                    <div class="review-item mb-3 pb-3 border-bottom">
+                                        <div class="d-flex justify-content-between">
+                                            <h6>Giày Nike Air Max</h6>
+                                            <div>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small">Đánh giá ngày: 10/07/2023</p>
+                                        <p>Sản phẩm rất tốt, đúng như mô tả. Giao hàng nhanh, đóng gói cẩn thận.</p>
+                                    </div>
+                                    <div class="review-item mb-3 pb-3 border-bottom">
+                                        <div class="d-flex justify-content-between">
+                                            <h6>Giày Adidas Ultraboost</h6>
+                                            <div>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="far fa-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small">Đánh giá ngày: 25/06/2023</p>
+                                        <p>Giày đẹp, đi rất êm chân. Chỉ tiếc là màu sắc hơi khác so với hình ảnh trên website.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editCustomerModal">Chỉnh Sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Customer Modal -->
+    <div class="modal fade" id="editCustomerModal" tabindex="-1" aria-labelledby="editCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editCustomerModalLabel">Chỉnh Sửa Thông Tin Khách Hàng</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="customerName" class="form-label">Họ tên</label>
+                                <input type="text" class="form-control" id="customerName" value="Nguyễn Văn A">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="customerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="customerEmail" value="nguyenvana@example.com">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="customerPhone" class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="customerPhone" value="0901234567">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="customerBirthday" class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" id="customerBirthday" value="1990-05-15">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="customerGender" class="form-label">Giới tính</label>
+                                <select class="form-select" id="customerGender">
+                                    <option value="male" selected>Nam</option>
+                                    <option value="female">Nữ</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="customerGroup" class="form-label">Nhóm khách hàng</label>
+                                <select class="form-select" id="customerGroup">
+                                    <option value="regular">Thường xuyên</option>
+                                    <option value="vip" selected>VIP</option>
+                                    <option value="new">Mới</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerStatus" class="form-label">Trạng thái</label>
+                            <select class="form-select" id="customerStatus">
+                                <option value="active" selected>Hoạt động</option>
+                                <option value="inactive">Không hoạt động</option>
+                            </select>
+                        </div>
+                        
+                        <h6 class="mt-4 mb-3">Địa Chỉ</h6>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <h6 class="card-subtitle">Địa chỉ mặc định</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="defaultAddress" checked>
+                                        <label class="form-check-label" for="defaultAddress">Đặt làm mặc định</label>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="addressName" class="form-label">Tên người nhận</label>
+                                        <input type="text" class="form-control" id="addressName" value="Nguyễn Văn A">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="addressPhone" class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" id="addressPhone" value="0901234567">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="addressDetail" class="form-label">Địa chỉ chi tiết</label>
+                                    <input type="text" class="form-control" id="addressDetail" value="123 Đường ABC, Phường XYZ">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="addressCity" class="form-label">Tỉnh/Thành phố</label>
+                                        <select class="form-select" id="addressCity">
+                                            <option value="hcm" selected>TP. Hồ Chí Minh</option>
+                                            <option value="hn">Hà Nội</option>
+                                            <option value="dn">Đà Nẵng</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="addressDistrict" class="form-label">Quận/Huyện</label>
+                                        <select class="form-select" id="addressDistrict">
+                                            <option value="q1" selected>Quận 1</option>
+                                            <option value="q2">Quận 2</option>
+                                            <option value="q3">Quận 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="addressWard" class="form-label">Phường/Xã</label>
+                                        <select class="form-select" id="addressWard">
+                                            <option value="p1" selected>Phường Bến Nghé</option>
+                                            <option value="p2">Phường Bến Thành</option>
+                                            <option value="p3">Phường Đa Kao</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="customerNote" class="form-label">Ghi chú</label>
+                            <textarea class="form-control" id="customerNote" rows="3">Khách hàng thường xuyên mua giày thể thao, ưu tiên các thương hiệu Nike và Adidas. Thích được thông báo về các chương trình khuyến mãi.</textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-primary">Lưu Thay Đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Customer Modal -->
+    <div class="modal fade" id="addCustomerModal" tabindex="-1" aria-labelledby="addCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addCustomerModalLabel">Thêm Khách Hàng Mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="newCustomerName" class="form-label">Họ tên</label>
+                                <input type="text" class="form-control" id="newCustomerName" placeholder="Nhập họ tên">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="newCustomerEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="newCustomerEmail" placeholder="Nhập email">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="newCustomerPhone" class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="newCustomerPhone" placeholder="Nhập số điện thoại">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="newCustomerBirthday" class="form-label">Ngày sinh</label>
+                                <input type="date" class="form-control" id="newCustomerBirthday">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="newCustomerGender" class="form-label">Giới tính</label>
+                                <select class="form-select" id="newCustomerGender">
+                                    <option value="" selected disabled>Chọn giới tính</option>
+                                    <option value="male">Nam</option>
+                                    <option value="female">Nữ</option>
+                                    <option value="other">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="newCustomerGroup" class="form-label">Nhóm khách hàng</label>
+                                <select class="form-select" id="newCustomerGroup">
+                                    <option value="new" selected>Mới</option>
+                                    <option value="regular">Thường xuyên</option>
+                                    <option value="vip">VIP</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newCustomerPassword" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" id="newCustomerPassword" placeholder="Nhập mật khẩu">
+                            <div class="form-text">Mật khẩu sẽ được gửi đến email của khách hàng.</div>
+                        </div>
+                        
+                        <h6 class="mt-4 mb-3">Địa Chỉ</h6>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="newAddressName" class="form-label">Tên người nhận</label>
+                                        <input type="text" class="form-control" id="newAddressName" placeholder="Nhập tên người nhận">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="newAddressPhone" class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" id="newAddressPhone" placeholder="Nhập số điện thoại">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newAddressDetail" class="form-label">Địa chỉ chi tiết</label>
+                                    <input type="text" class="form-control" id="newAddressDetail" placeholder="Số nhà, tên đường, phường/xã">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="newAddressCity" class="form-label">Tỉnh/Thành phố</label>
+                                        <select class="form-select" id="newAddressCity">
+                                            <option value="" selected disabled>Chọn tỉnh/thành phố</option>
+                                            <option value="hcm">TP. Hồ Chí Minh</option>
+                                            <option value="hn">Hà Nội</option>
+                                            <option value="dn">Đà Nẵng</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="newAddressDistrict" class="form-label">Quận/Huyện</label>
+                                        <select class="form-select" id="newAddressDistrict" disabled>
+                                            <option value="" selected disabled>Chọn quận/huyện</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="newAddressWard" class="form-label">Phường/Xã</label>
+                                        <select class="form-select" id="newAddressWard" disabled>
+                                            <option value="" selected disabled>Chọn phường/xã</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="newCustomerNote" class="form-label">Ghi chú</label>
+                            <textarea class="form-control" id="newCustomerNote" rows="3" placeholder="Nhập ghi chú về khách hàng (nếu có)"></textarea>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="sendWelcomeEmail" checked>
+                            <label class="form-check-label" for="sendWelcomeEmail">Gửi email chào mừng</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-success">Thêm Khách Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Customer Modal -->
+    <div class="modal fade" id="deleteCustomerModal" tabindex="-1" aria-labelledby="deleteCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteCustomerModalLabel">Xác Nhận Xóa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Bạn có chắc chắn muốn xóa khách hàng <strong>Nguyễn Văn A</strong>?</p>
+                    <p class="text-danger">Lưu ý: Hành động này không thể hoàn tác. Tất cả dữ liệu liên quan đến khách hàng này sẽ bị xóa vĩnh viễn.</p>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="confirmDelete">
+                        <label class="form-check-label" for="confirmDelete">
+                            Tôi hiểu rằng hành động này không thể hoàn tác
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="button" class="btn btn-danger" disabled>Xóa Khách Hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/include.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Toggle sidebar
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            
+            // Select all checkbox
+            $('#selectAll').on('change', function() {
+                $('tbody .form-check-input').prop('checked', $(this).prop('checked'));
+            });
+            
+            // Enable delete button when checkbox is checked
+            $('#confirmDelete').on('change', function() {
+                $('.modal-footer .btn-danger').prop('disabled', !$(this).prop('checked'));
+            });
+        });
+    </script>
+</body>
+</html>
