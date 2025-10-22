@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections - DORI ACCOUNT</title>
+    <link rel="stylesheet" href="css/collections.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-left">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="products.html" class="nav-link active">Collections</a>
+                    <a href="#" class="nav-link">New</a>
+                </nav>
+            </div>
+            
+            <div class="logo">
+                <h1>DORI ACCOUNT</h1>
+            </div>
+            
+            <div class="nav-right">
+                <div class="theme-selector">
+                    <button class="theme-btn" data-theme="light" aria-label="Light theme"></button>
+                    <button class="theme-btn" data-theme="dark" aria-label="Dark theme"></button>
+                    <button class="theme-btn" data-theme="blue" aria-label="Blue theme"></button>
+                    <button class="theme-btn" data-theme="green" aria-label="Green theme"></button>
+                </div>
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="icon-btn cart-btn" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="8" cy="21" r="1"></circle>
+                        <circle cx="19" cy="21" r="1"></circle>
+                        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <button class="icon-btn user-btn" aria-label="User account">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Collections</span>
+            </nav>
+
+            <!-- Page Title -->
+            <div class="page-header">
+                <h1 class="page-title">COLLECTIONS</h1>
+                <p class="page-subtitle">Discover our curated selection of premium streetwear</p>
+            </div>
+
+            <!-- Filters and Search -->
+            <div class="filters-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products..." class="search-input">
+                    <button class="search-submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All</button>
+                    <button class="filter-tab" data-category="new">New</button>
+                    <button class="filter-tab" data-category="shirts">Shirts</button>
+                    <button class="filter-tab" data-category="polo">Polo Shirts</button>
+                    <button class="filter-tab" data-category="shorts">Shorts</button>
+                    <button class="filter-tab" data-category="suits">Suits</button>
+                    <button class="filter-tab" data-category="coats">Coats</button>
+                </div>
+
+                <div class="filter-options">
+                    <div class="sort-dropdown">
+                        <select class="sort-select">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest</option>
+                            <option value="popular">Most Popular</option>
+                        </select>
+                    </div>
+                    <button class="filter-toggle">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="22,3 2,3 10,12.46 10,19 14,21 14,12.46"></polygon>
+                        </svg>
+                        Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-container">
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here by JavaScript -->
+                </div>
+                
+                <div class="loading-spinner" id="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-section">
+                <button class="load-more-btn" id="load-more-btn">Load More Products</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Filter Sidebar -->
+    <div class="filter-sidebar" id="filter-sidebar">
+        <div class="filter-header">
+            <h3>Filters</h3>
+            <button class="close-filters">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="filter-content">
+            <div class="filter-group">
+                <h4>Size</h4>
+                <div class="size-options">
+                    <button class="size-btn" data-size="xs">XS</button>
+                    <button class="size-btn" data-size="s">S</button>
+                    <button class="size-btn" data-size="m">M</button>
+                    <button class="size-btn" data-size="l">L</button>
+                    <button class="size-btn" data-size="xl">XL</button>
+                    <button class="size-btn" data-size="2xl">2XL</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Price Range</h4>
+                <div class="price-range">
+                    <input type="range" min="0" max="200" value="200" class="price-slider" id="price-slider">
+                    <div class="price-display">
+                        <span>$0</span>
+                        <span id="price-value">$200</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h4>Color</h4>
+                <div class="color-options">
+                    <button class="color-btn" data-color="black" style="background-color: #000"></button>
+                    <button class="color-btn" data-color="white" style="background-color: #fff"></button>
+                    <button class="color-btn" data-color="gray" style="background-color: #888"></button>
+                    <button class="color-btn" data-color="blue" style="background-color: #007bff"></button>
+                    <button class="color-btn" data-color="green" style="background-color: #28a745"></button>
+                    <button class="color-btn" data-color="red" style="background-color: #dc3545"></button>
+                </div>
+            </div>
+
+            <div class="filter-actions">
+                <button class="clear-filters">Clear All</button>
+                <button class="apply-filters">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal" id="search-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Search Products</h3>
+                <button class="modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="search-form">
+                <input type="text" placeholder="What are you looking for?" class="modal-search-input">
+                <div class="search-suggestions">
+                    <div class="suggestion-item">T-Shirts</div>
+                    <div class="suggestion-item">Polo Shirts</div>
+                    <div class="suggestion-item">Shorts</div>
+                    <div class="suggestion-item">Suits</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Shopping Cart</h3>
+                <button class="modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="cart-content" id="cart-content">
+                <div class="empty-cart">
+                    <p>Your cart is empty</p>
+                    <button class="continue-shopping">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Modal -->
+    <div class="modal" id="user-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Account</h3>
+                <button class="modal-close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="user-menu">
+                <a href="login.html" class="user-menu-item">Sign In</a>
+                <a href="register.html" class="user-menu-item">Create Account</a>
+                <a href="#" class="user-menu-item">Order History</a>
+                <a href="#" class="user-menu-item">Wishlist</a>
+                <a href="#" class="user-menu-item">Settings</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-message"></span>
+            <button class="notification-close">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/collections.js"></script>
+</body>
+</html>

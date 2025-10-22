@@ -1,98 +1,194 @@
 <!-- Header -->
-<header class="header">
-    <div class="container">
-        <div class="top-header py-2">
-            <div class="row align-items-center">
-            </div>
-        </div>
-        <div class="middle-header py-3">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <a href="index.html" class="logo">
-                        <img src="img/logo.png" alt="Dori Đông Giày" class="img-fluid">
+<header class="modern-header">
+    <!-- Main Header -->
+    <div class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <a href="index.html" class="brand-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <div class="brand-text">
+                            <span class="brand-name">DoriDongGiay</span>
+                            <span class="brand-tagline">Premium Footwear</span>
+                        </div>
                     </a>
                 </div>
-                <div class="col-md-6">
-                    <div class="search-box">
-                        <form action="research.html" method="get">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm..." name="q">
-                                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+
+                <!-- Search Box -->
+                <div class="search-section">
+                    <div class="modern-search">
+                        <form action="research.html" method="get" class="search-form">
+                            <div class="search-input-wrapper">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, thương hiệu..." name="q">
+                                <button type="submit" class="search-btn">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
                             </div>
                         </form>
+                        <div class="search-suggestions">
+                            <span class="suggestion-tag">Nike</span>
+                            <span class="suggestion-tag">Adidas</span>
+                            <span class="suggestion-tag">Sneaker</span>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="header-actions d-flex justify-content-end">
-                        <a href="wishlist.html" class="action-item">
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <div class="action-buttons">
+                        <a href="wishlist.html" class="action-btn" data-tooltip="Yêu thích">
                             <i class="far fa-heart"></i>
-                            <span class="badge bg-danger rounded-circle">0</span>
+                            <span class="action-badge">0</span>
                         </a>
-                        <a href="cart.html" class="action-item ms-3">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="badge bg-danger rounded-circle cart-count">0</span>
+                        <a href="cart.html" class="action-btn" data-tooltip="Giỏ hàng">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="action-badge cart-count">0</span>
                         </a>
-                        <a href="login.html" class="action-item ms-3">
-                            <i class="far fa-user"></i>
-                        </a>
+                        <div class="user-menu">
+                            <a href="#" class="action-btn user-btn" data-tooltip="Tài khoản">
+                                <i class="far fa-user"></i>
+                            </a>
+                            <div class="user-dropdown">
+                                <a href="login.html" class="dropdown-link">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Đăng nhập
+                                </a>
+                                <a href="register.html" class="dropdown-link">
+                                    <i class="fas fa-user-plus"></i>
+                                    Đăng ký
+                                </a>
+                                <a href="orders.html" class="dropdown-link">
+                                    <i class="fas fa-box"></i>
+                                    Đơn hàng
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNav">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="collapse navbar-collapse" id="mobileNav">
+                    <ul class="nav-menu">
+                            <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home"></i>
+                                Trang Chủ
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown mega-menu">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-mars"></i>
+                                Nam
+                            </a>
+                            <div class="dropdown-menu mega-dropdown">
+                                <div class="mega-content">
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Giày Thể Thao</h6>
+                                        <a href="products-list.html?category=men-sneakers" class="mega-link">Sneaker</a>
+                        <a href="products-list.html?category=men-running" class="mega-link">Giày Chạy Bộ</a>
+                        <a href="products-list.html?category=men-basketball" class="mega-link">Giày Bóng Rổ</a>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Giày Công Sở</h6>
+                                        <a href="products-list.html?category=men-oxford" class="mega-link">Giày Oxford</a>
+                        <a href="products-list.html?category=men-loafers" class="mega-link">Giày Lười</a>
+                        <a href="products-list.html?category=men-boots" class="mega-link">Giày Boots</a>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Dép & Sandals</h6>
+                                        <a href="products-list.html?category=men-sandals" class="mega-link">Sandals</a>
+                        <a href="products-list.html?category=men-slippers" class="mega-link">Dép Tổ Ong</a>
+                                    </div>
+                                    <div class="mega-column featured">
+                                        <div class="featured-product">
+                                            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=200&h=150&fit=crop" alt="Featured">
+                                            <h6>Sản phẩm nổi bật</h6>
+                                            <p>Nike Air Max 270</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown mega-menu">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-venus"></i>
+                                Nữ
+                            </a>
+                            <div class="dropdown-menu mega-dropdown">
+                                <div class="mega-content">
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Giày Thể Thao</h6>
+                                        <a href="products-list.html?category=women-sneakers" class="mega-link">Sneaker</a>
+                        <a href="products-list.html?category=women-running" class="mega-link">Giày Chạy Bộ</a>
+                        <a href="products-list.html?category=women-fitness" class="mega-link">Giày Fitness</a>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Giày Cao Gót</h6>
+                                        <a href="products-list.html?category=women-heels" class="mega-link">Cao Gót</a>
+                        <a href="products-list.html?category=women-flats" class="mega-link">Giày Búp Bê</a>
+                        <a href="products-list.html?category=women-wedges" class="mega-link">Giày Đế Xuồng</a>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h6 class="mega-title">Dép & Sandals</h6>
+                                        <a href="products-list.html?category=women-sandals" class="mega-link">Sandals</a>
+                        <a href="products-list.html?category=women-slippers" class="mega-link">Dép Cao Su</a>
+                                    </div>
+                                    <div class="mega-column featured">
+                                        <div class="featured-product">
+                                            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=200&h=150&fit=crop" alt="Featured">
+                                            <h6>Sản phẩm nổi bật</h6>
+                                            <p>Adidas Ultraboost</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sale-link" href="products-list.html?category=sale">
+                                <i class="fas fa-fire"></i>
+                                Khuyến Mãi
+                                <span class="sale-badge">HOT</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">
+                                <i class="fas fa-newspaper"></i>
+                                Blog
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">
+                                <i class="fas fa-info-circle"></i>
+                                Giới Thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">
+                                <i class="fas fa-phone-alt"></i>
+                                Liên Hệ
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="bottom-header">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarMain">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Trang Chủ</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMen" role="button" data-bs-toggle="dropdown">
-                                    Nam
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMen">
-                                    <li><a class="dropdown-item" href="products.html?category=men-sneakers">Giày Sneaker</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=men-boots">Giày Boots</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=men-loafers">Giày Lười</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=men-sandals">Dép & Sandals</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="products.html?category=men">Tất cả sản phẩm Nam</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-bs-toggle="dropdown">
-                                    Nữ
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownWomen">
-                                    <li><a class="dropdown-item" href="products.html?category=women-sneakers">Giày Sneaker</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=women-heels">Giày Cao Gót</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=women-flats">Giày Búp Bê</a></li>
-                                    <li><a class="dropdown-item" href="products.html?category=women-sandals">Dép & Sandals</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="products.html?category=women">Tất cả sản phẩm Nữ</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="products.html?category=sale">Khuyến Mãi</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="blog.html">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">Giới Thiệu</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Liên Hệ</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
+    </nav>
 </header>
 <!-- End Header -->

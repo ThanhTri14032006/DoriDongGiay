@@ -3,33 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - DoriDongGiay</title>
-    <link rel="stylesheet" href="css/login.css">
+    <title>Register - DoriDongGiay</title>
+    <link rel="stylesheet" href="css/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="login-container">
-        <!-- Left Side - Welcome Section -->
-        <div class="welcome-section">
-            <div class="welcome-content">
-                <h1 class="welcome-title">Hello, Welcome!</h1>
-                <p class="welcome-subtitle">Don't have an account</p>
-                <button class="switch-btn" onclick="goToRegister()">Registration</button>
-            </div>
-        </div>
-
-        <!-- Right Side - Login Form -->
+    <div class="register-container">
+        <!-- Left Side - Registration Form -->
         <div class="form-section">
             <div class="form-container">
-                <h2 class="form-title">Login</h2>
+                <h2 class="form-title">Registration</h2>
                 
-                <form class="login-form" id="loginForm">
+                <form class="register-form" id="registerForm">
                     <div class="input-group">
                         <input type="text" id="username" name="username" placeholder="Username" required>
                         <i class="fas fa-user input-icon"></i>
+                    </div>
+                    
+                    <div class="input-group">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <i class="fas fa-envelope input-icon"></i>
                     </div>
                     
                     <div class="input-group">
@@ -37,11 +33,7 @@
                         <i class="fas fa-lock input-icon"></i>
                     </div>
                     
-                    <div class="forgot-password">
-                        <a href="#" class="forgot-link">Forgot Password?</a>
-                    </div>
-                    
-                    <button type="submit" class="login-btn">Login</button>
+                    <button type="submit" class="register-btn">Registration</button>
                 </form>
                 
                 <div class="social-login">
@@ -60,8 +52,17 @@
                 </div>
             </div>
         </div>
+
+        <!-- Right Side - Welcome Back Section -->
+        <div class="welcome-section">
+            <div class="welcome-content">
+                <h1 class="welcome-title">Welcome Back!</h1>
+                <p class="welcome-subtitle">Don't have an account</p>
+                <button class="switch-btn" onclick="goToLogin()">Login</button>
+            </div>
+        </div>
     </div>
 
-    <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

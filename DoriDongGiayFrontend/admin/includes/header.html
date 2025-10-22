@@ -1,82 +1,338 @@
-<!-- Sidebar -->
+<!-- Modern Sidebar -->
 <nav id="sidebar">
     <div class="sidebar-header">
-        <img src="../img/logo.png" alt="Dori Đông Giày" class="logo">
-        <h5>Quản Trị Hệ Thống</h5>
+        <div class="logo-container">
+            <img src="../img/logo.png" alt="Dori Đông Giày" class="logo">
+            <div class="brand-info">
+                <h5 class="brand-name">Dori Admin</h5>
+                <span class="brand-subtitle">Quản Trị Hệ Thống</span>
+            </div>
+        </div>
+        <button class="sidebar-toggle d-lg-none" id="sidebarClose">
+            <i class="fas fa-times"></i>
+        </button>
     </div>
+
+    <!-- Quick Stats -->
+    <div class="sidebar-stats">
+        <div class="stat-item">
+            <div class="stat-icon bg-success">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-number">24</span>
+                <span class="stat-label">Đơn hàng mới</span>
+            </div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-icon bg-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Cần xử lý</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
     <ul class="list-unstyled components">
-        <li>
-            <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Bảng Điều Khiển</a>
+        <li class="menu-section">
+            <span class="section-title">TỔNG QUAN</span>
+        </li>
+        <li class="active">
+            <a href="dashboard.html">
+                <div class="menu-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                </div>
+                <span class="menu-text">Bảng Điều Khiển</span>
+                <div class="menu-badge">
+                    <span class="badge bg-primary">New</span>
+                </div>
+            </a>
+        </li>
+        
+        <li class="menu-section">
+            <span class="section-title">BÁN HÀNG</span>
         </li>
         <li>
             <a href="#productSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-box"></i> Quản Lý Sản Phẩm
+                <div class="menu-icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <span class="menu-text">Quản Lý Sản Phẩm</span>
+                <div class="menu-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </a>
-            <ul class="collapse list-unstyled" id="productSubmenu">
-                <li><a href="products.html">Danh Sách Sản Phẩm</a></li>
-                <li><a href="product-add.html">Thêm Sản Phẩm</a></li>
-                <li><a href="categories.html">Danh Mục</a></li>
+            <ul class="collapse list-unstyled submenu" id="productSubmenu">
+                <li><a href="products.html"><i class="fas fa-list"></i> Danh Sách Sản Phẩm</a></li>
+                <li><a href="product-add.html"><i class="fas fa-plus"></i> Thêm Sản Phẩm</a></li>
+                <li><a href="categories.html"><i class="fas fa-tags"></i> Danh Mục</a></li>
             </ul>
         </li>
         <li>
-            <a href="orders.html"><i class="fas fa-shopping-cart"></i> Quản Lý Đơn Hàng</a>
+            <a href="orders.html">
+                <div class="menu-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <span class="menu-text">Quản Lý Đơn Hàng</span>
+                <div class="menu-badge">
+                    <span class="badge bg-danger">24</span>
+                </div>
+            </a>
         </li>
         <li>
-            <a href="customers.html"><i class="fas fa-users"></i> Quản Lý Khách Hàng</a>
+            <a href="customers.html">
+                <div class="menu-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <span class="menu-text">Quản Lý Khách Hàng</span>
+            </a>
+        </li>
+        
+        <li class="menu-section">
+            <span class="section-title">NỘI DUNG</span>
         </li>
         <li>
             <a href="#contentSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-newspaper"></i> Quản Lý Nội Dung
+                <div class="menu-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <span class="menu-text">Quản Lý Nội Dung</span>
+                <div class="menu-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </a>
-            <ul class="collapse list-unstyled" id="contentSubmenu">
-                <li><a href="blog-posts.html">Bài Viết Blog</a></li>
-                <li><a href="pages.html">Trang Tĩnh</a></li>
+            <ul class="collapse list-unstyled submenu" id="contentSubmenu">
+                <li><a href="blog-posts.html"><i class="fas fa-blog"></i> Bài Viết Blog</a></li>
+                <li><a href="pages.html"><i class="fas fa-file-alt"></i> Trang Tĩnh</a></li>
             </ul>
         </li>
-        <li>
-            <a href="reports.html"><i class="fas fa-chart-bar"></i> Báo Cáo & Thống Kê</a>
+        
+        <li class="menu-section">
+            <span class="section-title">PHÂN TÍCH</span>
         </li>
         <li>
-            <a href="settings.html"><i class="fas fa-cog"></i> Cấu Hình Hệ Thống</a>
+            <a href="reports.html">
+                <div class="menu-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <span class="menu-text">Báo Cáo & Thống Kê</span>
+            </a>
+        </li>
+        
+        <li class="menu-section">
+            <span class="section-title">HỆ THỐNG</span>
         </li>
         <li>
-            <a href="staff.html"><i class="fas fa-user-tie"></i> Quản Lý Nhân Viên</a>
+            <a href="settings.html">
+                <div class="menu-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <span class="menu-text">Cấu Hình Hệ Thống</span>
+            </a>
+        </li>
+        <li>
+            <a href="staff.html">
+                <div class="menu-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <span class="menu-text">Quản Lý Nhân Viên</span>
+            </a>
         </li>
     </ul>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+        <div class="user-info">
+            <img src="../img/admin-avatar.jpg" alt="Admin" class="user-avatar">
+            <div class="user-details">
+                <span class="user-name">Admin User</span>
+                <span class="user-role">Quản trị viên</span>
+            </div>
+        </div>
+        <div class="footer-actions">
+            <a href="settings.html" class="action-btn" title="Cài đặt">
+                <i class="fas fa-cog"></i>
+            </a>
+            <a href="login.html" class="action-btn" title="Đăng xuất">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+    </div>
 </nav>
 
-<!-- Top Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- Modern Top Navbar -->
+<nav class="navbar navbar-expand-lg modern-navbar">
     <div class="container-fluid">
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="ms-auto d-flex">
-            <div class="dropdown me-3">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    <i class="fas fa-bell"></i>
-                    <span class="badge bg-danger">3</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><h6 class="dropdown-header">Thông Báo</h6></li>
-                    <li><a class="dropdown-item" href="#">Đơn hàng mới #1234</a></li>
-                    <li><a class="dropdown-item" href="#">Hết hàng: Giày Nike Air</a></li>
-                    <li><a class="dropdown-item" href="#">Bình luận mới cần duyệt</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-center" href="#">Xem tất cả</a></li>
-                </ul>
+        <!-- Left Side -->
+        <div class="navbar-left d-flex align-items-center">
+            <button type="button" id="sidebarCollapse" class="sidebar-toggle-btn me-3">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="d-none d-md-block">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="dashboard.html">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+            </nav>
+        </div>
+
+        <!-- Center - Search -->
+        <div class="navbar-center flex-grow-1 mx-4 d-none d-lg-block">
+            <div class="search-container">
+                <div class="input-group">
+                    <span class="input-group-text bg-transparent border-end-0">
+                        <i class="fas fa-search text-muted"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0 ps-0" placeholder="Tìm kiếm sản phẩm, đơn hàng, khách hàng..." id="globalSearch">
+                    <div class="search-suggestions" id="searchSuggestions">
+                        <!-- Search suggestions will be populated here -->
+                    </div>
+                </div>
             </div>
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                    <img src="../img/admin-avatar.jpg" class="rounded-circle" width="32" height="32" alt="Admin">
-                    <span class="ms-1 d-none d-sm-inline">Admin</span>
+        </div>
+
+        <!-- Right Side -->
+        <div class="navbar-right d-flex align-items-center">
+            <!-- Quick Actions -->
+            <div class="quick-actions d-none d-md-flex me-3">
+                <a href="product-add.html" class="quick-action-btn" title="Thêm sản phẩm">
+                    <i class="fas fa-plus"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="profile.html">Hồ sơ</a></li>
-                    <li><a class="dropdown-item" href="settings.html">Cài đặt</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="login.html">Đăng xuất</a></li>
-                </ul>
+                <a href="orders.html" class="quick-action-btn" title="Đơn hàng">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
+
+            <!-- Notifications -->
+            <div class="dropdown me-3">
+                <a class="nav-link notification-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="notification-icon">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                        <span class="notification-pulse"></span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                    <div class="dropdown-header d-flex justify-content-between align-items-center">
+                        <h6 class="mb-0">Thông Báo</h6>
+                        <span class="badge bg-primary">3 mới</span>
+                    </div>
+                    <div class="notification-list">
+                        <a class="dropdown-item notification-item unread" href="#">
+                            <div class="notification-icon bg-success">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">Đơn hàng mới #1234</div>
+                                <div class="notification-text">Khách hàng Nguyễn Văn A vừa đặt hàng</div>
+                                <div class="notification-time">2 phút trước</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item notification-item unread" href="#">
+                            <div class="notification-icon bg-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">Hết hàng</div>
+                                <div class="notification-text">Giày Nike Air Force 1 đã hết hàng</div>
+                                <div class="notification-time">15 phút trước</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item notification-item" href="#">
+                            <div class="notification-icon bg-info">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-title">Bình luận mới</div>
+                                <div class="notification-text">Có bình luận mới cần duyệt</div>
+                                <div class="notification-time">1 giờ trước</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer">
+                        <a href="#" class="btn btn-sm btn-outline-primary w-100">Xem tất cả thông báo</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="dropdown me-3">
+                <a class="nav-link message-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="message-icon">
+                        <i class="fas fa-envelope"></i>
+                        <span class="message-badge">2</span>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end message-dropdown">
+                    <div class="dropdown-header">
+                        <h6 class="mb-0">Tin Nhắn</h6>
+                    </div>
+                    <div class="message-list">
+                        <a class="dropdown-item message-item" href="#">
+                            <img src="../img/customer1.jpg" alt="Customer" class="message-avatar">
+                            <div class="message-content">
+                                <div class="message-title">Nguyễn Văn A</div>
+                                <div class="message-text">Xin chào, tôi muốn hỏi về sản phẩm...</div>
+                                <div class="message-time">5 phút trước</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item message-item" href="#">
+                            <img src="../img/customer2.jpg" alt="Customer" class="message-avatar">
+                            <div class="message-content">
+                                <div class="message-title">Trần Thị B</div>
+                                <div class="message-text">Khi nào có hàng mới ạ?</div>
+                                <div class="message-time">10 phút trước</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer">
+                        <a href="#" class="btn btn-sm btn-outline-primary w-100">Xem tất cả tin nhắn</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile -->
+            <div class="dropdown">
+                <a class="nav-link user-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-info d-flex align-items-center">
+                        <img src="../img/admin-avatar.jpg" class="user-avatar me-2" alt="Admin">
+                        <div class="user-details d-none d-sm-block">
+                            <span class="user-name">Admin User</span>
+                            <span class="user-role">Quản trị viên</span>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 d-none d-sm-inline"></i>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end user-dropdown">
+                    <div class="dropdown-header">
+                        <div class="user-profile-info">
+                            <img src="../img/admin-avatar.jpg" alt="Admin" class="profile-avatar">
+                            <div class="profile-details">
+                                <h6 class="profile-name">Admin User</h6>
+                                <p class="profile-email">admin@doridonggiay.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="profile.html">
+                        <i class="fas fa-user me-2"></i> Hồ sơ cá nhân
+                    </a>
+                    <a class="dropdown-item" href="settings.html">
+                        <i class="fas fa-cog me-2"></i> Cài đặt
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-question-circle me-2"></i> Trợ giúp
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="login.html">
+                        <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+                    </a>
+                </div>
             </div>
         </div>
     </div>

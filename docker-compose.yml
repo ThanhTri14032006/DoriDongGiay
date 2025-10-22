@@ -1,19 +1,42 @@
 version: '3.8'
+
 services:
-  ecommerce:
-    build: .
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: doridonggiay-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=ThanhTri1403@
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+      - ./sql-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - doridonggiay-network
+
+  backend:
+    build: 
+      context: ./DoriDongGiayBackend
+      dockerfile: Dockerfile
+    container_name: doridonggiay-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=DoriDongGiay;User Id=sa;Password=ThanhTri1403@;TrustServerCertificate=True;MultipleActiveResultSets=true
     ports:
       - "5000:80"
       - "5001:443"
-    environment:
-      - ConnectionStrings__DefaultConnection=Server=db;Database=EcommerceProject;User=sa;Password=YourPassword123;
     depends_on:
-      - db
+      - sqlserver
+    networks:
+      - doridonggiay-network
+    restart: unless-stopped
 
-  db:
-    image: mcr.microsoft.com/mssql/server:2019-latest
-    environment:
-      SA_PASSWORD: "YourPassword123"
-      ACCEPT_EULA: "Y"
-    ports:
-      - "1433:1433"
+volumes:
+  sqlserver_data:
+
+networks:
+  doridonggiay-network:
+    driver: bridge

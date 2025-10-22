@@ -5,336 +5,977 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - DoriDongGiay Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.css" rel="stylesheet">
-    <link href="css/admin-style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #1a1d29;
+            --bg-secondary: #252836;
+            --bg-tertiary: #2d3142;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a3bd;
+            --text-muted: #6c7293;
+            --accent-blue: #4f46e5;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-orange: #f59e0b;
+            --border-color: #3d4465;
+            --hover-bg: #353849;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .sidebar-brand .brand-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 32px;
+        }
+
+        .menu-title {
+            padding: 0 20px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .menu-item.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--accent-blue);
+        }
+
+        .menu-item i {
+            width: 20px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .menu-item .badge {
+            margin-left: auto;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+            background: var(--bg-primary);
+        }
+
+        /* Top Header */
+        .top-header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .menu-toggle:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 16px 8px 40px;
+            color: var(--text-primary);
+            width: 300px;
+            font-size: 14px;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .action-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 18px;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        .action-btn .badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 10px;
+            min-width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-profile:hover {
+            background: var(--hover-bg);
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .user-role {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* Dashboard Content */
+        .dashboard-content {
+            padding: 32px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .stat-title {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+        }
+
+        .stat-change.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-change.negative {
+            color: #ef4444;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .chart-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chart-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .chart-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            background: var(--border-color);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: var(--accent-blue);
+        }
+
+        .toggle-switch::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active::before {
+            transform: translateX(20px);
+        }
+
+        /* Widgets Grid */
+        .widgets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .widget {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .widget-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .widget-menu {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .widget-menu:hover {
+            background: var(--hover-bg);
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .dashboard-content {
+                padding: 16px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="wrapper">
-        <!-- Header -->
-        <div id="header-placeholder"></div>
-        <!-- End Header -->
-
-        <!-- Page Content -->
-        <div id="content">
-
-            <!-- Dashboard Content -->
-            <div class="container-fluid">
-                <div class="row mb-4">
-                    <div class="col-md-12">
-                        <h2>Bảng Điều Khiển</h2>
-                        <p class="text-muted">Xin chào Admin, chào mừng trở lại với hệ thống quản trị.</p>
-                    </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-shoe-prints"></i>
                 </div>
+                <span>Designluch</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-section">
+                <div class="menu-title">Main Menu</div>
+                <a href="dashboard.html" class="menu-item active">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Campaign</span>
+                    <i class="fas fa-chevron-right ms-auto"></i>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Analytics</span>
+                    <span class="badge">2</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Social Network</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Balance</span>
+                </a>
+            </div>
+            
+            <div class="menu-section">
+                <div class="menu-title">Others</div>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-book"></i>
+                    <span>Guide</span>
+                    <i class="fas fa-chevron-right ms-auto"></i>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                    <span class="badge">NEW</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-                <!-- Stats Cards -->
-                <div class="row mb-4">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-primary shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                            Doanh Thu (Tháng)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">40,000,000 VNĐ</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                            Đơn Hàng (Hôm nay)</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                            Khách Hàng Mới</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                            Sản Phẩm Hết Hàng</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search here...">
                 </div>
-
-                <!-- Charts Row -->
-                <div class="row mb-4">
-                    <div class="col-xl-8 col-lg-7">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Doanh Thu Theo Tháng</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Xuất báo cáo</a>
-                                        <a class="dropdown-item" href="#">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-area">
-                                    <canvas id="revenueChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-5">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                <h6 class="m-0 font-weight-bold text-primary">Phân Bổ Doanh Thu</h6>
-                                <div class="dropdown no-arrow">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Xuất báo cáo</a>
-                                        <a class="dropdown-item" href="#">Xem chi tiết</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="chart-pie">
-                                    <canvas id="salesDistributionChart"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                
+                <div class="header-actions">
+                    <button class="action-btn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <button class="action-btn">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">3</span>
+                    </button>
                 </div>
-
-                <!-- Recent Orders & Top Products -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Đơn Hàng Gần Đây</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Mã Đơn</th>
-                                                <th>Khách Hàng</th>
-                                                <th>Tổng Tiền</th>
-                                                <th>Trạng Thái</th>
-                                                <th>Thao Tác</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>#1234</td>
-                                                <td>Nguyễn Văn A</td>
-                                                <td>1,200,000 VNĐ</td>
-                                                <td><span class="badge bg-success">Hoàn thành</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#1235</td>
-                                                <td>Trần Thị B</td>
-                                                <td>850,000 VNĐ</td>
-                                                <td><span class="badge bg-warning">Đang giao</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#1236</td>
-                                                <td>Lê Văn C</td>
-                                                <td>2,500,000 VNĐ</td>
-                                                <td><span class="badge bg-info">Đã xác nhận</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>#1237</td>
-                                                <td>Phạm Thị D</td>
-                                                <td>1,800,000 VNĐ</td>
-                                                <td><span class="badge bg-danger">Đã hủy</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <a href="orders.html" class="btn btn-sm btn-primary">Xem tất cả đơn hàng</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Sản Phẩm Bán Chạy</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>Sản Phẩm</th>
-                                                <th>Danh Mục</th>
-                                                <th>Đã Bán</th>
-                                                <th>Tồn Kho</th>
-                                                <th>Thao Tác</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Giày Nike Air Max</td>
-                                                <td>Giày Thể Thao</td>
-                                                <td>45</td>
-                                                <td>12</td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Giày Adidas Ultraboost</td>
-                                                <td>Giày Thể Thao</td>
-                                                <td>38</td>
-                                                <td>8</td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Giày Converse Classic</td>
-                                                <td>Giày Casual</td>
-                                                <td>32</td>
-                                                <td>15</td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Giày Vans Old Skool</td>
-                                                <td>Giày Casual</td>
-                                                <td>29</td>
-                                                <td>10</td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Xem</a></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="text-center mt-3">
-                                    <a href="products.html" class="btn btn-sm btn-primary">Xem tất cả sản phẩm</a>
-                                </div>
-                            </div>
-                        </div>
+                
+                <div class="user-profile">
+                    <div class="user-avatar">D</div>
+                    <div class="user-info">
+                        <div class="user-name">Designluch</div>
+                        <div class="user-role">Super Admin</div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Footer -->
-        <div id="footer-placeholder"></div>
-        <!-- End Footer -->
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Campaign</div>
+                        <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--accent-blue);">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">562</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+3% from last month</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Audience</div>
+                        <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--accent-green);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">14,565k</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8% from last month</span>
+                    </div>
+                </div>
+
+                <div class="stat-card" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));">
+                    <div class="stat-header">
+                        <div class="stat-title" style="color: rgba(255,255,255,0.8);">Spends Today</div>
+                        <div class="stat-icon" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" style="color: white;">$5,245</div>
+                    <div class="stat-change" style="color: rgba(255,255,255,0.8);">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+12% from yesterday</span>
+                    </div>
+                </div>
+
+                <div class="stat-card" style="background: linear-gradient(135deg, var(--accent-green), #059669);">
+                    <div class="stat-header">
+                        <div class="stat-title" style="color: rgba(255,255,255,0.8);">Spends Yesterday</div>
+                        <div class="stat-icon" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" style="color: white;">$953.55</div>
+                    <div class="stat-change" style="color: rgba(255,255,255,0.8);">
+                        <i class="fas fa-arrow-down"></i>
+                        <span>-5% from last week</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart Activity -->
+            <div class="chart-container">
+                <div class="chart-header">
+                    <div>
+                        <h3 class="chart-title">Chart Activity</h3>
+                        <div class="d-flex align-items-center gap-3 mt-2">
+                            <div class="chart-toggle">
+                                <div class="toggle-switch active" data-toggle="spendings"></div>
+                                <span>Spendings</span>
+                            </div>
+                            <div class="chart-toggle">
+                                <div class="toggle-switch active" data-toggle="income"></div>
+                                <span>Income</span>
+                            </div>
+                            <div class="chart-toggle">
+                                <div class="toggle-switch" data-toggle="others"></div>
+                                <span>Others</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-controls">
+                        <select class="form-select" style="background: var(--bg-tertiary); border: 1px solid var(--border-color); color: var(--text-primary);">
+                            <option>This Month</option>
+                            <option>Last Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="height: 300px;">
+                    <canvas id="chartActivity"></canvas>
+                </div>
+            </div>
+
+            <!-- Widgets Grid -->
+            <div class="widgets-grid">
+                <!-- Transaction Overview -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h4 class="widget-title">Transaction Overview</h4>
+                        <div class="d-flex align-items-center gap-2">
+                            <span style="font-size: 12px; color: var(--text-muted);">Income</span>
+                            <div class="toggle-switch active"></div>
+                            <span style="font-size: 12px; color: var(--text-muted);">Expense</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div style="font-size: 24px; font-weight: 700; color: var(--text-primary);">$85.66</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">Expense</div>
+                    </div>
+                    <div style="height: 200px;">
+                        <canvas id="transactionChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Campaign Goal Summary -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h4 class="widget-title">Campaign Goal Summary</h4>
+                        <button class="widget-menu">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div style="width: 20px; height: 20px; background: #e91e63; border-radius: 4px;"></div>
+                            <span style="font-size: 14px; color: var(--text-secondary);">Instagram</span>
+                        </div>
+                        <div class="mb-3">
+                            <div style="font-size: 16px; font-weight: 600; color: var(--text-primary);">Ad Campaign</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">6,789k/10,000</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Impressions</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Likes</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Bookmarked</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Network Stats -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h4 class="widget-title">Social Network Stats</h4>
+                        <button class="widget-menu">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <div style="width: 40px; height: 40px; background: #e91e63; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary);">Instagram</div>
+                                <div style="width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; margin-top: 4px;">
+                                    <div style="width: 75%; height: 100%; background: #e91e63; border-radius: 2px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div style="width: 40px; height: 40px; background: #1877f2; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary);">Facebook</div>
+                                <div style="width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; margin-top: 4px;">
+                                    <div style="width: 60%; height: 100%; background: #1877f2; border-radius: 2px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <div style="width: 40px; height: 40px; background: #1da1f2; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div style="font-size: 14px; font-weight: 500; color: var(--text-primary);">Twitter</div>
+                                <div style="width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; margin-top: 4px;">
+                                    <div style="width: 45%; height: 100%; background: #1da1f2; border-radius: 2px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Click Summary -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h4 class="widget-title">Click Summary</h4>
+                        <div class="d-flex align-items-center gap-2">
+                            <span style="font-size: 12px; color: var(--text-muted);">Monthly</span>
+                            <span style="font-size: 12px; color: var(--text-muted);">Weekly</span>
+                            <span style="font-size: 12px; color: var(--text-primary); font-weight: 500;">Daily</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div style="font-size: 28px; font-weight: 700; color: var(--text-primary);">867,123k</div>
+                        <div class="d-flex align-items-center gap-1 mt-1">
+                            <i class="fas fa-arrow-up" style="color: var(--accent-green); font-size: 12px;"></i>
+                            <span style="font-size: 12px; color: var(--accent-green);">+3% from last month</span>
+                        </div>
+                    </div>
+                    <div style="height: 150px;">
+                        <canvas id="clickChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/include.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        $(document).ready(function () {
-            // Toggle sidebar
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
+        // Menu Toggle
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
 
-            // Revenue Chart
-            var ctx = document.getElementById('revenueChart').getContext('2d');
-            var revenueChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6'],
-                    datasets: [{
-                        label: 'Doanh Thu (triệu VNĐ)',
-                        data: [25, 30, 28, 35, 40, 45],
-                        backgroundColor: 'rgba(78, 115, 223, 0.05)',
-                        borderColor: 'rgba(78, 115, 223, 1)',
-                        pointBackgroundColor: 'rgba(78, 115, 223, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(78, 115, 223, 1)',
-                        borderWidth: 2,
-                        fill: true
-                    }]
+        // Toggle Switches
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Chart Activity
+        const ctx1 = document.getElementById('chartActivity').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['Week 01', 'Week 02', 'Week 03', 'Week 04', 'Week 05', 'Week 06', 'Week 07', 'Week 08', 'Week 09', 'Week 10'],
+                datasets: [{
+                    label: 'Spendings',
+                    data: [20, 35, 25, 45, 30, 50, 35, 60, 40, 55],
+                    borderColor: '#4f46e5',
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Income',
+                    data: [15, 25, 35, 30, 45, 35, 50, 45, 55, 50],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Others',
+                    data: [10, 20, 15, 25, 20, 30, 25, 35, 30, 40],
+                    borderColor: '#6b7280',
+                    backgroundColor: 'rgba(107, 114, 128, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
+                scales: {
+                    x: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
                         }
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true
+                    y: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
                         }
                     }
                 }
-            });
+            }
+        });
 
-            // Sales Distribution Chart
-            var ctx2 = document.getElementById('salesDistributionChart').getContext('2d');
-            var salesDistributionChart = new Chart(ctx2, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Giày Thể Thao', 'Giày Casual', 'Giày Đá Bóng', 'Giày Sandal'],
-                    datasets: [{
-                        data: [45, 25, 20, 10],
-                        backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e'],
-                        hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#dda20a'],
-                        hoverBorderColor: "rgba(234, 236, 244, 1)",
-                    }]
+        // Transaction Chart
+        const ctx2 = document.getElementById('transactionChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Income',
+                    data: [65, 59, 80, 81, 56, 85, 90],
+                    backgroundColor: '#10b981'
+                }, {
+                    label: 'Expense',
+                    data: [45, 39, 60, 61, 36, 65, 70],
+                    backgroundColor: '#ef4444'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
+                scales: {
+                    x: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
                         }
                     },
-                    cutout: '70%'
+                    y: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
+                        }
+                    }
                 }
-            });
+            }
+        });
+
+        // Click Chart
+        const ctx3 = document.getElementById('clickChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: ['Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'],
+                datasets: [{
+                    label: 'Clicks',
+                    data: [400, 500, 600, 700, 800, 900, 867],
+                    borderColor: '#4f46e5',
+                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#3d4465'
+                        },
+                        ticks: {
+                            color: '#a0a3bd'
+                        }
+                    }
+                }
+            }
         });
     </script>
 </body>

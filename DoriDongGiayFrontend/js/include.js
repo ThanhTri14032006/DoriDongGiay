@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Nhúng header
     const headerPlaceholder = document.querySelector('#header-placeholder');
     if (headerPlaceholder) {
-        fetch('/includes/header.html')
+        fetch('includes/header.html')
             .then(response => response.text())
             .then(data => {
                 headerPlaceholder.innerHTML = data;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Nhúng footer
     const footerPlaceholder = document.querySelector('#footer-placeholder');
     if (footerPlaceholder) {
-        fetch('/includes/footer.html')
+        fetch('includes/footer.html')
             .then(response => response.text())
             .then(data => {
                 footerPlaceholder.innerHTML = data;
