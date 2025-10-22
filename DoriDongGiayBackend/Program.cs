@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString));  // ← Phải là UseSqlServer
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -31,15 +31,22 @@ builder.Services.AddDefaultIdentity<User>(options =>
 
 builder.Services.AddControllers();
 
-// Add CORS
+// Add CORS - FIXED VERSION
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "http://127.0.0.1:3000", "file://")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+        policy.WithOrigins(
+            "http://localhost:3000",
+            "http://127.0.0.1:3000",
+            "http://localhost:5500",
+            "http://127.0.0.1:5500",
+            "http://localhost:8080",
+            "http://127.0.0.1:8080"
+        )
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials();
     });
 });
 
@@ -55,6 +62,7 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+    options.Cookie.SameSite = SameSiteMode.Lax;
 });
 
 // HTTP context accessor
@@ -73,16 +81,21 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// Comment out HTTPS redirect in development if needed
+// app.UseHttpsRedirection();
 
+// CORS - Must be before Authentication/Authorization
 app.UseCors("AllowFrontend");
 
+// Routing
 app.UseRouting();
 
+// Session - Must be after Routing and before Authentication
+app.UseSession();
+
+// Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
-
-app.UseSession();
 
 // Seed data
 using (var scope = app.Services.CreateScope())
@@ -95,10 +108,16 @@ using (var scope = app.Services.CreateScope())
     catch (Exception ex)
     {
         var logger = services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred seeding the DB.");
+        logger.LogError(ex, "An error occurred seeding the DB: {Message}", ex.Message);
     }
 }
 
+// Map controllers
 app.MapControllers();
+
+Console.WriteLine("Backend API is running!");
+Console.WriteLine(" URL: http://localhost:5000");
+Console.WriteLine("CORS enabled for: localhost:3000, localhost:5500, localhost:8080");
+Console.WriteLine(" Database: Azure SQL Server");
 
 app.Run();

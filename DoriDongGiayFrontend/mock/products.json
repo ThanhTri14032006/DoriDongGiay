@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Sneaker Trắng",
+    "description": "Giày sneaker màu trắng đơn giản, dễ phối đồ",
+    "price": 750000,
+    "imageUrl": "images/products/sneaker-white.jpg",
+    "categoryId": 1,
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "name": "Boot Da Nâu",
+    "description": "Boot da chất lượng cao, phong cách mạnh mẽ",
+    "price": 1250000,
+    "imageUrl": "images/products/boots-brown.jpg",
+    "categoryId": 2,
+    "isActive": true
+  },
+  {
+    "id": 3,
+    "name": "Sandal Thoải Mái",
+    "description": "Sandal nhẹ nhàng cho mùa hè",
+    "price": 420000,
+    "imageUrl": "images/products/sandal-comfy.jpg",
+    "categoryId": 3,
+    "isActive": true
+  }
+]

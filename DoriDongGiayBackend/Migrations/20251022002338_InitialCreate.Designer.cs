@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoriDongGiay.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251021151235_InitialSqlServerMigration")]
-    partial class InitialSqlServerMigration
+    [Migration("20251022002338_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
