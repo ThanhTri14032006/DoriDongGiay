@@ -636,3 +636,7 @@
 /Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/obj/Debug/net9.0/DoriDongGiay.genruntimeconfig.cache
 /Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/obj/Debug/net9.0/ref/DoriDongGiay.dll
 /Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/bin/Debug/net9.0/System.Formats.Asn1.dll
+/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/bin/Debug/net9.0/Microsoft.OpenApi.dll
+/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/bin/Debug/net9.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/thanhtri/Desktop/DoriDongGiay 2/DoriDongGiayBackend/bin/Debug/net9.0/Swashbuckle.AspNetCore.SwaggerUI.dll
